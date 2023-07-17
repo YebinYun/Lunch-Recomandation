@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구�
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
 
 const BackgroundImage = styled.div`
-  background-image: url("/images/racomandation.png");
+  background-image: url("../images/racomandation.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
@@ -547,10 +547,10 @@ const Recomandation = () => {
               <AcctionBtnWrap>
                 {/* 방향키 */}
                 <AcctionBtn>
-                  <AcctionImg src="/images/left-btn.png" alt="back button" />
+                  <AcctionImg src="../images/left-btn.png" alt="back button" />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src="/images/right-btn.png" alt="next button" />
+                  <AcctionImg src="../images/right-btn.png" alt="next button" />
                 </AcctionBtn>
               </AcctionBtnWrap>
 
@@ -560,21 +560,21 @@ const Recomandation = () => {
                   <LinkBar>
                     https:// 프로젝트.참숯가마/{inputValue}_{food}_추천
                   </LinkBar>
-                  <AcctionImgStar src="/images/star.png" alt="bookmark" />
+                  <AcctionImgStar src="../images/star.png" alt="bookmark" />
                 </LinkBarWrap>
 
                 <AcctionBtn>
-                  <AcctionImg src="/images/btn.png" alt="reflash button" />
+                  <AcctionImg src="../images/btn.png" alt="reflash button" />
                 </AcctionBtn>
               </LinkWrap>
 
               {/* 동작 버튼 */}
               <AcctionBtnWrap>
                 <AcctionBtn>
-                  <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+                  <AcctionImg src="../images/hide-btn.png" alt="hide button" />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src="/images/close-btn.png " alt="close button" />
+                  <AcctionImg src="../images/close-btn.png " alt="close button" />
                 </AcctionBtn>
               </AcctionBtnWrap>
             </TopBarWrap>
@@ -628,7 +628,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="/images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
                               alt=""
                             />
                           </div>
@@ -658,7 +658,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="/images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
                               alt=""
                             />
                           </div>
@@ -722,7 +722,7 @@ const Recomandation = () => {
             {/* 하단바 */}
             <FooterBarWrap>
               <div>
-                <img src="/images/emojione-fire.png" alt="" />
+                <img src="../images/emojione-fire.png" alt="" />
               </div>
               <div>I LOVE SEOUL</div>
             </FooterBarWrap>

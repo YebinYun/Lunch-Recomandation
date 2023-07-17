@@ -169,21 +169,21 @@ const BlogModal = ({
           <AcctionBtnWrap>
             {/* 방향키 */}
             <AcctionBtn>
-              <AcctionImg src="/images/left-btn.png" alt="back button" />
+              <AcctionImg src="../images/left-btn.png" alt="back button" />
             </AcctionBtn>
             <AcctionBtn>
-              <AcctionImg src="/images/right-btn.png" alt="next button" />
+              <AcctionImg src="../images/right-btn.png" alt="next button" />
             </AcctionBtn>
           </AcctionBtnWrap>
 
           {/* 동작 버튼2 */}
           <AcctionBtnWrap>
             <AcctionBtn>
-              <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+              <AcctionImg src="../images/hide-btn.png" alt="hide button" />
             </AcctionBtn>
             <AcctionBtn>
               <AcctionImg
-                src="/images/close-btn.png "
+                src="../images/close-btn.png "
                 alt="close button"
                 className="closeButton"
                 onClick={closeReview}
@@ -203,7 +203,7 @@ const BlogModal = ({
             {blogData[selectedModalIndex].map((data) => (
               <div key={data.link}>
                 <div className="reviewPostImg">
-                  <img src="/images/Get the We Heart It app!.gif" alt="" />
+                  <img src="../images/Get the We Heart It app!.gif" alt="" />
                 </div>
                 <a target="_blank" href={data.link} className="reviewPostText">
                   <h4>{data.title}</h4>
@@ -218,7 +218,7 @@ const BlogModal = ({
         {/* 하단바 */}
         <FooterBarWrap>
           <div>
-            <img src="/images/emojione-fire.png" alt="" />
+            <img src="../images/emojione-fire.png" alt="" />
           </div>
           <div>I LOVE SEOUL</div>
         </FooterBarWrap>

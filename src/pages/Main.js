@@ -42,7 +42,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/images/unnamed.png");
+  background: url("../images/unnamed.png");
   background-size: cover;
   > .container {
     border-radius: 5px;
@@ -258,14 +258,14 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/left-btn.png"
+                  src="../images/left-btn.png"
                   alt="back button"
                 />
               </div>
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/right-btn.png"
+                  src="../images/right-btn.png"
                   alt="next button"
                 />
               </div>
@@ -277,7 +277,7 @@ const Main = () => {
                 <div className="linkBar">https:// 프로젝트.참숯가마</div>
                 <img
                   className="acctionImgStar"
-                  src="/images/star.png"
+                  src="../images/star.png"
                   alt="bookmark"
                 />
               </div>
@@ -285,7 +285,7 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/btn.png"
+                  src="../images/btn.png"
                   alt="reflash button"
                 />
               </div>
@@ -296,14 +296,14 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/hide-btn.png"
+                  src="../images/hide-btn.png"
                   alt="hide button"
                 />
               </div>
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/close-btn.png "
+                  src="../images/close-btn.png "
                   alt="close button"
                 />
               </div>
@@ -352,7 +352,7 @@ const Main = () => {
           {/* 하단바 */}
           <div className="footerBarWrap">
             <div>
-              <img src="/images/emojione-fire.png" alt="" />
+              <img src="../images/emojione-fire.png" alt="" />
             </div>
             <div>I LOVE FOOD</div>
           </div>

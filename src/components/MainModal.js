@@ -169,22 +169,22 @@ const MainModal = ({ inputValue, food1, result, handleClick }) => {
           <AcctionBtnWrap>
             {/* 방향키 */}
             <AcctionBtn>
-              <AcctionImg src="/images/left-btn.png" alt="back button" />
+              <AcctionImg src="../images/left-btn.png" alt="back button" />
             </AcctionBtn>
             <AcctionBtn>
-              <AcctionImg src="/images/right-btn.png" alt="next button" />
+              <AcctionImg src="../images/right-btn.png" alt="next button" />
             </AcctionBtn>
           </AcctionBtnWrap>
 
           {/* 동작 버튼 */}
           <AcctionBtnWrap>
             <AcctionBtn>
-              <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+              <AcctionImg src="../images/hide-btn.png" alt="hide button" />
             </AcctionBtn>
             <AcctionBtn>
               <AcctionImg
                 className="closeButton"
-                src="/images/close-btn.png "
+                src="../images/close-btn.png "
                 alt="close button"
                 onClick={handleClick}
               />
@@ -214,7 +214,7 @@ const MainModal = ({ inputValue, food1, result, handleClick }) => {
               <div>음식을 추천중입니다.</div>
             )}
           </MainText>
-          <ResultIcon src={`/images/${foodImageName}.png`} alt="" />
+          <ResultIcon src={`../images/${foodImageName}.png`} alt="" />
           <ResultClick>
             <ResultText onClick={goToRecomandation} food1={food1}>
               추천 가기
@@ -225,7 +225,7 @@ const MainModal = ({ inputValue, food1, result, handleClick }) => {
         {/* 하단바 */}
         <FooterBarWrap>
           <div>
-            <img src="/images/emojione-fire.png" alt="" />
+            <img src="../images/emojione-fire.png" alt="" />
           </div>
           <div>I LOVE {food}</div>
         </FooterBarWrap>

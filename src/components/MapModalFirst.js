@@ -106,21 +106,21 @@ const MapModalFir = ({ closeModal }) => {
           <AcctionBtnWrap>
             {/* 방향키 */}
             <AcctionBtn>
-              <AcctionImg src="/images/left-btn.png" alt="back button" />
+              <AcctionImg src="../images/left-btn.png" alt="back button" />
             </AcctionBtn>
             <AcctionBtn>
-              <AcctionImg src="/images/right-btn.png" alt="next button" />
+              <AcctionImg src="../images/right-btn.png" alt="next button" />
             </AcctionBtn>
           </AcctionBtnWrap>
 
           {/* 동작 버튼 */}
           <AcctionBtnWrap>
             <AcctionBtn>
-              <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+              <AcctionImg src="../images/hide-btn.png" alt="hide button" />
             </AcctionBtn>
             <AcctionBtn>
               <AcctionImg
-                src="/images/close-btn.png "
+                src="../images/close-btn.png "
                 alt="close button"
                 className="closeButton"
                 onClick={closeModal}
@@ -134,13 +134,13 @@ const MapModalFir = ({ closeModal }) => {
 
         {/* 메인창 */}
         <MainWrap>
-          <MapImg src="/images/map-img.png" alt="서울시 25개 지구" />
+          <MapImg src="../images/map-img.png" alt="서울시 25개 지구" />
         </MainWrap>
 
         {/* 하단바 */}
         <FooterBarWrap>
           <div>
-            <img src="/images/emojione-fire.png" alt="" />
+            <img src="../images/emojione-fire.png" alt="" />
           </div>
           <div>I LOVE SEOUL</div>
         </FooterBarWrap>

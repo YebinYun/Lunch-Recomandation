@@ -5,7 +5,7 @@ import React, { useRef, useState, useEffect } from "react";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL} >
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />} />
