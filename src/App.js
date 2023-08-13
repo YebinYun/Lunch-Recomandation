@@ -1,18 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Main from "./pages/Main";
 import Recomandation from "./pages/Recomandation";
-import React, { useRef, useState, useEffect } from "react";
 
 function App() {
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL} >
       <div className="App">
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/Recomandation" element={<Recomandation />} />
         </Routes>
       </div>
-    </BrowserRouter>
   );
 }
 

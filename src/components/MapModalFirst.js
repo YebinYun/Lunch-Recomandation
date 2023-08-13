@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import actionBtn from "../images/right-btn.png";
+import actionLeft from "../images/left-btn.png";
+import actionHide from "../images/hide-btn.png";
+import actionClose from "../images/close-btn.png";
+import mapImg from "../images/map-img.png";
+import iconFire from "../images/emojione-fire.png";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -106,21 +112,21 @@ const MapModalFir = ({ closeModal }) => {
           <AcctionBtnWrap>
             {/* 방향키 */}
             <AcctionBtn>
-              <AcctionImg src="../images/left-btn.png" alt="back button" />
+              <AcctionImg src={actionLeft} alt="back button" />
             </AcctionBtn>
             <AcctionBtn>
-              <AcctionImg src="../images/right-btn.png" alt="next button" />
+              <AcctionImg src={actionBtn} alt="next button" />
             </AcctionBtn>
           </AcctionBtnWrap>
 
           {/* 동작 버튼 */}
           <AcctionBtnWrap>
             <AcctionBtn>
-              <AcctionImg src="../images/hide-btn.png" alt="hide button" />
+              <AcctionImg src={actionHide} alt="hide button" />
             </AcctionBtn>
             <AcctionBtn>
               <AcctionImg
-                src="../images/close-btn.png "
+                src={actionClose}
                 alt="close button"
                 className="closeButton"
                 onClick={closeModal}
@@ -134,13 +140,13 @@ const MapModalFir = ({ closeModal }) => {
 
         {/* 메인창 */}
         <MainWrap>
-          <MapImg src="../images/map-img.png" alt="서울시 25개 지구" />
+          <MapImg src={mapImg} alt="서울시 25개 지구" />
         </MainWrap>
 
         {/* 하단바 */}
         <FooterBarWrap>
           <div>
-            <img src="../images/emojione-fire.png" alt="" />
+            <img src={iconFire} alt="" />
           </div>
           <div>I LOVE SEOUL</div>
         </FooterBarWrap>
