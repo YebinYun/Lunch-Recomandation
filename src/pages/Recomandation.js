@@ -7,9 +7,18 @@ import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼�
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
+import actionBtn from "../images/right-btn.png";
+import actionLeft from "../images/left-btn.png";
+import actionStar from "../images/star.png";
+import actionHide from "../images/hide-btn.png";
+import actionClose from "../images/close-btn.png";
+import actionReflash from "../images/btn.png";
+import iconFire from "../images/emojione-fire.png";
+import backgroundImage from "../images/racomandation.png"
+ 
 
 const BackgroundImage = styled.div`
-  background-image: url("/images/racomandation.png");
+  background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
@@ -547,10 +556,10 @@ const Recomandation = () => {
               <AcctionBtnWrap>
                 {/* 방향키 */}
                 <AcctionBtn>
-                  <AcctionImg src="/images/left-btn.png" alt="back button" />
+                  <AcctionImg src={actionLeft} alt="back button" />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src="/images/right-btn.png" alt="next button" />
+                  <AcctionImg src={actionBtn} alt="next button" />
                 </AcctionBtn>
               </AcctionBtnWrap>
 
@@ -560,21 +569,21 @@ const Recomandation = () => {
                   <LinkBar>
                     https:// 프로젝트.참숯가마/{inputValue}_{food}_추천
                   </LinkBar>
-                  <AcctionImgStar src="/images/star.png" alt="bookmark" />
+                  <AcctionImgStar src={actionStar} alt="bookmark" />
                 </LinkBarWrap>
 
                 <AcctionBtn>
-                  <AcctionImg src="/images/btn.png" alt="reflash button" />
+                  <AcctionImg src={actionReflash} alt="reflash button" />
                 </AcctionBtn>
               </LinkWrap>
 
               {/* 동작 버튼 */}
               <AcctionBtnWrap>
                 <AcctionBtn>
-                  <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+                  <AcctionImg src={actionHide} alt="hide button" />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src="/images/close-btn.png " alt="close button" />
+                  <AcctionImg src={actionClose} alt="close button" />
                 </AcctionBtn>
               </AcctionBtnWrap>
             </TopBarWrap>
@@ -628,7 +637,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="/images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
                               alt=""
                             />
                           </div>
@@ -658,7 +667,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="/images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
                               alt=""
                             />
                           </div>
@@ -674,7 +683,7 @@ const Recomandation = () => {
                     <p className="InformationText">
                       <h4>사이트 :</h4>
                       {recommendation.link ? (
-                        <a target="_blank" href={recommendation.link}>
+                        <a target="_blank" href={recommendation.link} rel="noreferrer">
                           {recommendation.link}
                         </a>
                       ) : (
@@ -722,12 +731,11 @@ const Recomandation = () => {
             {/* 하단바 */}
             <FooterBarWrap>
               <div>
-                <img src="/images/emojione-fire.png" alt="" />
+                <img src={iconFire} alt="" />
               </div>
               <div>I LOVE SEOUL</div>
             </FooterBarWrap>
           </Container>
-          {/* <BlogModal /> */}
 
         </BackgroundImage>
       ) : (

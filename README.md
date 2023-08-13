@@ -82,14 +82,14 @@
 ### **Config**
 <img src="https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=white"/> <img src="https://img.shields.io/badge/naver-03C75A?style=flat&logo=npm&logoColor=white"/>
 
-### **Divelopment**
+### **Development**
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styledcomponents&logoColor=white"/> <img src="https://img.shields.io/badge/react router-CA4245?style=flat&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat&logo=axios&logoColor=white"/>
 
 <br>
 
 ## 아키텍쳐
 ### 디렉토리 구조
-<img width="500px" src = "src/img/components.png">
+<img src = "src/img/components.png">
 <br>
 
 

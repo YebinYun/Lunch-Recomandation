@@ -6,6 +6,15 @@ import koreanFood2 from "../img/koreanFood2.png";
 import koreanFood3 from "../img/koreanFood3.png";
 import MapModalFir from "../components/MapModalFirst";
 import MainModal from "../components/MainModal";
+import actionBtn from "../images/right-btn.png";
+import actionLeft from "../images/left-btn.png";
+import actionStar from "../images/star.png";
+import actionHide from "../images/hide-btn.png";
+import actionClose from "../images/close-btn.png";
+import actionReflash from "../images/btn.png";
+import iconFire from "../images/emojione-fire.png";
+import backgroundImage from "../images/unnamed.png"
+
 
 const deselectedOptions = [
   "강남구",
@@ -42,7 +51,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("/images/unnamed.png");
+  background: url(${backgroundImage});
   background-size: cover;
   > .container {
     border-radius: 5px;
@@ -258,14 +267,14 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/left-btn.png"
+                  src={actionLeft}
                   alt="back button"
                 />
               </div>
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/right-btn.png"
+                  src={actionBtn}
                   alt="next button"
                 />
               </div>
@@ -277,7 +286,7 @@ const Main = () => {
                 <div className="linkBar">https:// 프로젝트.참숯가마</div>
                 <img
                   className="acctionImgStar"
-                  src="/images/star.png"
+                  src={actionStar}
                   alt="bookmark"
                 />
               </div>
@@ -285,7 +294,7 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/btn.png"
+                  src={actionReflash}
                   alt="reflash button"
                 />
               </div>
@@ -296,14 +305,14 @@ const Main = () => {
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/hide-btn.png"
+                  src={actionHide}
                   alt="hide button"
                 />
               </div>
               <div className="acctionBtn">
                 <img
                   className="acctionImg"
-                  src="/images/close-btn.png "
+                  src={actionClose}
                   alt="close button"
                 />
               </div>
@@ -352,7 +361,7 @@ const Main = () => {
           {/* 하단바 */}
           <div className="footerBarWrap">
             <div>
-              <img src="/images/emojione-fire.png" alt="" />
+              <img src={iconFire} alt="" />
             </div>
             <div>I LOVE FOOD</div>
           </div>

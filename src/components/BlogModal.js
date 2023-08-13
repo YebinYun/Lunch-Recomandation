@@ -1,4 +1,10 @@
 import styled from "styled-components";
+import actionBtn from "../images/right-btn.png";
+import actionLeft from "../images/left-btn.png";
+import actionHide from "../images/hide-btn.png";
+import actionClose from "../images/close-btn.png";
+import iconFire from "../images/emojione-fire.png";
+import noImg from "../images/GetTheWeHeartItApp.gif";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -169,21 +175,21 @@ const BlogModal = ({
           <AcctionBtnWrap>
             {/* 방향키 */}
             <AcctionBtn>
-              <AcctionImg src="/images/left-btn.png" alt="back button" />
+              <AcctionImg src={actionLeft} alt="back button" />
             </AcctionBtn>
             <AcctionBtn>
-              <AcctionImg src="/images/right-btn.png" alt="next button" />
+              <AcctionImg src={actionBtn} alt="next button" />
             </AcctionBtn>
           </AcctionBtnWrap>
 
           {/* 동작 버튼2 */}
           <AcctionBtnWrap>
             <AcctionBtn>
-              <AcctionImg src="/images/hide-btn.png" alt="hide button" />
+              <AcctionImg src={actionHide} alt="hide button" />
             </AcctionBtn>
             <AcctionBtn>
               <AcctionImg
-                src="/images/close-btn.png "
+                src={actionClose}
                 alt="close button"
                 className="closeButton"
                 onClick={closeReview}
@@ -203,7 +209,7 @@ const BlogModal = ({
             {blogData[selectedModalIndex].map((data) => (
               <div key={data.link}>
                 <div className="reviewPostImg">
-                  <img src="/images/Get the We Heart It app!.gif" alt="" />
+                  <img src={noImg} alt="" />
                 </div>
                 <a target="_blank" href={data.link} className="reviewPostText">
                   <h4>{data.title}</h4>
@@ -218,7 +224,7 @@ const BlogModal = ({
         {/* 하단바 */}
         <FooterBarWrap>
           <div>
-            <img src="/images/emojione-fire.png" alt="" />
+            <img src={iconFire} alt="" />
           </div>
           <div>I LOVE SEOUL</div>
         </FooterBarWrap>
