@@ -210,6 +210,7 @@ const BlogModal = ({
               <div key={data.link}>
                 <div className="reviewPostImg">
                   <img src={noImg} alt="" />
+
                 </div>
                 <a target="_blank" href={data.link} className="reviewPostText">
                   <h4>{data.title}</h4>

@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/lunch-recomandation/static/css/main.389c964f.css",
+    "main.js": "/lunch-recomandation/static/js/main.2e9d152f.js",
+    "static/media/loading.gif": "/lunch-recomandation/static/media/loading.bcb0a53d24cfedc33940.gif",
+    "static/media/neodgm.woff": "/lunch-recomandation/static/media/neodgm.523c21df1190c7db8544.woff",
+    "static/media/neodgm2.woff": "/lunch-recomandation/static/media/neodgm2.96e3970b6b61da3dc52a.woff",
+    "static/media/koreanFood1.png": "/lunch-recomandation/static/media/koreanFood1.7a582f39c8be1c9e72a5.png",
+    "static/media/japaneseFood1.png": "/lunch-recomandation/static/media/japaneseFood1.665b61113e66dce23849.png",
+    "static/media/chineseFood1.png": "/lunch-recomandation/static/media/chineseFood1.2fdb19ef03de904f3400.png",
+    "static/media/japaneseFood3.png": "/lunch-recomandation/static/media/japaneseFood3.4866063c024a8e13c249.png",
+    "static/media/westernFood3.png": "/lunch-recomandation/static/media/westernFood3.dd3be624f05a64e5b30e.png",
+    "static/media/chineseFood2.png": "/lunch-recomandation/static/media/chineseFood2.a7410365b5a8a61c1d67.png",
+    "static/media/japaneseFood2.png": "/lunch-recomandation/static/media/japaneseFood2.da1fe83722e98221f17e.png",
+    "static/media/koreanFood3.png": "/lunch-recomandation/static/media/koreanFood3.60d7f3b3a9dc27a9578e.png",
+    "static/media/chineseFood3.png": "/lunch-recomandation/static/media/chineseFood3.8ddd5533dcd7ffaa499b.png",
+    "static/media/koreanFood2.png": "/lunch-recomandation/static/media/koreanFood2.8d8f3f88a4cd32e863e1.png",
+    "static/media/schoolFood1.png": "/lunch-recomandation/static/media/schoolFood1.905a44099f7cfd9a48b5.png",
+    "static/media/schoolFood3.png": "/lunch-recomandation/static/media/schoolFood3.fc8a0f37ecd46e247c2a.png",
+    "static/media/westernFood1.png": "/lunch-recomandation/static/media/westernFood1.cb468415ef0c8a1dec84.png",
+    "static/media/westernFood2.png": "/lunch-recomandation/static/media/westernFood2.d4854fa8cfa2eae2b5c7.png",
+    "static/media/slick.svg": "/lunch-recomandation/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/lunch-recomandation/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/lunch-recomandation/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/lunch-recomandation/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/lunch-recomandation/index.html",
+    "main.389c964f.css.map": "/lunch-recomandation/static/css/main.389c964f.css.map",
+    "main.2e9d152f.js.map": "/lunch-recomandation/static/js/main.2e9d152f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.389c964f.css",
+    "static/js/main.2e9d152f.js"
+  ]
+}
