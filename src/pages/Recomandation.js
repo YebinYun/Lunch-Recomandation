@@ -15,6 +15,7 @@ import actionClose from "../images/close-btn.png";
 import actionReflash from "../images/btn.png";
 import iconFire from "../images/emojione-fire.png";
 import backgroundImage from "../images/racomandation.png"
+import noImage from "../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
  
 
 const BackgroundImage = styled.div`
@@ -667,7 +668,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src={noImage}
                               alt=""
                             />
                           </div>
