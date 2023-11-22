@@ -39,11 +39,11 @@
 
 ## 화면 구성
 
-| <center>메인 페이지</center>                                         | <center>추천 모달</center>                                       | <center>지역 보기 ver 1.</center>                                    |
-| -------------------------------------------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------------------------- |
-| <img width="300px" height="150px" src = "src/img/Main.png">          | <img width="300px" height="150px" src = "src/img/MainModal.png"> | <img width="300px" height="150px" src = "src/img/MapModalFirst.png"> |
-| <center>추천 페이지</center>                                         | <center>상세보기 모달</center>                                   | <center>지역 보기 ver 2.</center>                                    |
-| <img width="300px" height="150px" src = "src/img/Recomandation.png"> | <img width="300px" height="150px" src = "src/img/BlogModal.png"> | <img width="300px" height="150px" src = "src/img/MapModalSec.png">   |
+| <center>메인 페이지</center>                                               | <center>추천 모달</center>                                             | <center>지역 보기 ver 1.</center>                                          |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| <img width="300px" height="150px" src = "public\images\Main.png">          | <img width="300px" height="150px" src = "public\images\MainModal.png"> | <img width="300px" height="150px" src = "public\images\MapModalFirst.png"> |
+| <center>추천 페이지</center>                                               | <center>상세보기 모달</center>                                         | <center>지역 보기 ver 2.</center>                                          |
+| <img width="300px" height="150px" src = "public\images\Recomandation.png"> | <img width="300px" height="150px" src = "public\images\BlogModal.png"> | <img width="300px" height="150px" src = "public\images\MapModalSec.png">   |
 
 <br>
 

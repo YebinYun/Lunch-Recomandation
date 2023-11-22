@@ -1,12 +1,13 @@
 import React from "react";
-import loading from "../img/loading.gif";
 import styled from "styled-components";
 
+const PUBLIC = process.env.PUBLIC_URL;
+const loading = `${PUBLIC}/images/loading.gif`;
+
 const ClickVideo = styled.img`
-  width:230px;
-  height:80px;
-`
-//
+  width: 230px;
+  height: 80px;
+`;
 const RollContainer = ({ rolling, roll }) => {
   return (
     <div className="rollContainer">

@@ -1,13 +1,13 @@
 import React from "react";
-import coin from "../img/coin.png";
+import { Icon } from "@iconify/react";
 //
 const GameWarp = ({ slotRefs, foods }) => {
   return (
     <div className="GameWarp">
       <div className="SlotMachine">
         <div className="slotContainer">
-          <img className="coin1" src={coin} alt="coin"></img>
-          <img className="coin2" src={coin} alt="coin"></img>
+          <Icon icon="twemoji:coin" className="coin1" />
+          <Icon icon="twemoji:coin" className="coin2" />
           <div className="line"></div>
           <div className="slot">
             <section>

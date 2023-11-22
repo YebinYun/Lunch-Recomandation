@@ -1,24 +1,25 @@
 import React, { useRef, useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
 import GameWarp from "./GameWrap";
 import RollContainer from "./RollContainer";
-import koreanFood1 from "../img/koreanFood1.png";
-import koreanFood2 from "../img/koreanFood2.png";
-import koreanFood3 from "../img/koreanFood3.png";
-import chineseFood1 from "../img/chineseFood1.png";
-import chineseFood2 from "../img/chineseFood2.png";
-import chineseFood3 from "../img/chineseFood3.png";
-import westernFood1 from "../img/westernFood1.png";
-import westernFood2 from "../img/westernFood2.png";
-import westernFood3 from "../img/westernFood3.png";
-import japaneseFood1 from "../img/japaneseFood1.png";
-import japaneseFood2 from "../img/japaneseFood2.png";
-import japaneseFood3 from "../img/japaneseFood3.png";
-import schoolFood1 from "../img/schoolFood1.png";
-import schoolFood2 from "../img/schoolFood2.png";
-import schoolFood3 from "../img/schoolFood3.png";
-import styled, { keyframes } from "styled-components";
 
 const boxShadow = "0 4px 6px rgb(32 33 36 / 28%)";
+const PUBLIC = process.env.PUBLIC_URL;
+const chineseFood1 = `${PUBLIC}/images/chineseFood1.png`;
+const chineseFood2 = `${PUBLIC}/images/chineseFood2.png`;
+const chineseFood3 = `${PUBLIC}/images/chineseFood3.png`;
+const japaneseFood1 = `${PUBLIC}/images/japaneseFood1.png`;
+const japaneseFood2 = `${PUBLIC}/images/japaneseFood2.png`;
+const japaneseFood3 = `${PUBLIC}/images/japaneseFood3.png`;
+const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
+const koreanFood2 = `${PUBLIC}/images/koreanFood2.png`;
+const koreanFood3 = `${PUBLIC}/images/koreanFood3.png`;
+const schoolFood1 = `${PUBLIC}/images/schoolFood1.png`;
+const schoolFood2 = `${PUBLIC}/images/schoolFood2.png`;
+const schoolFood3 = `${PUBLIC}/images/schoolFood3.png`;
+const westernFood1 = `${PUBLIC}/images/westernFood1.png`;
+const westernFood2 = `${PUBLIC}/images/westernFood2.png`;
+const westernFood3 = `${PUBLIC}/images/westernFood3.png`;
 
 const blinkingText = keyframes`
   0% {
@@ -76,14 +77,14 @@ export const MainGame = styled.div`
         border-radius: 10px;
         border: 3px solid black !important;
         padding: 7px 5px 0 0px;
-        img.coin1 {
+        .coin1 {
           position: absolute;
           top: 90px;
           left: 27px;
           width: 35px;
           height: 35px;
         }
-        img.coin2 {
+        .coin2 {
           position: absolute;
           top: 90px;
           left: 737px;
