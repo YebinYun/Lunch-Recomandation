@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 
 const ModalBackground = styled.div`
   position: fixed;
@@ -116,36 +117,29 @@ const AcctionBtn = styled.button`
   padding: 0;
 `;
 
-// 버튼 이미지
-const AcctionImg = styled.img`
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-`;
-
 const MainModal = ({ inputValue, food1, result, handleClick }) => {
   let food = "";
   let foodImageName = "";
   switch (true) {
     case food1.includes("korean"):
       food = "한식";
-      foodImageName = "korean-food";
+      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
       break;
     case food1.includes("chinese"):
       food = "중식";
-      foodImageName = "chinese-food";
+      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
       break;
     case food1.includes("western"):
       food = "양식";
-      foodImageName = "western-food";
+      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
       break;
     case food1.includes("japanese"):
       food = "일식";
-      foodImageName = "japanese-food";
+      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
       break;
     case food1.includes("school"):
       food = "분식";
-      foodImageName = "school-food";
+      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
       break;
     default:
       food = null;
@@ -192,26 +186,13 @@ const MainModal = ({ inputValue, food1, result, handleClick }) => {
         {/* 메인창 */}
         <MainWrap>
           <MainText>
-            {/* {food1.includes("korean") && result ? (
-              <div>오늘은 한식!</div>
-            ) : food1.includes("chinese") && result ? (
-              <div>오늘은 중식!</div>
-            ) : food1.includes("western") && result ? (
-              <div>오늘은 양식!</div>
-            ) : food1.includes("japanese") && result ? (
-              <div>오늘은 일식!</div>
-            ) : food1.includes("school") && result ? (
-              <div>오늘은 분식!</div>
-            ) : (
-              <div> 음식을 추천중입니다. </div>
-            )} */}
             {food && result ? (
               <div>오늘은 {food}!</div>
             ) : (
               <div>음식을 추천중입니다.</div>
             )}
           </MainText>
-          <ResultIcon src={`../images/${foodImageName}.png`} alt="" />
+          <ResultIcon src={foodImageName} alt="" />
           <ResultClick>
             <ResultText onClick={goToRecomandation} food1={food1}>
               추천 가기
