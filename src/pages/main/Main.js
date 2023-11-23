@@ -5,11 +5,11 @@ import Slots from "../../components/Slots";
 import MapModalFir from "../../components/modal/MapModalFirst";
 import MainModal from "../../components/modal/MainModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
+import {
+  PUBLIC_FOOD_IMAGE,
+  PUBLIC_BACKGROUND_IMAGE,
+} from "../../assets/images/images";
 
-const PUBLIC = process.env.PUBLIC_URL;
-const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
-const koreanFood2 = `${PUBLIC}/images/koreanFood2.png`;
-const koreanFood3 = `${PUBLIC}/images/koreanFood3.png`;
 // 배경화면
 const BackgroundImage = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ const BackgroundImage = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(${PUBLIC}/images/mainBackground.png);
+  background: url(${PUBLIC_BACKGROUND_IMAGE.mainBackground});
   background-size: cover;
   > .container {
     border-radius: 5px;
@@ -182,9 +182,9 @@ const BackgroundImage = styled.div`
 `;
 
 const Main = () => {
-  const [food1, setFood1] = useState(koreanFood1);
-  const [food2, setFood2] = useState(koreanFood2);
-  const [food3, setFood3] = useState(koreanFood3);
+  const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
+  const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
+  const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
 
   // 슬롯이 다 돌아갔는지를 알려주는 useState
   const [result, setResult] = useState(0);

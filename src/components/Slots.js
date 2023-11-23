@@ -2,24 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import GameWarp from "./GameWrap";
 import RollContainer from "./RollContainer";
+import { PUBLIC_FOOD_IMAGE } from "../assets/images/images";
 
 const boxShadow = "0 4px 6px rgb(32 33 36 / 28%)";
-const PUBLIC = process.env.PUBLIC_URL;
-const chineseFood1 = `${PUBLIC}/images/chineseFood1.png`;
-const chineseFood2 = `${PUBLIC}/images/chineseFood2.png`;
-const chineseFood3 = `${PUBLIC}/images/chineseFood3.png`;
-const japaneseFood1 = `${PUBLIC}/images/japaneseFood1.png`;
-const japaneseFood2 = `${PUBLIC}/images/japaneseFood2.png`;
-const japaneseFood3 = `${PUBLIC}/images/japaneseFood3.png`;
-const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
-const koreanFood2 = `${PUBLIC}/images/koreanFood2.png`;
-const koreanFood3 = `${PUBLIC}/images/koreanFood3.png`;
-const schoolFood1 = `${PUBLIC}/images/schoolFood1.png`;
-const schoolFood2 = `${PUBLIC}/images/schoolFood2.png`;
-const schoolFood3 = `${PUBLIC}/images/schoolFood3.png`;
-const westernFood1 = `${PUBLIC}/images/westernFood1.png`;
-const westernFood2 = `${PUBLIC}/images/westernFood2.png`;
-const westernFood3 = `${PUBLIC}/images/westernFood3.png`;
 
 const blinkingText = keyframes`
   0% {
@@ -274,9 +259,7 @@ export const DropDownContainer = styled.ul`
     }
   }
 `;
-
 // 자동완성 CSS 끝
-
 function Slots({
   setFood1,
   setFood2,
@@ -290,18 +273,30 @@ function Slots({
   setOptions,
   deselectedOptions,
 }) {
-  // const [food1, setFood1] = useState(koreanFood1);
-  // const [food2, setFood2] = useState(koreanFood2);
-  // const [food3, setFood3] = useState(koreanFood3);
-
   const [rolling, setRolling] = useState(false);
-
   const slotRefs = [useRef(null), useRef(null), useRef(null)];
-
   const foods = [
-    [koreanFood1, chineseFood1, westernFood1, japaneseFood1, schoolFood1],
-    [koreanFood2, chineseFood2, westernFood2, japaneseFood2, schoolFood2],
-    [koreanFood3, chineseFood3, westernFood3, japaneseFood3, schoolFood3],
+    [
+      PUBLIC_FOOD_IMAGE.koreanFood1,
+      PUBLIC_FOOD_IMAGE.chineseFood1,
+      PUBLIC_FOOD_IMAGE.westernFood1,
+      PUBLIC_FOOD_IMAGE.japaneseFood1,
+      PUBLIC_FOOD_IMAGE.schoolFood1,
+    ],
+    [
+      PUBLIC_FOOD_IMAGE.koreanFood2,
+      PUBLIC_FOOD_IMAGE.chineseFood2,
+      PUBLIC_FOOD_IMAGE.westernFood2,
+      PUBLIC_FOOD_IMAGE.japaneseFood2,
+      PUBLIC_FOOD_IMAGE.schoolFood2,
+    ],
+    [
+      PUBLIC_FOOD_IMAGE.koreanFood3,
+      PUBLIC_FOOD_IMAGE.chineseFood3,
+      PUBLIC_FOOD_IMAGE.westernFood3,
+      PUBLIC_FOOD_IMAGE.japaneseFood3,
+      PUBLIC_FOOD_IMAGE.schoolFood3,
+    ],
   ];
 
   useEffect(() => {
@@ -343,15 +338,12 @@ function Slots({
     setTimeout(() => {
       clearInterval(rotationInterval);
       setRolling(false);
-
       // 슬롯 다돌고 결과 모달이 뜨기 전까지 delay를 주기 위한 코드
-
       setTimeout(() => {
         onClick();
       }, 800);
     }, totalRotations * 400);
   };
-
   // 실제 각 슬롯이 돌아가게 만들어주는 함수
   const triggerSlotRotation = (slotRef, slotIndex, foods) => {
     function setTop(top) {

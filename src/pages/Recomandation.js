@@ -13,7 +13,7 @@ const PUBLIC = process.env.PUBLIC_URL;
 const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
 
 const BackgroundImage = styled.div`
-  background-image: url(${PUBLIC}/images/secBackground.png);
+  background-image: url("/images/secBackground.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;

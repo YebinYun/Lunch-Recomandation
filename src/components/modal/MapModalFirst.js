@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
-// import mapImg from "../../../public/images/mapImg.png";
-
+import { PUBLIC_MAP_IMAGE } from "../../assets/images/images";
 const ModalBackground = styled.div`
   position: fixed;
   top: 0;
@@ -131,7 +130,7 @@ const MapModalFir = ({ closeModal }) => {
 
         {/* 메인창 */}
         <MainWrap>
-          {/* <MapImg src={mapImg} alt="서울시 25개 지구" /> */}
+          <MapImg src={PUBLIC_MAP_IMAGE.seoulMap} alt="서울시 25개 지구" />
         </MainWrap>
 
         {/* 하단바 */}
