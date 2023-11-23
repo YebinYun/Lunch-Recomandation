@@ -1,25 +1,19 @@
 import axios from "axios";
-import styled from "styled-components";
-import MapModalSec from "../components/MapModalSec";
 import React, { useState, useEffect } from "react";
-import BlogModal from "../components/BlogModal";
+import styled from "styled-components";
+import { Icon } from "@iconify/react";
+import MapModalSec from "../components/modal/MapModalSec";
+import BlogModal from "../components/modal/BlogModal";
 import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼리파라미터값(uri)을 사용하기 위한 훅
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
-import actionBtn from "../images/right-btn.png";
-import actionLeft from "../images/left-btn.png";
-import actionStar from "../images/star.png";
-import actionHide from "../images/hide-btn.png";
-import actionClose from "../images/close-btn.png";
-import actionReflash from "../images/btn.png";
-import iconFire from "../images/emojione-fire.png";
-import backgroundImage from "../images/racomandation.png"
-import noImage from "../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
- 
+
+const PUBLIC = process.env.PUBLIC_URL;
+const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
 
 const BackgroundImage = styled.div`
-  background-image: url(${backgroundImage});
+  background-image: url(${PUBLIC}/images/secBackground.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
@@ -557,10 +551,13 @@ const Recomandation = () => {
               <AcctionBtnWrap>
                 {/* 방향키 */}
                 <AcctionBtn>
-                  <AcctionImg src={actionLeft} alt="back button" />
+                  <Icon
+                    icon="fluent-emoji-high-contrast:right-arrow"
+                    rotate={2}
+                  />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src={actionBtn} alt="next button" />
+                  <Icon icon="fluent-emoji-high-contrast:right-arrow" />
                 </AcctionBtn>
               </AcctionBtnWrap>
 
@@ -570,21 +567,21 @@ const Recomandation = () => {
                   <LinkBar>
                     https:// 프로젝트.참숯가마/{inputValue}_{food}_추천
                   </LinkBar>
-                  <AcctionImgStar src={actionStar} alt="bookmark" />
+                  <Icon icon="solar:star-broken" width="30" height="30" />
                 </LinkBarWrap>
 
                 <AcctionBtn>
-                  <AcctionImg src={actionReflash} alt="reflash button" />
+                  <Icon icon="ic:round-refresh" width="40" height="40" />
                 </AcctionBtn>
               </LinkWrap>
 
               {/* 동작 버튼 */}
               <AcctionBtnWrap>
                 <AcctionBtn>
-                  <AcctionImg src={actionHide} alt="hide button" />
+                  <Icon icon="ic:round-minimize" />
                 </AcctionBtn>
                 <AcctionBtn>
-                  <AcctionImg src={actionClose} alt="close button" />
+                  <Icon icon="ep:close-bold" />
                 </AcctionBtn>
               </AcctionBtnWrap>
             </TopBarWrap>
@@ -638,7 +635,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src="../images/Noodles Eating GIF - Find & Share on GIPHY.gif"
+                              src={`${PUBLIC}/images/getReplaceResult.gif`}
                               alt=""
                             />
                           </div>
@@ -668,7 +665,7 @@ const Recomandation = () => {
                         ) : (
                           <div>
                             <NoImgMsg
-                              src={noImage}
+                              src={`${PUBLIC}/images/getReplaceResult.gif`}
                               alt=""
                             />
                           </div>
@@ -684,7 +681,11 @@ const Recomandation = () => {
                     <p className="InformationText">
                       <h4>사이트 :</h4>
                       {recommendation.link ? (
-                        <a target="_blank" href={recommendation.link} rel="noreferrer">
+                        <a
+                          target="_blank"
+                          href={recommendation.link}
+                          rel="noreferrer"
+                        >
                           {recommendation.link}
                         </a>
                       ) : (
@@ -731,13 +732,10 @@ const Recomandation = () => {
 
             {/* 하단바 */}
             <FooterBarWrap>
-              <div>
-                <img src={iconFire} alt="" />
-              </div>
+              <Icon icon="fluent-emoji-flat:face-savoring-food" />
               <div>I LOVE SEOUL</div>
             </FooterBarWrap>
           </Container>
-
         </BackgroundImage>
       ) : (
         <div>데이터를 불러오는 중입니다..</div>

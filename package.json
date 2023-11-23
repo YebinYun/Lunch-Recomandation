@@ -1,5 +1,5 @@
 {
-  "homepage": "http://yebinyun.github.io/lunch-recomandation",
+  "homepage": "http://yebinyun.github.io/menu-recomandation",
   "name": "reactproject",
   "version": "0.1.0",
   "private": true,
@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "gh-pages": "^5.0.0"
   }
 }
