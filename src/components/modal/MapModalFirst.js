@@ -97,7 +97,7 @@ const AcctionImg = styled.img`
   cursor: pointer;
 `;
 
-const MapModalFir = ({ closeModal }) => {
+const MapModalFir = ({ modalClickHandler }) => {
   return (
     <ModalBackground>
       <Container>
@@ -120,7 +120,7 @@ const MapModalFir = ({ closeModal }) => {
               <Icon icon="ic:round-minimize" />
             </AcctionBtn>
             <AcctionBtn>
-              <Icon icon="ep:close-bold" onClick={closeModal} />
+              <Icon icon="ep:close-bold" onClick={modalClickHandler} />
             </AcctionBtn>
           </AcctionBtnWrap>
         </TopBarWrap>

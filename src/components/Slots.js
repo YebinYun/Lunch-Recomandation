@@ -25,11 +25,11 @@ const blinkingText = keyframes`
 `;
 
 export const MainGame = styled.div`
-  height: 410px;
-  width: 1000px;
+  height: 50vh;
+  width: 70vw;
   background: #fbe1d2;
   border: 3px solid black;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;

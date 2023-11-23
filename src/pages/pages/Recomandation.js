@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
-import MapModalSec from "../components/modal/MapModalSec";
-import BlogModal from "../components/modal/BlogModal";
+import MapModalSec from "../../components/modal/MapModalSec";
+import BlogModal from "../../components/modal/BlogModal";
 import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼리파라미터값(uri)을 사용하기 위한 훅
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
@@ -85,16 +85,6 @@ const AcctionBtn = styled.button`
   margin: 10px;
   padding: 0;
   cursor: pointer;
-`;
-
-const AcctionImg = styled.img`
-  width: 40px;
-  height: 40px;
-`;
-
-const AcctionImgStar = styled.img`
-  width: 33px;
-  height: 33px;
 `;
 
 const LinkWrap = styled.div`
@@ -219,36 +209,6 @@ const settings = {
   centerMode: false, // 가운데 맞춤 모드
   cssEase: "ease",
 };
-
-const ImageContainer = styled.div`
-  margin: 0px 50px 0px 50px;
-`;
-
-const Image = styled.img`
-  width: 300px;
-  height: 140px;
-  object-fit: fill;
-`;
-
-// 추천 음식 사진
-const ImgWrap = styled.div`
-  height: 230px;
-  margin: 20px;
-  display: flex;
-  justify-content: space-between;
-  > div {
-    height: 230px;
-    width: 270px;
-    border-radius: 10px;
-    border: 3px solid #000;
-    background: #fba;
-    > img {
-      width: 270px;
-      height: 230px;
-      border-radius: 5px;
-    }
-  }
-`;
 
 // 추천 정보
 const InformationWrap = styled.div`
