@@ -17,7 +17,7 @@ const ModalLayout = styled.div`
   border: 3px solid black;
   border-radius: 15px;
   height: 50vh;
-  width: 50vw;
+  width: 60vw;
   display: flex;
   flex-direction: column;
 `;

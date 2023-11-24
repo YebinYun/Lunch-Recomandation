@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
 import Slots from "../../components/Slots";
-import MapModalFir from "../../components/modal/MapModalFirst";
+import MapModalFir from "../../components/modal/MapModal";
 import MainModal from "../../components/modal/MainModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 import ModalContainer from "../layout/ModalContainer";
+import MapModal from "../../components/modal/MapModal";
 
 const MainTitle = styled.div`
   width: 70vw;
@@ -93,7 +94,7 @@ const MainPage = () => {
     //   )}
     // </HomepageContainer>
 
-    <ModalContainer />
+    <MapModal />
   );
 };
 
