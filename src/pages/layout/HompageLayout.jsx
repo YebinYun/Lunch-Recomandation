@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import { PUBLIC_BACKGROUND_IMAGE } from "../../assets/images/images";
 
-const Container = ({ children }) => {
+const HomepageLayout = ({ children }) => {
   return (
-    <ContainerWrap>
+    <Layout>
       <div>{children}</div>
-    </ContainerWrap>
+    </Layout>
   );
 };
 
-const ContainerWrap = styled.div`
+const Layout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,13 +20,13 @@ const ContainerWrap = styled.div`
   background-size: cover;
   > div {
     display: flex;
+    flex-direction: column;
     width: 80vw;
-    height: 90vh;
+    border: 3px solid black;
     border-radius: 15px;
-    border: 3px solid gray-800;
     text-align: center;
     box-shadow: 5px 5px 5px 5px gray;
   }
 `;
 
-export default Container;
+export default HomepageLayout;

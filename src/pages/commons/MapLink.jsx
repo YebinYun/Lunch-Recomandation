@@ -13,10 +13,9 @@ const MapLink = ({ modalClickHandler }) => {
 
 const MapLinkWrap = styled.div`
   display: flex;
-  border: 3px solid black;
-  border-bottom: none;
+  border-bottom: 3px solid black;
   background: #ea8573;
-  width: 80vw;
+  width: 100%;
   padding: 5px 5px;
 `;
 
