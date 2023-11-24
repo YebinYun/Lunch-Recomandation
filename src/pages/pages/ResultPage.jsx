@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
-import MainModal from "../../components/modal/MainModal";
+import ResultModal from "../../components/modal/ResultModal";
 import BlogModal from "../../components/modal/BlogModal";
 import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼리파라미터값(uri)을 사용하기 위한 훅
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
@@ -555,7 +555,7 @@ const ResultPage = () => {
 
             {/* 모달창 띄우는 곳*/}
             {showModal ? (
-              <MainModal openModal={openModal} closeModal={closeModal} />
+              <ResultModal openModal={openModal} closeModal={closeModal} />
             ) : (
               ""
             )}

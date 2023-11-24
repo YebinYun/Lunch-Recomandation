@@ -14,10 +14,12 @@ const ModalContainer = ({ children }) => {
 };
 
 const ModalLayout = styled.div`
+  position: absolute;
+  top: 15vh;
   border: 3px solid black;
   border-radius: 15px;
-  height: 50vh;
-  width: 60vw;
+  height: 70vh;
+  width: 70vw;
   display: flex;
   flex-direction: column;
 `;

@@ -117,7 +117,7 @@ const AcctionBtn = styled.button`
   padding: 0;
 `;
 
-const MainModal = ({ inputValue, food1, result, handleClick }) => {
+const ResultModal = ({ inputValue, food1, result, handleClick }) => {
   let food = "";
   let foodImageName = "";
   switch (true) {
@@ -210,4 +210,4 @@ const MainModal = ({ inputValue, food1, result, handleClick }) => {
   );
 };
 
-export default MainModal;
+export default ResultModal;

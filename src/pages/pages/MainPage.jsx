@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
 import Slots from "../../components/Slots";
-import MapModalFir from "../../components/modal/MapModal";
-import MainModal from "../../components/modal/MainModal";
+import MapModal from "../../components/modal/MapModal";
+import ResultModal from "../../components/modal/ResultModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
-import ModalContainer from "../layout/ModalContainer";
-import MapModal from "../../components/modal/MapModal";
 
 const MainTitle = styled.div`
   width: 70vw;
@@ -63,38 +61,36 @@ const MainPage = () => {
   const [options, setOptions] = useState(deselectedOptions);
 
   return (
-    // <HomepageContainer>
-    //   <MainTitle>
-    //     <h1> 오늘 뭐 먹지? </h1>
-    //     <h3> 메뉴 추천 룰렛 </h3>
-    //   </MainTitle>
+    <HomepageContainer>
+      <MainTitle>
+        <h1> 오늘 뭐 먹지? </h1>
+        <h3> 메뉴 추천 룰렛 </h3>
+      </MainTitle>
 
-    //   {/* 게임 */}
-    //   {/* <Slots
-    //       setFood1={setFood1}
-    //       setFood2={setFood2}
-    //       setFood3={setFood3}
-    //       onClick={handleClick}
-    //       onSlotFinish={handleSlotFinish}
-    //       inputValue={inputValue}
-    //       setInputValue={setInputValue}
-    //       options={options}
-    //       setOptions={setOptions}
-    //       deselectedOptions={deselectedOptions}
-    //     /> */}
+      {/* 게임 */}
+      {/* <Slots
+          setFood1={setFood1}
+          setFood2={setFood2}
+          setFood3={setFood3}
+          onClick={handleClick}
+          onSlotFinish={handleSlotFinish}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          options={options}
+          setOptions={setOptions}
+          deselectedOptions={deselectedOptions}
+        /> */}
 
-    //   {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
-    //   {visibleModal && result && (
-    //     <MainModal
-    //       inputValue={inputValue}
-    //       food1={food1}
-    //       result={result}
-    //       handleClick={handleClick}
-    //     />
-    //   )}
-    // </HomepageContainer>
-
-    <MapModal />
+      {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
+      {visibleModal && result && (
+        <ResultModal
+          inputValue={inputValue}
+          food1={food1}
+          result={result}
+          handleClick={handleClick}
+        />
+      )}
+    </HomepageContainer>
   );
 };
 

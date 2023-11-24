@@ -20,12 +20,11 @@ const GuideMapWrapper = styled.div`
   flex-direction: column;
   & img {
     width: 40vw;
-    height: 30vh;
+    height: 50vh;
   }
   & h1 {
     text-align: center;
     padding-top: 25px;
-    font-size: 1.5rem;
   }
 `;
 
