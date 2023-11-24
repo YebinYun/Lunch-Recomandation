@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Main from "./pages/pages/Main";
-import Recomandation from "./pages/pages/Recomandation";
+import MainPage from "./pages/pages/MainPage";
+import ResultPage from "./pages/pages/ResultPage";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Recomandation" element={<Recomandation />} />
+        <Route path="/" element={<MainPage />} />
+        <Route path="/ResultPage" element={<ResultPage />} />
       </Routes>
     </div>
   );

@@ -34,11 +34,10 @@ const TopLink = () => {
 
 const TopLinkWrap = styled.div`
   display: flex;
-  border: 3px solid black;
-  border-bottom: none;
-  border-radius: 15px 15px 0 0;
+  border-bottom: 3px solid black;
+  border-radius: 10px 10px 0 0;
   background: #ea8573;
-  width: 80vw;
+  width: 100%;
   padding: 10px 5px;
 `;
 

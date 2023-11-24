@@ -13,11 +13,10 @@ const BottomLink = () => {
 
 const BottomLinkWrap = styled.div`
   display: flex;
-  border: 3px solid black;
-  border-top: none;
-  border-radius: 0 0 15px 15px;
+  border-top: 3px solid black;
+  border-radius: 0 0 10px 10px;
   background: #ea8573;
-  width: 80vw;
+  width: 100%;
   padding: 10px 5px;
 `;
 

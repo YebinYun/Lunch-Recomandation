@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import HomepageContainer from "../layout/HomepageContainer";
 import Slots from "../../components/Slots";
 import MapModalFir from "../../components/modal/MapModalFirst";
 import MainModal from "../../components/modal/MainModal";
-import Container from "../container/Container";
-import TopLink from "../commons/TopLink";
-import MapLink from "../commons/MapLink";
-import BottomLink from "../commons/BottomLink";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
-
-const MainWrap = styled.div`
-  height: 61vh;
-  border: 3px solid black;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import ModalContainer from "../layout/ModalContainer";
 
 const MainTitle = styled.div`
   width: 70vw;
@@ -45,12 +34,7 @@ const MainTitle = styled.div`
   }
 `;
 
-const Main = () => {
-  const [showModal, setShowModal] = useState(false);
-  const modalClickHandler = () => {
-    setShowModal(!showModal);
-  };
-
+const MainPage = () => {
   const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
   const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
   const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
@@ -78,48 +62,39 @@ const Main = () => {
   const [options, setOptions] = useState(deselectedOptions);
 
   return (
-    <Container>
-      <TopLink />
-      <MapLink modalClickHandler={modalClickHandler} />
+    // <HomepageContainer>
+    //   <MainTitle>
+    //     <h1> 오늘 뭐 먹지? </h1>
+    //     <h3> 메뉴 추천 룰렛 </h3>
+    //   </MainTitle>
 
-      {showModal ? <MapModalFir modalClickHandler={modalClickHandler} /> : null}
+    //   {/* 게임 */}
+    //   {/* <Slots
+    //       setFood1={setFood1}
+    //       setFood2={setFood2}
+    //       setFood3={setFood3}
+    //       onClick={handleClick}
+    //       onSlotFinish={handleSlotFinish}
+    //       inputValue={inputValue}
+    //       setInputValue={setInputValue}
+    //       options={options}
+    //       setOptions={setOptions}
+    //       deselectedOptions={deselectedOptions}
+    //     /> */}
 
-      {/* 메인창 */}
-      <MainWrap>
-        <MainTitle>
-          <h1> 오늘 뭐 먹지? </h1>
-          <h3> 메뉴 추천 룰렛 </h3>
-        </MainTitle>
+    //   {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
+    //   {visibleModal && result && (
+    //     <MainModal
+    //       inputValue={inputValue}
+    //       food1={food1}
+    //       result={result}
+    //       handleClick={handleClick}
+    //     />
+    //   )}
+    // </HomepageContainer>
 
-        {/* 게임 */}
-        {/* <Slots
-          setFood1={setFood1}
-          setFood2={setFood2}
-          setFood3={setFood3}
-          onClick={handleClick}
-          onSlotFinish={handleSlotFinish}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          options={options}
-          setOptions={setOptions}
-          deselectedOptions={deselectedOptions}
-        /> */}
-      </MainWrap>
-
-      {/* 하단바 */}
-      <BottomLink />
-
-      {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
-      {visibleModal && result && (
-        <MainModal
-          inputValue={inputValue}
-          food1={food1}
-          result={result}
-          handleClick={handleClick}
-        />
-      )}
-    </Container>
+    <ModalContainer />
   );
 };
 
-export default Main;
+export default MainPage;

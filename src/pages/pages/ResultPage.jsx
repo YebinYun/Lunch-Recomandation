@@ -293,7 +293,7 @@ const NoImgMsg = styled.img`
   height: 200px;
 `;
 
-const Recomandation = () => {
+const ResultPage = () => {
   // axios로 받은 검색 데이터를 저장해두는 상태
   const [data, setData] = useState([]);
   // 검색결과 데이터중 1번째 추천음식점 이미지를 저장해두는 useState
@@ -704,4 +704,4 @@ const Recomandation = () => {
   );
 };
 
-export default Recomandation;
+export default ResultPage;
