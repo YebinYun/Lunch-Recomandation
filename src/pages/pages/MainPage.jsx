@@ -44,7 +44,7 @@ const MainPage = () => {
   const [visibleModal, setVisibleModal] = useState(false);
 
   // 클릭시 result값을 false로 바꿔줌
-  const startClickHandler = () => {
+  const buttonClickHandler = () => {
     setResult(!result);
     // 클릭시 변경 값이 보여야 하므로 true.
     setVisibleModal(!visibleModal);
@@ -71,7 +71,7 @@ const MainPage = () => {
         setFood1={setFood1}
         setFood2={setFood2}
         setFood3={setFood3}
-        onClick={startClickHandler}
+        onClick={buttonClickHandler}
         onSlotFinish={handleSlotFinish}
         inputValue={inputValue}
         setInputValue={setInputValue}
@@ -86,7 +86,7 @@ const MainPage = () => {
           inputValue={inputValue}
           food1={food1}
           result={result}
-          startClickHandler={startClickHandler}
+          buttonClickHandler={buttonClickHandler}
         />
       )}
     </HomepageContainer>

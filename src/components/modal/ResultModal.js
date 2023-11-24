@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 import ModalContainer from "../../pages/layout/ModalContainer";
 
-const ResultModal = ({ inputValue, food1, result, startClickHandler }) => {
+const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
   let food = "";
   let foodImageName = "";
   switch (true) {
@@ -54,7 +54,6 @@ const ResultModal = ({ inputValue, food1, result, startClickHandler }) => {
       break;
   }
   const navigate = useNavigate();
-
   const viewResults = () => {
     navigate(
       `/Recomandation?inputValue=${encodeURIComponent(
@@ -64,51 +63,24 @@ const ResultModal = ({ inputValue, food1, result, startClickHandler }) => {
   };
 
   return (
-    // <ModalBackground>
-    //   <Container>
-    //     {/* 상단바-1 */}
-    //     <TopBarWrap>
-    //       {/* 동작 버튼 */}
-    //       <AcctionBtnWrap>
-    //         {/* 방향키 */}
-    //         <AcctionBtn>
-    //           <Icon icon="fluent-emoji-high-contrast:right-arrow" rotate={2} />
-    //         </AcctionBtn>
-    //         <AcctionBtn>
-    //           <Icon icon="fluent-emoji-high-contrast:right-arrow" />
-    //         </AcctionBtn>
-    //       </AcctionBtnWrap>
-
-    //       {/* 동작 버튼 */}
-    //       <AcctionBtnWrap>
-    //         <AcctionBtn>
-    //           <Icon icon="ic:round-minimize" />
-    //         </AcctionBtn>
-    //         <AcctionBtn>
-    //           <Icon icon="ep:close-bold" onClick={startClickHandler} />
-    //         </AcctionBtn>
-    //       </AcctionBtnWrap>
-    //     </TopBarWrap>
-
     <ModalContainer>
       <ResultContainer>
-        <div>
+        <ResultTitle>
           {food && result ? (
             <h1>오늘은 {food}!</h1>
           ) : (
             <h1>음식을 추천중입니다...</h1>
           )}
-        </div>
+        </ResultTitle>
         <ResultIcon>
           <img src={foodImageName[0]} alt="음식 아이콘" />
           <img src={foodImageName[1]} alt="음식 아이콘" />
           <img src={foodImageName[2]} alt="음식 아이콘" />
         </ResultIcon>
-        <div>
-          <button onClick={viewResults} food1={food1}>
-            추천 보러가기
-          </button>
-        </div>
+        <ResultButton onClick={viewResults} food1={food1}>
+          <p> 구경가기 </p>
+        </ResultButton>
+        <span onClick={buttonClickHandler} />
       </ResultContainer>
     </ModalContainer>
   );
@@ -120,11 +92,43 @@ const ResultContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  > span {
+    font-size: 0;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+`;
+
+const ResultTitle = styled.div`
+  & h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1.2rem;
+  }
 `;
 
 const ResultIcon = styled.div`
   & img {
-    margin: 40px 25px;
+    margin: 4rem 2rem;
+  }
+`;
+
+const ResultButton = styled.button`
+  background-color: #f9b2a6;
+  border: 1px solid gray;
+  border-radius: 10px;
+  & p {
+    font-size: 1.5rem;
+    padding: 15px;
+    letter-spacing: 0.8rem;
+  }
+  &:hover {
+    background-color: #ea8573;
+    transition: 0.7s;
+    cursor: pointer;
   }
 `;
 
