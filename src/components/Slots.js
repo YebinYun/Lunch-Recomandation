@@ -50,7 +50,6 @@ export const MainGame = styled.div`
       justify-content: center;
       position: relative;
       margin: 10px;
-      /* color: red; */
       div.slotContainer {
         background-color: #f5d3bf;
         width: 700px;
@@ -82,7 +81,7 @@ export const MainGame = styled.div`
           left: 65px;
           width: 670px;
           height: 35px;
-          border-top: 3px dashed #d29a8c;
+          border-top: 3px dashed pink;
           z-index: 1;
         }
         div.slot {
@@ -110,7 +109,6 @@ export const MainGame = styled.div`
               margin: 40px 0 0 0;
               transition: top 0.5s ease;
               text-align: center;
-              z-index: 2;
               img {
                 width: 110px;
                 height: 90px;
@@ -200,7 +198,6 @@ export const MainGame = styled.div`
         display: flex;
         margin-left: 10px;
         align-items: center;
-        z-index: 3;
         position: relative;
         input {
           box-sizing: border-box;
@@ -241,7 +238,6 @@ export const DropDownContainer = styled.ul`
   border: 2.2px solid black;
   border-radius: 5px;
   box-shadow: ${boxShadow};
-  z-index: 999;
 
   > li {
     padding: 0 0.7rem;

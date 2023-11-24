@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "@iconify/react";
-import { PUBLIC_MAP_IMAGE } from "../../assets/images/images";
 import ModalContainer from "../../pages/layout/ModalContainer";
+import { PUBLIC_MAP_IMAGE } from "../../assets/images/images";
 
-const MapModalFir = () => {
+const MapModalFir = ({ modalClickHandler }) => {
   return (
     <ModalContainer>
       <GuideMapWrapper>
-        <h1> 서울시 지도 </h1>
+        <div onClick={modalClickHandler} />
+        <h1> [ 서울시 지도 ] </h1>
         <img src={PUBLIC_MAP_IMAGE.seoulMap} alt="서울 지도" />
       </GuideMapWrapper>
     </ModalContainer>
@@ -18,6 +18,15 @@ const MapModalFir = () => {
 const GuideMapWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  & div {
+    font-size: 0;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
   & img {
     width: 40vw;
     height: 50vh;

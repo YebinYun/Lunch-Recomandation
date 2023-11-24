@@ -1,145 +1,52 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
+import ModalContainer from "../../pages/layout/ModalContainer";
 
-const ModalBackground = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 999;
-`;
-
-const Container = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-  border: 3px solid black;
-  border-bottom: none;
-  width: 1100px;
-  height: 720px;
-  text-align: center;
-  z-index: 999;
-`;
-
-// 상단바-1
-const TopBarWrap = styled.div`
-  border-bottom: 3px solid black;
-  height: 7%;
-  background: #ea8573;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 20px;
-`;
-
-// 메인창
-const MainWrap = styled.div`
-  height: 85%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-// 당첨 문구
-const MainText = styled.h1`
-  font-size: 50px;
-  margin: 0;
-`;
-
-const ResultIcon = styled.img`
-  width: 700px;
-  height: 140px;
-  margin: 50px;
-`;
-
-// 추천가기.
-const ResultClick = styled.div`
-  width: 250px;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9b2a6;
-  border: 1px solid black;
-  border-radius: 10px;
-  cursor: pointer;
-  &:hover {
-    background-color: #ea8573;
-    transition: 0.7s;
-  }
-`;
-
-const ResultText = styled.div`
-  color: black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.8rem;
-`;
-
-// 하단바
-const FooterBarWrap = styled(TopBarWrap)`
-  border-radius: 0px 0px 5px 5px;
-  border-top: 3px solid black;
-  justify-content: flex-start;
-  font-size: 1.3rem;
-  > div {
-    margin: 0 10px 0 0;
-    > img {
-      width: 40px;
-      height: 40px;
-    }
-  }
-`;
-
-// 상단 동작 버튼 div
-const AcctionBtnWrap = styled.div`
-  display: flex;
-`;
-
-// 상단 동작 버튼
-const AcctionBtn = styled.button`
-  background-color: transparent;
-  border: none;
-  margin: 16px 10px 10px 10px;
-  padding: 0;
-`;
-
-const ResultModal = ({ inputValue, food1, result, handleClick }) => {
+const ResultModal = ({ inputValue, food1, result, startClickHandler }) => {
   let food = "";
   let foodImageName = "";
   switch (true) {
     case food1.includes("korean"):
       food = "한식";
-      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
+      foodImageName = [
+        PUBLIC_FOOD_IMAGE.koreanFood1,
+        PUBLIC_FOOD_IMAGE.koreanFood2,
+        PUBLIC_FOOD_IMAGE.koreanFood3,
+      ];
       break;
     case food1.includes("chinese"):
       food = "중식";
-      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
+      foodImageName = [
+        PUBLIC_FOOD_IMAGE.chineseFood1,
+        PUBLIC_FOOD_IMAGE.chineseFood2,
+        PUBLIC_FOOD_IMAGE.chineseFood3,
+      ];
       break;
     case food1.includes("western"):
       food = "양식";
-      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
+      foodImageName = [
+        PUBLIC_FOOD_IMAGE.westernFood1,
+        PUBLIC_FOOD_IMAGE.westernFood2,
+        PUBLIC_FOOD_IMAGE.westernFood3,
+      ];
       break;
     case food1.includes("japanese"):
       food = "일식";
-      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
+      foodImageName = [
+        PUBLIC_FOOD_IMAGE.japaneseFood1,
+        PUBLIC_FOOD_IMAGE.japaneseFood2,
+        PUBLIC_FOOD_IMAGE.japaneseFood3,
+      ];
       break;
     case food1.includes("school"):
       food = "분식";
-      foodImageName = PUBLIC_FOOD_IMAGE.koreanFood;
+      foodImageName = [
+        PUBLIC_FOOD_IMAGE.schoolFood1,
+        PUBLIC_FOOD_IMAGE.schoolFood2,
+        PUBLIC_FOOD_IMAGE.schoolFood3,
+      ];
       break;
     default:
       food = null;
@@ -148,7 +55,7 @@ const ResultModal = ({ inputValue, food1, result, handleClick }) => {
   }
   const navigate = useNavigate();
 
-  const goToRecomandation = () => {
+  const viewResults = () => {
     navigate(
       `/Recomandation?inputValue=${encodeURIComponent(
         inputValue
@@ -157,57 +64,68 @@ const ResultModal = ({ inputValue, food1, result, handleClick }) => {
   };
 
   return (
-    <ModalBackground>
-      <Container>
-        {/* 상단바-1 */}
-        <TopBarWrap>
-          {/* 동작 버튼 */}
-          <AcctionBtnWrap>
-            {/* 방향키 */}
-            <AcctionBtn>
-              <Icon icon="fluent-emoji-high-contrast:right-arrow" rotate={2} />
-            </AcctionBtn>
-            <AcctionBtn>
-              <Icon icon="fluent-emoji-high-contrast:right-arrow" />
-            </AcctionBtn>
-          </AcctionBtnWrap>
+    // <ModalBackground>
+    //   <Container>
+    //     {/* 상단바-1 */}
+    //     <TopBarWrap>
+    //       {/* 동작 버튼 */}
+    //       <AcctionBtnWrap>
+    //         {/* 방향키 */}
+    //         <AcctionBtn>
+    //           <Icon icon="fluent-emoji-high-contrast:right-arrow" rotate={2} />
+    //         </AcctionBtn>
+    //         <AcctionBtn>
+    //           <Icon icon="fluent-emoji-high-contrast:right-arrow" />
+    //         </AcctionBtn>
+    //       </AcctionBtnWrap>
 
-          {/* 동작 버튼 */}
-          <AcctionBtnWrap>
-            <AcctionBtn>
-              <Icon icon="ic:round-minimize" />
-            </AcctionBtn>
-            <AcctionBtn>
-              <Icon icon="ep:close-bold" onClick={handleClick} />
-            </AcctionBtn>
-          </AcctionBtnWrap>
-        </TopBarWrap>
+    //       {/* 동작 버튼 */}
+    //       <AcctionBtnWrap>
+    //         <AcctionBtn>
+    //           <Icon icon="ic:round-minimize" />
+    //         </AcctionBtn>
+    //         <AcctionBtn>
+    //           <Icon icon="ep:close-bold" onClick={startClickHandler} />
+    //         </AcctionBtn>
+    //       </AcctionBtnWrap>
+    //     </TopBarWrap>
 
-        {/* 메인창 */}
-        <MainWrap>
-          <MainText>
-            {food && result ? (
-              <div>오늘은 {food}!</div>
-            ) : (
-              <div>음식을 추천중입니다.</div>
-            )}
-          </MainText>
-          <ResultIcon src={foodImageName} alt="" />
-          <ResultClick>
-            <ResultText onClick={goToRecomandation} food1={food1}>
-              추천 가기
-            </ResultText>
-          </ResultClick>
-        </MainWrap>
-
-        {/* 하단바 */}
-        <FooterBarWrap>
-          <Icon icon="fluent-emoji-flat:face-savoring-food" />
-          <div>I LOVE {food}</div>
-        </FooterBarWrap>
-      </Container>
-    </ModalBackground>
+    <ModalContainer>
+      <ResultContainer>
+        <div>
+          {food && result ? (
+            <h1>오늘은 {food}!</h1>
+          ) : (
+            <h1>음식을 추천중입니다...</h1>
+          )}
+        </div>
+        <ResultIcon>
+          <img src={foodImageName[0]} alt="음식 아이콘" />
+          <img src={foodImageName[1]} alt="음식 아이콘" />
+          <img src={foodImageName[2]} alt="음식 아이콘" />
+        </ResultIcon>
+        <div>
+          <button onClick={viewResults} food1={food1}>
+            추천 보러가기
+          </button>
+        </div>
+      </ResultContainer>
+    </ModalContainer>
   );
 };
+
+const ResultContainer = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ResultIcon = styled.div`
+  & img {
+    margin: 40px 25px;
+  }
+`;
 
 export default ResultModal;

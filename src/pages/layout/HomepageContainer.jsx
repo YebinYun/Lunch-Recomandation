@@ -4,6 +4,7 @@ import HomepageLayout from "./HompageLayout";
 import TopLink from "../commons/TopLink";
 import MapLink from "../commons/MapLink";
 import BottomLink from "../commons/BottomLink";
+import MapModal from "../../components/modal/MapModal";
 
 const HomepageContainer = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
@@ -17,6 +18,7 @@ const HomepageContainer = ({ children }) => {
       <MapLink modalClickHandler={modalClickHandler} />
       <MainWrap>{children}</MainWrap>
       <BottomLink />
+      {showModal && <MapModal modalClickHandler={modalClickHandler} />}
     </HomepageLayout>
   );
 };

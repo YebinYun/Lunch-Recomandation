@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
 import Slots from "../../components/Slots";
-import MapModal from "../../components/modal/MapModal";
 import ResultModal from "../../components/modal/ResultModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
@@ -39,14 +38,14 @@ const MainPage = () => {
   const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
 
   // 슬롯이 다 돌아갔는지를 알려주는 useState
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState(false);
 
   // 클릭시 결과 모달 구현
   const [visibleModal, setVisibleModal] = useState(false);
 
   // 클릭시 result값을 false로 바꿔줌
-  const handleClick = () => {
-    setResult(false);
+  const startClickHandler = () => {
+    setResult(!result);
     // 클릭시 변경 값이 보여야 하므로 true.
     setVisibleModal(!visibleModal);
     console.log("Result:", result);
@@ -68,18 +67,18 @@ const MainPage = () => {
       </MainTitle>
 
       {/* 게임 */}
-      {/* <Slots
-          setFood1={setFood1}
-          setFood2={setFood2}
-          setFood3={setFood3}
-          onClick={handleClick}
-          onSlotFinish={handleSlotFinish}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          options={options}
-          setOptions={setOptions}
-          deselectedOptions={deselectedOptions}
-        /> */}
+      <Slots
+        setFood1={setFood1}
+        setFood2={setFood2}
+        setFood3={setFood3}
+        onClick={startClickHandler}
+        onSlotFinish={handleSlotFinish}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        options={options}
+        setOptions={setOptions}
+        deselectedOptions={deselectedOptions}
+      />
 
       {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
       {visibleModal && result && (
@@ -87,7 +86,7 @@ const MainPage = () => {
           inputValue={inputValue}
           food1={food1}
           result={result}
-          handleClick={handleClick}
+          startClickHandler={startClickHandler}
         />
       )}
     </HomepageContainer>
