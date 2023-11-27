@@ -98,8 +98,8 @@ const blinkingText = keyframes`
   }
 `;
 const GameContainer = styled.div`
-  width: 15vw;
-  height: 10vh;
+  width: 18vw;
+  height: 12vh;
   margin: 0 4rem;
   display: flex;
   justify-content: center;

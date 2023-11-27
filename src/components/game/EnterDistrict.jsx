@@ -94,65 +94,85 @@ const EnterDistrict = ({
   };
 
   return (
-    <div>
-      <div className="dropDownContainer">
-        <div className="inputContainer">
-          <input
-            type="text"
-            placeholder="지역구 입력"
-            value={inputValue}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyUp}
-          ></input>
-          <div className="deleteButton" onClick={handleDeleteButtonClick}>
-            X
-          </div>
+    <Layout>
+      <InputContainer>
+        <input
+          type="text"
+          placeholder="지역구 입력"
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyUp}
+        ></input>
+        <div className="deleteButton" onClick={handleDeleteButtonClick}>
+          X
         </div>
+      </InputContainer>
 
-        {!hasText || !showDropdown ? (
-          <MapChoice>
-            지역구 미입력시,
-            <br />
-            랜덤으로 안내드립니다.
-          </MapChoice>
-        ) : (
-          <DropDown
-            options={options}
-            handleComboBox={handleDropDownClick}
-            selectedOption={selectedOption}
-          />
-        )}
-      </div>
-    </div>
+      {!hasText || !showDropdown ? (
+        <MapChoice>
+          지역구 미입력시,
+          <br />
+          랜덤으로 안내드립니다.
+        </MapChoice>
+      ) : (
+        <DropDown
+          options={options}
+          handleComboBox={handleDropDownClick}
+          selectedOption={selectedOption}
+        />
+      )}
+    </Layout>
   );
 };
+const Layout = styled.div`
+  height: 12vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+const InputContainer = styled.div`
+  position: relative;
+  height: 5vh;
+  display: flex;
+  & input {
+    width: 15vw;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border: solid 3px black;
+    border-radius: 10px;
+  }
+  & div {
+    position: absolute;
+    right: 1rem;
+    top: 1vh;
+    cursor: pointer;
+  }
+`;
 
 const MapChoice = styled.div`
-  position: absolute;
-  bottom: -60px;
   color: #777;
-  width: 200px;
   line-height: 150%;
+  font-size: 0.75rem;
 `;
 
 // 지역구 입력값 보여주는 li
 export const DropDownContainer = styled.ul`
+  height: 5rem;
   background-color: #fff2e9;
-  position: absolute;
-  top: 47.5px;
-  width: 190px;
-  list-style-type: none;
+  overflow-y: scroll;
   margin-top: -1px;
-  padding: 0.5rem 0 0 0.25rem;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
   border: 2.2px solid black;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgb(32 33 36 / 28%);
   > li {
     padding: 0 0.7rem;
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
-    margin: 0 0 7px 0;
+    margin-bottom: 7px;
     &.selected {
       background-color: #f9b2a6;
     }
