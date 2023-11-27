@@ -80,7 +80,6 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
         <ResultButton onClick={viewResults} food1={food1}>
           <p> 구경가기 </p>
         </ResultButton>
-        <span onClick={buttonClickHandler} />
       </ResultContainer>
     </ModalContainer>
   );

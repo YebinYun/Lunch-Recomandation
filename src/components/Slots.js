@@ -260,8 +260,7 @@ function Slots({
   setFood1,
   setFood2,
   setFood3,
-  onClick,
-  onSlotFinish,
+  buttonClickHandler,
   setResult,
   inputValue,
   setInputValue,
@@ -298,7 +297,7 @@ function Slots({
   useEffect(() => {
     if (!rolling) {
       // 슬롯이 다 돌아갔을때, result 상태를 true로 바꾸는 함수
-      onSlotFinish();
+      // onSlotFinish();
       // 밑의 코드는 slot이 다돌았을때 슬롯 2,3의 값을 슬롯1의 값으로 동기화 시키는 코드임
       // 슬롯 도는 상태가 바뀌거나, 슬롯 종료 여부가 변경될때마다 아래의 코드가 실행됨
       // 아래 roll 함수에도 슬롯1의 상태에 슬롯2,3을 맞추는 로직이 있으나, 그것만으로는 구현이 안되서 추가한 코드임
@@ -309,7 +308,7 @@ function Slots({
         slotRef.current.style.top = slot1Top;
       });
     }
-  }, [rolling, onSlotFinish]);
+  }, [rolling]);
 
   // 룰렛 클릭했을때 실행되는 함수
   const roll = () => {
@@ -336,7 +335,7 @@ function Slots({
       setRolling(false);
       // 슬롯 다돌고 결과 모달이 뜨기 전까지 delay를 주기 위한 코드
       setTimeout(() => {
-        onClick();
+        buttonClickHandler();
       }, 800);
     }, totalRotations * 400);
   };

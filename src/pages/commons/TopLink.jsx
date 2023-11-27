@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-const TopLink = ({ modalClickHandler }) => {
+const TopLink = ({ modalClickHandler, buttonClickHandler }) => {
   return (
     <TopLinkWrap>
       <DirectionButtonWrap>
