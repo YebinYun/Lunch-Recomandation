@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
+import RandomGame from "../../components/game/RandomGame";
+import RandomClick from "../../components/game/RandomClick";
+import EnterDistrict from "../../components/game/EnterDistrict";
 import Slots from "../../components/Slots";
 import ResultModal from "../../components/modal/ResultModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
@@ -28,9 +31,33 @@ const MainPage = () => {
         <h1> 오늘 뭐 먹지? </h1>
         <h3> 메뉴 추천 룰렛 </h3>
       </MainTitle>
-
+      <MainBody>
+        <RandomGame />
+        <RandomContainer>
+          <EnterDistrict
+            options={options}
+            setOptions={setOptions}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            deselectedOptions={deselectedOptions}
+          />
+          <RandomClick
+            setFood1={setFood1}
+            setFood2={setFood2}
+            setFood3={setFood3}
+            buttonClickHandler={buttonClickHandler}
+          />
+          <EnterDistrict
+            options={options}
+            setOptions={setOptions}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            deselectedOptions={deselectedOptions}
+          />
+        </RandomContainer>
+      </MainBody>
       {/* 게임 */}
-      <Slots
+      {/* <Slots
         setFood1={setFood1}
         setFood2={setFood2}
         setFood3={setFood3}
@@ -40,9 +67,8 @@ const MainPage = () => {
         options={options}
         setOptions={setOptions}
         deselectedOptions={deselectedOptions}
-      />
+      /> */}
 
-      {/* visibleModal 값이 true && result(룰렛이 다돌아간 상태를 저장) 이 true 일 때만 MainModal 컴포넌트를 표시 */}
       {result && (
         <ResultModal
           inputValue={inputValue}
@@ -63,7 +89,6 @@ const MainTitle = styled.div`
       rgba(234, 133, 115, 0) 100%
     ),
     #fff2e9;
-  margin: 1rem 0;
   padding: 1rem 0;
   border: 3px solid black;
   border-radius: 15px;
@@ -79,6 +104,20 @@ const MainTitle = styled.div`
       1px 1px 0 black;
     font-weight: 100;
   }
+`;
+
+const MainBody = styled.div`
+  width: 70vw;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fbe1d2;
+  border: 3px solid black;
+  border-radius: 15px;
+`;
+const RandomContainer = styled.div`
+  display: flex;
 `;
 
 export default MainPage;
