@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-const TopLink = () => {
+const TopLink = ({ modalClickHandler }) => {
   return (
     <TopLinkWrap>
       <DirectionButtonWrap>
@@ -26,7 +26,12 @@ const TopLink = () => {
       </UrlLinkWrap>
       <ActionButtonWrap>
         <Icon icon="ic:round-minimize" width="40" height="40" />
-        <Icon icon="ep:close-bold" width="30" height="30" />
+        <Icon
+          icon="ep:close-bold"
+          width="30"
+          height="30"
+          onClick={modalClickHandler}
+        />
       </ActionButtonWrap>
     </TopLinkWrap>
   );
@@ -77,6 +82,7 @@ const ActionButtonWrap = styled.div`
   justify-content: space-evenly;
   align-items: center;
   width: 15vw;
+  cursor: pointer;
 `;
 
 export default TopLink;

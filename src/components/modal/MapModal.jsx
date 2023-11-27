@@ -3,11 +3,10 @@ import styled from "styled-components";
 import ModalContainer from "../../pages/layout/ModalContainer";
 import { PUBLIC_MAP_IMAGE } from "../../assets/images/images";
 
-const MapModalFir = ({ modalClickHandler }) => {
+const MapModal = ({ modalClickHandler }) => {
   return (
-    <ModalContainer>
+    <ModalContainer modalClickHandler={modalClickHandler}>
       <GuideMapWrapper>
-        <div onClick={modalClickHandler} />
         <h1> [ 서울시 지도 ] </h1>
         <img src={PUBLIC_MAP_IMAGE.seoulMap} alt="서울 지도" />
       </GuideMapWrapper>
@@ -37,4 +36,4 @@ const GuideMapWrapper = styled.div`
   }
 `;
 
-export default MapModalFir;
+export default MapModal;

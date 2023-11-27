@@ -3,11 +3,11 @@ import styled from "styled-components";
 import TopLink from "../commons/TopLink";
 import BottomLink from "../commons/BottomLink";
 
-const ModalContainer = ({ children }) => {
+const ModalContainer = ({ children, modalClickHandler }) => {
   return (
     <ModalBackground>
       <ModalLayout>
-        <TopLink />
+        <TopLink modalClickHandler={modalClickHandler} />
         <MainWrap>{children}</MainWrap>
         <BottomLink />
       </ModalLayout>
