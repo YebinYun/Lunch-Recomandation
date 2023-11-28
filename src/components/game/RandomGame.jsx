@@ -89,9 +89,12 @@ const SlotContainer = styled.div`
       margin: 0 0.5rem;
       padding: 4rem 0;
       border: 3px solid black;
-      overflow: hidden;
+      /* overflow: hidden; */
       .container {
         transition: top 0.5s ease;
+        position: absolute;
+        top: 50%;
+        transform: translate(100%, -50%);
         > div {
           margin: 1rem 0;
           > img {
