@@ -81,7 +81,6 @@ const EnterDistrict = ({
           X
         </div>
       </InputContainer>
-
       {!hasText || !showDropdown ? (
         <MapChoice>
           지역구 미입력시,
@@ -98,6 +97,27 @@ const EnterDistrict = ({
     </Layout>
   );
 };
+
+const DropDown = ({ options, handleComboBox, selectedOption }) => {
+  return (
+    <DropDownContainer>
+      {options.length === 0 ? (
+        <li>일치하는 검색 결과가 없습니다.</li>
+      ) : (
+        options.map((el, index) => (
+          <li
+            key={index}
+            onClick={() => handleComboBox(el)}
+            className={selectedOption === el ? "selected" : ""}
+          >
+            {el}
+          </li>
+        ))
+      )}
+    </DropDownContainer>
+  );
+};
+
 const Layout = styled.div`
   height: 12vh;
   width: 15vw;
@@ -123,12 +143,10 @@ const InputContainer = styled.div`
     cursor: pointer;
   }
 `;
-
 const MapChoice = styled.div`
   line-height: 150%;
   font-size: 0.75rem;
 `;
-
 // 지역구 입력값 보여주는 li
 const DropDownContainer = styled.ul`
   height: 5rem;
@@ -155,27 +173,4 @@ const DropDownContainer = styled.ul`
   }
 `;
 
-const DropDown = ({ options, handleComboBox, selectedOption }) => {
-  return (
-    <DropDownContainer>
-      {/* input 값에 맞는 autocomplete 선택 옵션이 보여지는 역할 */}
-      {/* 검색결과 없을때 case 추가 */}
-      {/* selectedOption props 추가 (드랍다운 키보드 입력시 하이라이트 css적용하기 위해) */}
-      {options.length === 0 ? (
-        <li>일치하는 검색 결과가 없습니다.</li>
-      ) : (
-        options.map((el, index) => (
-          <li
-            key={index}
-            onClick={() => handleComboBox(el)}
-            className={selectedOption === el ? "selected" : ""}
-          >
-            {el}
-          </li>
-        ))
-      )}
-    </DropDownContainer>
-  );
-};
-
-export { EnterDistrict, DropDown };
+export default EnterDistrict;
