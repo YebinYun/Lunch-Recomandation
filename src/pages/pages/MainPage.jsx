@@ -6,7 +6,6 @@ import RandomClick from "../../components/game/EnterClick";
 import EnterLocal from "../../components/game/EnterLocal";
 import EnterDistrict from "../../components/game/EnterDistrict";
 import ResultModal from "../../components/modal/ResultModal";
-import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { foods } from "../../utils/dummy/foods";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 
@@ -25,25 +24,17 @@ const MainPage = () => {
 
   // 자동완성 구현
   const [inputValue, setInputValue] = useState("");
-  const [options, setOptions] = useState(deselectedOptions);
 
   return (
     <HomepageContainer>
-      <MainTitle>
-        <h1> 오늘 뭐 먹지? </h1>
-        <h3> 메뉴 추천 룰렛 </h3>
-      </MainTitle>
-
-      <MainBody>
+      <TitleWrap>
+        <MainTitle> 오늘 뭐 먹지? </MainTitle>
+        <SuvTitle> 메뉴 추천 룰렛 </SuvTitle>
+      </TitleWrap>
+      <BodyWrap>
         <RandomGame slotRefs={slotRefs} foods={foods} />
         <RandomContainer>
-          <EnterLocal
-            options={options}
-            setOptions={setOptions}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            deselectedOptions={deselectedOptions}
-          />
+          <EnterLocal inputValue={inputValue} setInputValue={setInputValue} />
           <RandomClick
             setFood1={setFood1}
             setFood2={setFood2}
@@ -52,15 +43,11 @@ const MainPage = () => {
             buttonClickHandler={buttonClickHandler}
           />
           <EnterDistrict
-            options={options}
-            setOptions={setOptions}
             inputValue={inputValue}
             setInputValue={setInputValue}
-            deselectedOptions={deselectedOptions}
           />
         </RandomContainer>
-      </MainBody>
-
+      </BodyWrap>
       {result && (
         <ResultModal
           inputValue={inputValue}
@@ -73,7 +60,7 @@ const MainPage = () => {
   );
 };
 
-const MainTitle = styled.div`
+const TitleWrap = styled.div`
   width: 70vw;
   background: linear-gradient(
       177deg,
@@ -84,21 +71,18 @@ const MainTitle = styled.div`
   padding: 1rem 0;
   border: 3px solid black;
   border-radius: 15px;
-  & h1 {
-    padding-bottom: 1rem;
-    color: white;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-      1px 1px 0 black;
-  }
-  & h3 {
-    color: white;
-    text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-      1px 1px 0 black;
-    font-weight: 100;
-  }
 `;
-
-const MainBody = styled.div`
+const MainTitle = styled.h1`
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
+  font-weight: 100;
+`;
+const SuvTitle = styled(MainTitle)`
+  padding-top: 0.5rem;
+  font-size: 1.17em;
+`;
+const BodyWrap = styled.div`
   width: 70vw;
   height: 55vh;
   display: flex;

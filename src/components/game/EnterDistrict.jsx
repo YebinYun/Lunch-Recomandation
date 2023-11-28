@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 
-const EnterDistrict = ({
-  inputValue,
-  setInputValue,
-  options,
-  setOptions,
-  deselectedOptions,
-}) => {
+const EnterDistrict = ({ inputValue, setInputValue }) => {
+  const [inputOptions, setInputOptions] = useState(deselectedOptions);
   const [hasText, setHasText] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 검색결과 클릭했을때 창이 닫히도록 상태 추가
   const [selectedOption, setSelectedOption] = useState(null); // 검색결과 위아래 키입력 적용할 상태 추가
@@ -15,7 +11,7 @@ const EnterDistrict = ({
   const inputChangeHandler = (event) => {
     setInputValue(event.target.value);
     setHasText(true);
-    setOptions(
+    setInputOptions(
       deselectedOptions.filter((el) => {
         return el.startsWith(event.target.value);
       })
@@ -26,12 +22,12 @@ const EnterDistrict = ({
   const inputDeleteHandle = () => {
     setInputValue("");
     setShowDropdown(false);
-    setSelectedOption(null); // 삭제 버튼 클릭 시 선택된 옵션 초기화
+    setSelectedOption(null);
   };
 
   const inputDropDownHandle = (clickedOption) => {
     setInputValue(clickedOption);
-    setOptions([clickedOption]);
+    setInputOptions([clickedOption]);
     setShowDropdown(false);
   };
 
@@ -41,8 +37,8 @@ const EnterDistrict = ({
       // 선택된 옵션이 없는 경우 첫 번째 옵션 선택
 
       // 현재 인덱스를 나타내는 변수와 마지막 인덱스 변수를 선언
-      const currentIndex = options.indexOf(selectedOption);
-      const lastIndex = options.length - 1;
+      const currentIndex = inputOptions.indexOf(selectedOption);
+      const lastIndex = inputOptions.length - 1;
 
       let newIndex;
       if (event.key === "ArrowUp") {
@@ -54,8 +50,8 @@ const EnterDistrict = ({
       } else if (event.key === "ArrowDown") {
         newIndex = currentIndex >= lastIndex ? 0 : currentIndex + 1;
       }
-      // 위에서 구한 newIndex로 options[newIndex]로 값에 접근하고 해당 값을 selectedOption 값으로 상태변화
-      setSelectedOption(options[newIndex]);
+      // 위에서 구한 newIndex로 inputOptions[newIndex]로 값에 접근하고 해당 값을 selectedOption 값으로 상태변화
+      setSelectedOption(inputOptions[newIndex]);
     } else if (event.key === "Enter") {
       // Enter 키 입력 시 선택된 dropdown 항목의 값으로 input값 변경
       // selectedOption 값이 있다면 (초기값은 null, 위에 작업을 거치면 값이 생김)
@@ -89,7 +85,7 @@ const EnterDistrict = ({
         </MapChoice>
       ) : (
         <DropDown
-          options={options}
+          inputOptions={inputOptions}
           handleComboBox={inputDropDownHandle}
           selectedOption={selectedOption}
         />
@@ -98,13 +94,13 @@ const EnterDistrict = ({
   );
 };
 
-const DropDown = ({ options, handleComboBox, selectedOption }) => {
+const DropDown = ({ inputOptions, handleComboBox, selectedOption }) => {
   return (
     <DropDownContainer>
-      {options.length === 0 ? (
+      {inputOptions.length === 0 ? (
         <li>일치하는 검색 결과가 없습니다.</li>
       ) : (
-        options.map((el, index) => (
+        inputOptions.map((el, index) => (
           <li
             key={index}
             onClick={() => handleComboBox(el)}

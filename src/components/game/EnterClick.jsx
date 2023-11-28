@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import RollContainer from "./RandomButton";
 import RotateSlot from "../../hook/RotateSlot";
@@ -46,9 +46,7 @@ const EnterClick = ({
 
   return (
     <GameContainer>
-      <RollContainer rolling={rolling} roll={roll}>
-        <div />
-      </RollContainer>
+      <RollContainer rolling={rolling} roll={roll} />
     </GameContainer>
   );
 };
