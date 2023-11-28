@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
+import { foods } from "../../utils/dummy/foods";
 
-const RandomGame = ({ slotRefs, foods }) => {
+const RandomGame = ({ slotRefs }) => {
   return (
     <Layout>
       <SlotContainer>

@@ -23,3 +23,11 @@ export const foods = [
     PUBLIC_FOOD_IMAGE.schoolFood3,
   ],
 ];
+
+// const dd =
+//   {
+//     한식 : [koreanFood1, koreanFood2, koreanFood3],
+//     중식  : [koreanFood1, koreanFood2, koreanFood3],
+//     한식 : [koreanFood1, koreanFood2, koreanFood3],
+//   }
+// Object.keys()

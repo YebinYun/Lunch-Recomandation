@@ -62,8 +62,10 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
     );
   };
 
+  const modalClickHandler = () => {};
+
   return (
-    <ModalContainer>
+    <ModalContainer modalClickHandler={buttonClickHandler}>
       <ResultContainer>
         <ResultTitle>
           {food && result ? (
@@ -77,7 +79,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
           <img src={foodImageName[1]} alt="음식 아이콘" />
           <img src={foodImageName[2]} alt="음식 아이콘" />
         </ResultIcon>
-        <ResultButton onClick={viewResults} food1={food1}>
+        <ResultButton onClick={viewResults} /* food1={food1} */>
           <p> 구경가기 </p>
         </ResultButton>
       </ResultContainer>
