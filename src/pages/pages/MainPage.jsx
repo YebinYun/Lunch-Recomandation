@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
 import RandomGame from "../../components/game/RandomGame";
 import RandomClick from "../../components/game/RandomClick";
-import EnterDistrict from "../../components/game/EnterDistrict";
+import { EnterDistrict } from "../../components/game/EnterDistrict";
 import EnterLocal from "../../components/game/EnterLocal";
 import Slots from "../../components/Slots";
 import ResultModal from "../../components/modal/ResultModal";

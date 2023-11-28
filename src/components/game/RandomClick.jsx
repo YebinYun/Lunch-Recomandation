@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import RollContainer from "../RollContainer";
-import RotateSlot from "../../hook/RotsteSlot";
+import RotateSlot from "../../hook/RotateSlot";
 import { foods } from "../../utils/dummy/foods";
 
 const RandomClick = ({ setFood1, setFood2, setFood3, buttonClickHandler }) => {
@@ -47,6 +47,7 @@ const RandomClick = ({ setFood1, setFood2, setFood3, buttonClickHandler }) => {
     </GameContainer>
   );
 };
+
 const blinkingText = keyframes`
   0%, 49% {
     color: #000;

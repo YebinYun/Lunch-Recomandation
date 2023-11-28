@@ -11,17 +11,8 @@ const EnterDistrict = ({
   const [hasText, setHasText] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 검색결과 클릭했을때 창이 닫히도록 상태 추가
   const [selectedOption, setSelectedOption] = useState(null); // 검색결과 위아래 키입력 적용할 상태 추가
-  const handleInputChange = (event) => {
-    /**
-     * handleInputChange 함수는
-     * - input값 변경 시 발생되는 change 핸들러함수
-     * - autocomplete 추천 항목이 dropdown으로 시시각각 변화되어 보여질 수 있도록 상태를 변경
-     *
-     * onChange 이벤트 발생 시
-     * 1. input값 상태인 inputValue가 적절하게 변경
-     * 2. input값 유무 상태인 hasText가 적절하게 변경
-     * 3. autocomplete 추천 항목인 options의 상태가 적절하게 변경
-     */
+
+  const inputChangeHandler = (event) => {
     setInputValue(event.target.value);
     setHasText(true);
     setOptions(
@@ -32,30 +23,13 @@ const EnterDistrict = ({
     setShowDropdown(true);
   };
 
-  const handleDeleteButtonClick = () => {
-    /**
-     * handleDeleteButtonClick 함수는
-     * - input의 오른쪽에 있는 X버튼 클릭 시 발생되는 click 핸들러 함수
-     * - 함수 작성을 완료하여 input값을 한 번에 삭제하는 기능을 구현
-     *
-     * onClick 이벤트 발생 시
-     * 1. input값 상태인 inputValue가 빈 문자열로 상태변경
-     */
+  const inputDeleteHandle = () => {
     setInputValue("");
     setShowDropdown(false);
     setSelectedOption(null); // 삭제 버튼 클릭 시 선택된 옵션 초기화
   };
 
-  const handleDropDownClick = (clickedOption) => {
-    /**
-     * handleDropDownClick 함수는
-     * - autocomplete 추천 항목을 클릭할 때 발생되는 click 핸들러 함수
-     * - dropdown에 제시된 항목을 눌렀을 때, input값이 해당 항목의 값으로 변경되는 기능을 수행
-     *
-     * onClick 이벤트 발생 시
-     * 1. input값 상태인 inputValue가 적절하게 변경
-     * 2. autocomplete 추천 항목인 options의 상태가 적절하게 변경.
-     */
+  const inputDropDownHandle = (clickedOption) => {
     setInputValue(clickedOption);
     setOptions([clickedOption]);
     setShowDropdown(false);
@@ -100,10 +74,10 @@ const EnterDistrict = ({
           type="text"
           placeholder="지역구 입력"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={inputChangeHandler}
           onKeyDown={handleKeyUp}
         ></input>
-        <div className="deleteButton" onClick={handleDeleteButtonClick}>
+        <div className="deleteButton" onClick={inputDeleteHandle}>
           X
         </div>
       </InputContainer>
@@ -117,41 +91,15 @@ const EnterDistrict = ({
       ) : (
         <DropDown
           options={options}
-          handleComboBox={handleDropDownClick}
+          handleComboBox={inputDropDownHandle}
           selectedOption={selectedOption}
         />
       )}
     </Layout>
   );
 };
-const Layout = styled.div`
-  height: 12vh;
-  width: 15vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-const InputContainer = styled.div`
-  position: relative;
-  height: 5vh;
-  display: flex;
-  & input {
-    width: 15vw;
-    font-size: 1rem;
-    padding-left: 0.5rem;
-    border: solid 3px black;
-    border-radius: 10px;
-  }
-  & div {
-    position: absolute;
-    right: 1rem;
-    top: 1vh;
-    cursor: pointer;
-  }
-`;
 
 const MapChoice = styled.div`
-  color: #777;
   line-height: 150%;
   font-size: 0.75rem;
 `;
@@ -181,9 +129,8 @@ export const DropDownContainer = styled.ul`
     }
   }
 `;
-export default EnterDistrict;
 
-export const DropDown = ({ options, handleComboBox, selectedOption }) => {
+const DropDown = ({ options, handleComboBox, selectedOption }) => {
   return (
     <DropDownContainer>
       {/* input 값에 맞는 autocomplete 선택 옵션이 보여지는 역할 */}
@@ -205,3 +152,31 @@ export const DropDown = ({ options, handleComboBox, selectedOption }) => {
     </DropDownContainer>
   );
 };
+
+const Layout = styled.div`
+  height: 12vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+const InputContainer = styled.div`
+  position: relative;
+  height: 5vh;
+  display: flex;
+  & input {
+    width: 15vw;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border: solid 3px black;
+    border-radius: 10px;
+  }
+  & div {
+    position: absolute;
+    right: 1rem;
+    top: 1vh;
+    cursor: pointer;
+  }
+`;
+
+export { EnterDistrict, DropDown };
