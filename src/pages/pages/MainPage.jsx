@@ -16,6 +16,8 @@ const MainPage = () => {
   //   foodName: '',
   //   foodImg: []
   // });
+  // const [foodCheck, setFoodCheck] = useState(null);
+
   const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
   const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
   const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);

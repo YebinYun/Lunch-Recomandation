@@ -94,7 +94,7 @@ const SlotContainer = styled.div`
         transition: top 0.5s ease;
         position: absolute;
         top: 50%;
-        transform: translate(100%, -50%);
+        transform: translate(40%, -10%);
         > div {
           margin: 1rem 0;
           > img {
