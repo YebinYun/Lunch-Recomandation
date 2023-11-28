@@ -36,7 +36,7 @@ const SelectContainer = styled.select`
   }
 `;
 const LocalChoice = styled.div`
-  color: #777;
+  color: #444444;
   line-height: 150%;
   font-size: 0.75rem;
 `;

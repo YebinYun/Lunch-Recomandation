@@ -98,6 +98,31 @@ const EnterDistrict = ({
     </Layout>
   );
 };
+const Layout = styled.div`
+  height: 12vh;
+  width: 15vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+const InputContainer = styled.div`
+  position: relative;
+  height: 5vh;
+  display: flex;
+  & input {
+    width: 15vw;
+    font-size: 1rem;
+    padding-left: 0.5rem;
+    border: solid 3px black;
+    border-radius: 10px;
+  }
+  & div {
+    position: absolute;
+    right: 1rem;
+    top: 1vh;
+    cursor: pointer;
+  }
+`;
 
 const MapChoice = styled.div`
   line-height: 150%;
@@ -105,7 +130,7 @@ const MapChoice = styled.div`
 `;
 
 // 지역구 입력값 보여주는 li
-export const DropDownContainer = styled.ul`
+const DropDownContainer = styled.ul`
   height: 5rem;
   background-color: #fff2e9;
   overflow-y: scroll;
@@ -152,31 +177,5 @@ const DropDown = ({ options, handleComboBox, selectedOption }) => {
     </DropDownContainer>
   );
 };
-
-const Layout = styled.div`
-  height: 12vh;
-  width: 15vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-const InputContainer = styled.div`
-  position: relative;
-  height: 5vh;
-  display: flex;
-  & input {
-    width: 15vw;
-    font-size: 1rem;
-    padding-left: 0.5rem;
-    border: solid 3px black;
-    border-radius: 10px;
-  }
-  & div {
-    position: absolute;
-    right: 1rem;
-    top: 1vh;
-    cursor: pointer;
-  }
-`;
 
 export { EnterDistrict, DropDown };

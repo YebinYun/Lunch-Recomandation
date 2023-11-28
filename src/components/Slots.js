@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import GameWarp from "./GameWrap";
-import RollContainer from "./RollContainer";
+import GameWarp from "./game/RandomGame";
+import RollContainer from "./game/RandomButton";
 import { PUBLIC_FOOD_IMAGE } from "../assets/images/images";
 
 const boxShadow = "0 4px 6px rgb(32 33 36 / 28%)";

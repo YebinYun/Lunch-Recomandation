@@ -26,3 +26,7 @@ export const PUBLIC_BACKGROUND_IMAGE = {
 export const PUBLIC_MAP_IMAGE = {
   seoulMap: publicImage("/images/seoulMap.png"),
 };
+
+export const PUBLIC_LOADING_IMAGE = {
+  loading: publicImage("/images/loading.gif"),
+};

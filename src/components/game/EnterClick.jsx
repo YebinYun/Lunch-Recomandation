@@ -1,11 +1,16 @@
 import React, { useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import RollContainer from "../RollContainer";
+import RollContainer from "./RandomButton";
 import RotateSlot from "../../hook/RotateSlot";
 import { foods } from "../../utils/dummy/foods";
 
-const RandomClick = ({ setFood1, setFood2, setFood3, buttonClickHandler }) => {
-  const slotRefs = [useRef(null), useRef(null), useRef(null)];
+const EnterClick = ({
+  setFood1,
+  setFood2,
+  setFood3,
+  buttonClickHandler,
+  slotRefs,
+}) => {
   const [rolling, setRolling] = useState(false);
 
   // 실제 각 슬롯이 돌아가게 만들어주는 함수
@@ -83,4 +88,4 @@ const GameContainer = styled.div`
   }
 `;
 
-export default RandomClick;
+export default EnterClick;
