@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import GameWarp from "./GameWrap";
-import RollContainer from "./RollContainer";
+import GameWarp from "./game/RandomGame";
+import RollContainer from "./game/RandomButton";
 import { PUBLIC_FOOD_IMAGE } from "../assets/images/images";
 
 const boxShadow = "0 4px 6px rgb(32 33 36 / 28%)";
@@ -23,7 +23,6 @@ const blinkingText = keyframes`
     color: #000;
   }
 `;
-
 export const MainGame = styled.div`
   height: 50vh;
   width: 70vw;
@@ -33,7 +32,6 @@ export const MainGame = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   // 상단 랜덤 슬롯 상자
   div.GameWarp {
     display: flex;
@@ -50,7 +48,6 @@ export const MainGame = styled.div`
       justify-content: center;
       position: relative;
       margin: 10px;
-      /* color: red; */
       div.slotContainer {
         background-color: #f5d3bf;
         width: 700px;
@@ -82,7 +79,7 @@ export const MainGame = styled.div`
           left: 65px;
           width: 670px;
           height: 35px;
-          border-top: 3px dashed #d29a8c;
+          border-top: 3px dashed pink;
           z-index: 1;
         }
         div.slot {
@@ -110,7 +107,6 @@ export const MainGame = styled.div`
               margin: 40px 0 0 0;
               transition: top 0.5s ease;
               text-align: center;
-              z-index: 2;
               img {
                 width: 110px;
                 height: 90px;
@@ -164,7 +160,6 @@ export const MainGame = styled.div`
         border-radius: 5px;
         padding: 10px;
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -173,12 +168,10 @@ export const MainGame = styled.div`
         font-size: 1.8rem;
         cursor: pointer;
         border: solid 1px gray;
-
         &:active {
           box-shadow: inset -5px -5px 5px rgba(225, 225, 225, 0.5),
             inset 8px 0px 16px rgba(0, 0, 0, 0.1);
         }
-
         &:hover {
           background-color: #ea8573;
           transition: 0.5s;
@@ -200,7 +193,6 @@ export const MainGame = styled.div`
         display: flex;
         margin-left: 10px;
         align-items: center;
-        z-index: 3;
         position: relative;
         input {
           box-sizing: border-box;
@@ -220,7 +212,6 @@ export const MainGame = styled.div`
     }
   }
 `;
-
 const MapChoice = styled.div`
   position: absolute;
   bottom: -60px;
@@ -228,7 +219,6 @@ const MapChoice = styled.div`
   width: 200px;
   line-height: 150%;
 `;
-
 // 지역구 입력값 보여주는 li
 export const DropDownContainer = styled.ul`
   background-color: #fff2e9;
@@ -241,15 +231,12 @@ export const DropDownContainer = styled.ul`
   border: 2.2px solid black;
   border-radius: 5px;
   box-shadow: ${boxShadow};
-  z-index: 999;
-
   > li {
     padding: 0 0.7rem;
     text-align: left;
     font-size: 1.2rem;
     letter-spacing: 1px;
     margin: 0 0 7px 0;
-
     // 드랍다운 선택시 CSS 추가
     &.selected {
       background-color: #f9b2a6;
@@ -264,8 +251,7 @@ function Slots({
   setFood1,
   setFood2,
   setFood3,
-  onClick,
-  onSlotFinish,
+  buttonClickHandler,
   setResult,
   inputValue,
   setInputValue,
@@ -298,11 +284,10 @@ function Slots({
       PUBLIC_FOOD_IMAGE.schoolFood3,
     ],
   ];
-
   useEffect(() => {
     if (!rolling) {
       // 슬롯이 다 돌아갔을때, result 상태를 true로 바꾸는 함수
-      onSlotFinish();
+      // onSlotFinish();
       // 밑의 코드는 slot이 다돌았을때 슬롯 2,3의 값을 슬롯1의 값으로 동기화 시키는 코드임
       // 슬롯 도는 상태가 바뀌거나, 슬롯 종료 여부가 변경될때마다 아래의 코드가 실행됨
       // 아래 roll 함수에도 슬롯1의 상태에 슬롯2,3을 맞추는 로직이 있으나, 그것만으로는 구현이 안되서 추가한 코드임
@@ -313,8 +298,7 @@ function Slots({
         slotRef.current.style.top = slot1Top;
       });
     }
-  }, [rolling, onSlotFinish]);
-
+  }, [rolling]);
   // 룰렛 클릭했을때 실행되는 함수
   const roll = () => {
     const totalRotations = 10; // 롤링횟수
@@ -334,13 +318,12 @@ function Slots({
         }
       });
     }, 500);
-
     setTimeout(() => {
       clearInterval(rotationInterval);
       setRolling(false);
       // 슬롯 다돌고 결과 모달이 뜨기 전까지 delay를 주기 위한 코드
       setTimeout(() => {
-        onClick();
+        buttonClickHandler();
       }, 800);
     }, totalRotations * 400);
   };
@@ -357,7 +340,6 @@ function Slots({
     setTop(-chosenOption.offsetTop + 1);
     return filteredFoods[randomOption];
   };
-
   // 자동완성 구현 부분
   const [hasText, setHasText] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 검색결과 클릭했을때 창이 닫히도록 상태 추가
@@ -486,21 +468,20 @@ function Slots({
             <div className="deleteButton" onClick={handleDeleteButtonClick}>
               X
             </div>
+            {!hasText || !showDropdown ? (
+              <MapChoice>
+                지역구 미입력시,
+                <br />
+                랜덤으로 안내드립니다.
+              </MapChoice>
+            ) : (
+              <DropDown
+                options={options}
+                handleComboBox={handleDropDownClick}
+                selectedOption={selectedOption}
+              />
+            )}
           </div>
-
-          {!hasText || !showDropdown ? (
-            <MapChoice>
-              지역구 미입력시,
-              <br />
-              랜덤으로 안내드립니다.
-            </MapChoice>
-          ) : (
-            <DropDown
-              options={options}
-              handleComboBox={handleDropDownClick}
-              selectedOption={selectedOption}
-            />
-          )}
         </div>
       </div>
     </MainGame>
