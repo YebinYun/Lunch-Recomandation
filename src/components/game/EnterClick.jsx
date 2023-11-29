@@ -4,9 +4,8 @@ import RollContainer from "./RandomButton";
 import RotateSlot from "../../hook/RotateSlot";
 import { foods } from "../../utils/dummy/foods";
 
-const EnterClick = ({ setFood, buttonClickHandler, slotRefs }) => {
+const EnterClick = ({ setResultFood, buttonClickHandler, slotRefs }) => {
   const [rolling, setRolling] = useState(false);
-  // 실제 각 슬롯이 돌아가게 만들어주는 함수
   const rollingFoods = RotateSlot;
 
   useEffect(() => {
@@ -28,15 +27,10 @@ const EnterClick = ({ setFood, buttonClickHandler, slotRefs }) => {
       slotRefs.forEach((slotRef, i) => {
         const selected = rollingFoods(slotRef, i, foods);
         if (i === 0) {
-          // 첫번째 슬롯의 음식 i를 저장, 두.세번째 인덱스를 첫번째 슬롯 i와 일치시켜 같은 음식이 나오도로 감
-          const foodIndex = foods[0].indexOf(selected);
-          setFood(selected);
-          setFood(foods[1][foodIndex]);
-          setFood(foods[2][foodIndex]);
+          setResultFood(selected);
         }
       });
     }, 500);
-
     setTimeout(() => {
       // 슬롯 다돌고 결과 모달이 뜨기 전까지 delay를 주기 위한 코드
       clearInterval(rollingInterval);
