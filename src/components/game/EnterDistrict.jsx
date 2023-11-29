@@ -4,13 +4,13 @@ import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 
 const EnterDistrict = ({ inputValue, setInputValue }) => {
   const [inputOptions, setInputOptions] = useState(deselectedOptions);
-  const [hasText, setHasText] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false); // 드롭다운 검색결과 클릭했을때 창이 닫히도록 상태 추가
-  const [selectedOption, setSelectedOption] = useState(null); // 검색결과 위아래 키입력 적용할 상태 추가
+  const [inputText, setInputText] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(null);
 
-  const inputChangeHandler = (event) => {
+  const inputAddHandler = (event) => {
     setInputValue(event.target.value);
-    setHasText(true);
+    setInputText(true);
     setInputOptions(
       deselectedOptions.filter((el) => {
         return el.startsWith(event.target.value);
@@ -19,23 +19,20 @@ const EnterDistrict = ({ inputValue, setInputValue }) => {
     setShowDropdown(true);
   };
 
-  const inputDeleteHandle = () => {
+  const inputDeleteHandler = () => {
     setInputValue("");
     setShowDropdown(false);
     setSelectedOption(null);
   };
 
-  const inputDropDownHandle = (clickedOption) => {
+  const inputDropDownHandler = (clickedOption) => {
     setInputValue(clickedOption);
     setInputOptions([clickedOption]);
     setShowDropdown(false);
   };
 
-  const handleKeyUp = (event) => {
+  const keyboardHandler = (event) => {
     if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-      // 상하 화살표 키 입력 시 dropdown 항목 선택
-      // 선택된 옵션이 없는 경우 첫 번째 옵션 선택
-
       // 현재 인덱스를 나타내는 변수와 마지막 인덱스 변수를 선언
       const currentIndex = inputOptions.indexOf(selectedOption);
       const lastIndex = inputOptions.length - 1;
@@ -70,14 +67,14 @@ const EnterDistrict = ({ inputValue, setInputValue }) => {
           type="text"
           placeholder="지역구 입력"
           value={inputValue}
-          onChange={inputChangeHandler}
-          onKeyDown={handleKeyUp}
+          onChange={inputAddHandler}
+          onKeyDown={keyboardHandler}
         ></input>
-        <div className="deleteButton" onClick={inputDeleteHandle}>
+        <div className="deleteButton" onClick={inputDeleteHandler}>
           X
         </div>
       </InputContainer>
-      {!hasText || !showDropdown ? (
+      {!inputText || !showDropdown ? (
         <MapChoice>
           지역구 미입력시,
           <br />
@@ -86,7 +83,7 @@ const EnterDistrict = ({ inputValue, setInputValue }) => {
       ) : (
         <DropDown
           inputOptions={inputOptions}
-          handleComboBox={inputDropDownHandle}
+          handleComboBox={inputDropDownHandler}
           selectedOption={selectedOption}
         />
       )}
