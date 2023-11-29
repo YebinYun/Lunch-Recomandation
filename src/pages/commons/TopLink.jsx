@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
 const TopLink = ({ modalClickHandler }) => {
+  const navigate = useNavigate();
+
   return (
     <TopLinkWrap>
       <DirectionButtonWrap>
@@ -10,15 +13,22 @@ const TopLink = ({ modalClickHandler }) => {
           icon="fluent-emoji-high-contrast:left-arrow"
           width="30"
           height="30"
+          onClick={() => {
+            navigate(-1);
+          }}
         />
         <Icon
           icon="fluent-emoji-high-contrast:right-arrow"
           width="30"
           height="30"
+          onClick={() => {
+            navigate(1);
+          }}
         />
       </DirectionButtonWrap>
+
       <UrlLinkWrap>
-        <div>
+        <div className="linkBar">
           <p className="item">https:// 프로젝트.참숯가마/오늘_뭐_먹지?</p>
           <Icon
             className="item"
@@ -27,8 +37,18 @@ const TopLink = ({ modalClickHandler }) => {
             height="25"
           />
         </div>
-        <Icon icon="ic:round-refresh" width="30" height="30" />
+        <div className="refresh">
+          <Icon
+            icon="ic:round-refresh"
+            width="30"
+            height="30"
+            onClick={() => {
+              window.location.reload();
+            }}
+          />
+        </div>
       </UrlLinkWrap>
+
       <ActionButtonWrap>
         <Icon icon="ic:round-minimize" width="40" height="40" />
         <Icon
@@ -43,25 +63,26 @@ const TopLink = ({ modalClickHandler }) => {
 };
 
 const TopLinkWrap = styled.div`
-  display: flex;
-  border-bottom: 3px solid black;
-  border-radius: 10px 10px 0 0;
   background: #ea8573;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   padding: 10px 5px;
+  border-bottom: 3px solid black;
+  border-radius: 10px 10px 0 0;
 `;
 const DirectionButtonWrap = styled.div`
+  width: 15vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 15vw;
+  cursor: pointer;
 `;
 const UrlLinkWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 70vw;
-  & div {
+  > .linkBar {
     background: white;
     display: flex;
     align-items: center;
@@ -75,13 +96,18 @@ const UrlLinkWrap = styled.div`
   & svg {
     margin-left: 15px;
   }
+  > .refresh {
+    cursor: pointer;
+  }
 `;
 const ActionButtonWrap = styled.div`
+  width: 15vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  width: 15vw;
-  cursor: pointer;
+  > svg:last-child {
+    cursor: pointer;
+  }
 `;
 
 export default TopLink;
