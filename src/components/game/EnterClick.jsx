@@ -4,13 +4,7 @@ import RollContainer from "./RandomButton";
 import RotateSlot from "../../hook/RotateSlot";
 import { foods } from "../../utils/dummy/foods";
 
-const EnterClick = ({
-  setFood1,
-  setFood2,
-  setFood3,
-  buttonClickHandler,
-  slotRefs,
-}) => {
+const EnterClick = ({ setFood, buttonClickHandler, slotRefs }) => {
   const [rolling, setRolling] = useState(false);
   // 실제 각 슬롯이 돌아가게 만들어주는 함수
   const rollingFoods = RotateSlot;
@@ -36,9 +30,9 @@ const EnterClick = ({
         if (i === 0) {
           // 첫번째 슬롯의 음식 i를 저장, 두.세번째 인덱스를 첫번째 슬롯 i와 일치시켜 같은 음식이 나오도로 감
           const foodIndex = foods[0].indexOf(selected);
-          setFood1(selected);
-          setFood2(foods[1][foodIndex]);
-          setFood3(foods[2][foodIndex]);
+          setFood(selected);
+          setFood(foods[1][foodIndex]);
+          setFood(foods[2][foodIndex]);
         }
       });
     }, 500);

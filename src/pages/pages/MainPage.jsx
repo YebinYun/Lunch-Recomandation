@@ -11,15 +11,11 @@ import { foods } from "../../utils/dummy/foods";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 
 const MainPage = () => {
-  // const [food1, setFood1] = useState({
-  //   foodName: '',
-  //   foodImg: []
-  // });
-  // const [foodCheck, setFoodCheck] = useState(null);
-
-  const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
-  const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
-  const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
+  const [defaultFood, setDefaultFood] = useState({
+    food1: PUBLIC_FOOD_IMAGE.koreanFood1,
+    food2: PUBLIC_FOOD_IMAGE.koreanFood2,
+    food3: PUBLIC_FOOD_IMAGE.koreanFood3,
+  });
   const slotRefs = [useRef(null), useRef(null), useRef(null)];
   const [result, setResult] = useState(false);
   const buttonClickHandler = () => {
@@ -45,9 +41,7 @@ const MainPage = () => {
             deselectedOptions={deselectedOptions}
           />
           <EnterClick
-            setFood1={setFood1}
-            setFood2={setFood2}
-            setFood3={setFood3}
+            setFood={setDefaultFood}
             slotRefs={slotRefs}
             buttonClickHandler={buttonClickHandler}
           />
@@ -63,7 +57,7 @@ const MainPage = () => {
       {result && (
         <ResultModal
           inputValue={inputValue}
-          food1={food1}
+          food1={defaultFood}
           result={result}
           buttonClickHandler={buttonClickHandler}
         />
