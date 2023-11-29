@@ -3,28 +3,34 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 import ModalContainer from "../../pages/layout/ModalContainer";
+import { foodCountry } from "../../utils/dummy/foods";
 
-const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
+const ResultModal = ({
+  inputValue,
+  defaultFood,
+  result,
+  buttonClickHandler,
+}) => {
   let food = "";
   let foodImageName = "";
   switch (true) {
-    case food1.includes("korean"):
-      food = "한식";
+    case defaultFood.includes("korean"):
+      food = Object.keys(foodCountry)[0];
       foodImageName = [
         PUBLIC_FOOD_IMAGE.koreanFood1,
         PUBLIC_FOOD_IMAGE.koreanFood2,
         PUBLIC_FOOD_IMAGE.koreanFood3,
       ];
       break;
-    case food1.includes("chinese"):
-      food = "중식";
+    case defaultFood.includes("chinese"):
+      food = Object.keys(foodCountry)[1];
       foodImageName = [
         PUBLIC_FOOD_IMAGE.chineseFood1,
         PUBLIC_FOOD_IMAGE.chineseFood2,
         PUBLIC_FOOD_IMAGE.chineseFood3,
       ];
       break;
-    case food1.includes("western"):
+    case defaultFood.includes("western"):
       food = "양식";
       foodImageName = [
         PUBLIC_FOOD_IMAGE.westernFood1,
@@ -32,7 +38,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
         PUBLIC_FOOD_IMAGE.westernFood3,
       ];
       break;
-    case food1.includes("japanese"):
+    case defaultFood.includes("japanese"):
       food = "일식";
       foodImageName = [
         PUBLIC_FOOD_IMAGE.japaneseFood1,
@@ -40,7 +46,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
         PUBLIC_FOOD_IMAGE.japaneseFood3,
       ];
       break;
-    case food1.includes("school"):
+    case defaultFood.includes("school"):
       food = "분식";
       foodImageName = [
         PUBLIC_FOOD_IMAGE.schoolFood1,

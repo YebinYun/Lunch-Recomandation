@@ -24,10 +24,10 @@ export const foods = [
   ],
 ];
 
-// const dd =
-//   {
-//     한식 : [koreanFood1, koreanFood2, koreanFood3],
-//     중식  : [koreanFood1, koreanFood2, koreanFood3],
-//     한식 : [koreanFood1, koreanFood2, koreanFood3],
-//   }
-// Object.keys()
+export const foodCountry = {
+  한식: ["koreanFood1", "koreanFood2", "koreanFood3"],
+  중식: ["chineseFood1", "chineseFood2", "chineseFood3"],
+  일식: ["japaneseFood1", "japaneseFood2", "japaneseFood3"],
+  양식: ["westernFood1", "westernFood2", "westernFood3"],
+  분식: ["schoolFood1", "schoolFood2", "schoolFood3"],
+};
