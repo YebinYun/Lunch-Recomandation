@@ -18,7 +18,6 @@ const MapLinkWrap = styled.div`
   width: 100%;
   padding: 5px 5px;
 `;
-
 const MapLinkButton = styled.div`
   display: flex;
   justify-content: center;

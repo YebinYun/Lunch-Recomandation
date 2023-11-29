@@ -19,8 +19,13 @@ const TopLink = ({ modalClickHandler }) => {
       </DirectionButtonWrap>
       <UrlLinkWrap>
         <div>
-          <p>https:// 프로젝트.참숯가마/오늘_뭐_먹지?</p>
-          <Icon icon="solar:star-broken" width="25" height="25" />
+          <p className="item">https:// 프로젝트.참숯가마/오늘_뭐_먹지?</p>
+          <Icon
+            className="item"
+            icon="solar:star-broken"
+            width="25"
+            height="25"
+          />
         </div>
         <Icon icon="ic:round-refresh" width="30" height="30" />
       </UrlLinkWrap>
@@ -45,14 +50,12 @@ const TopLinkWrap = styled.div`
   width: 100%;
   padding: 10px 5px;
 `;
-
 const DirectionButtonWrap = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 15vw;
 `;
-
 const UrlLinkWrap = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -65,10 +68,7 @@ const UrlLinkWrap = styled.div`
     padding: 5px 0;
     border: 3px solid black;
     border-radius: 15px;
-    > p {
-      margin: 0 15px;
-    }
-    > svg {
+    > .item {
       margin: 0 15px;
     }
   }
@@ -76,7 +76,6 @@ const UrlLinkWrap = styled.div`
     margin-left: 15px;
   }
 `;
-
 const ActionButtonWrap = styled.div`
   display: flex;
   justify-content: space-evenly;

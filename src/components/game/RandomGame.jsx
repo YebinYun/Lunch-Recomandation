@@ -5,15 +5,13 @@ import { foods } from "../../utils/dummy/foods";
 
 const Slot = ({ foods, slotRef }) => (
   <div className="slot">
-    <section>
-      <div className="container" ref={slotRef}>
-        {foods.map((food, i) => (
-          <div key={i}>
-            <img src={food} alt={`food ${i + 1}`} />
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="container" ref={slotRef}>
+      {foods.map((food, i) => (
+        <div key={i}>
+          <img src={food} alt={`food ${i + 1}`} />
+        </div>
+      ))}
+    </div>
   </div>
 );
 
@@ -27,9 +25,11 @@ const RandomGame = ({ slotRefs }) => {
           <div className="decoration line" />
         </div>
 
-        {foods.map((foodList, index) => (
-          <Slot key={index} foods={foodList} slotRef={slotRefs[index]} />
-        ))}
+        <div className="slotWrap">
+          {foods.map((foodList, index) => (
+            <Slot key={index} foods={foodList} slotRef={slotRefs[index]} />
+          ))}
+        </div>
       </SlotContainer>
     </Layout>
   );
@@ -81,26 +81,32 @@ const SlotContainer = styled.div`
       z-index: 1;
     }
   }
-  .slot {
-    width: 32%;
-    section {
+  .slotWrap {
+    position: absolute;
+    width: 90%;
+    height: 85%;
+    .slot {
+      position: relative;
       background-color: white;
-      height: 25vh;
-      margin: 0 0.5rem;
-      padding: 4rem 0;
+      display: inline-block;
+      text-align: center;
+      width: 30%;
+      height: 100%;
       border: 3px solid black;
-      /* overflow: hidden; */
+      overflow: hidden;
+      &:nth-child(2) {
+        margin: 0 1.5rem;
+      }
       .container {
-        transition: top 0.5s ease;
         position: absolute;
-        top: 50%;
-        transform: translate(40%, -10%);
+        transition: top 0.5s ease;
+        top: 0%;
+        right: 50%;
+        transform: translate(50%, 10%);
+        height: 22vh;
+        width: 100px;
         > div {
-          margin: 1rem 0;
-          > img {
-            width: 5rem;
-            height: 5rem;
-          }
+          padding: 10% 0;
         }
       }
     }
