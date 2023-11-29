@@ -61,9 +61,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
       )}&food=${encodeURIComponent(food)}`
     );
   };
-
-  const modalClickHandler = () => {};
-
+  
   return (
     <ModalContainer modalClickHandler={buttonClickHandler}>
       <ResultContainer>

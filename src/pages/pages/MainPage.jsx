@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../layout/HomepageContainer";
 import RandomGame from "../../components/game/RandomGame";
-import RandomClick from "../../components/game/EnterClick";
+import EnterClick from "../../components/game/EnterClick";
 import EnterLocal from "../../components/game/EnterLocal";
 import EnterDistrict from "../../components/game/EnterDistrict";
 import ResultModal from "../../components/modal/ResultModal";
@@ -16,6 +16,8 @@ const MainPage = () => {
   //   foodName: '',
   //   foodImg: []
   // });
+  // const [foodCheck, setFoodCheck] = useState(null);
+
   const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
   const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
   const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
@@ -49,7 +51,7 @@ const MainPage = () => {
             setInputValue={setInputValue}
             deselectedOptions={deselectedOptions}
           />
-          <RandomClick
+          <EnterClick
             setFood1={setFood1}
             setFood2={setFood2}
             setFood3={setFood3}
