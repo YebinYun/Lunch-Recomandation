@@ -61,7 +61,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
       )}&food=${encodeURIComponent(food)}`
     );
   };
-  
+
   return (
     <ModalContainer modalClickHandler={buttonClickHandler}>
       <ResultContainer>
@@ -77,7 +77,7 @@ const ResultModal = ({ inputValue, food1, result, buttonClickHandler }) => {
           <img src={foodImageName[1]} alt="음식 아이콘" />
           <img src={foodImageName[2]} alt="음식 아이콘" />
         </ResultIcon>
-        <ResultButton onClick={viewResults} /* food1={food1} */>
+        <ResultButton onClick={viewResults}>
           <p> 구경가기 </p>
         </ResultButton>
       </ResultContainer>
@@ -92,12 +92,12 @@ const ResultContainer = styled.div`
   align-items: center;
   justify-content: center;
   > span {
-    font-size: 0;
+    width: 50px;
+    height: 50px;
     position: absolute;
     top: 5px;
     right: 20px;
-    width: 50px;
-    height: 50px;
+    font-size: 0;
     cursor: pointer;
   }
 `;
@@ -111,17 +111,17 @@ const ResultTitle = styled.div`
 
 const ResultIcon = styled.div`
   & img {
-    margin: 4rem 2rem;
+    margin: 3rem;
   }
 `;
 
 const ResultButton = styled.button`
   background-color: #f9b2a6;
-  border: 1px solid gray;
-  border-radius: 10px;
+  border: 3px solid black;
+  border-radius: 15px;
   & p {
+    padding: 1.5rem 2rem;
     font-size: 1.5rem;
-    padding: 15px;
     letter-spacing: 0.8rem;
   }
   &:hover {
