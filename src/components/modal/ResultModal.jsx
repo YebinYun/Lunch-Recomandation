@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 import ModalContainer from "../../pages/layout/ModalContainer";
 import { foodCountry } from "../../utils/dummy/foods";
 
@@ -11,70 +10,10 @@ const ResultModal = ({
   result,
   buttonClickHandler,
 }) => {
-  let food = "";
-  let foodImageName = [];
-
-  // const titlteFood = Object.keys(foodCountry).find((key) => {
-  //   // foodCountry[key] === resultFood;
-  //   console.log(
-  //     "//foodCountry// : ",
-  //     foodCountry[key][0],
-  //     "//resultFoods// : ",
-  //     resultFoods
-  //   );
-  // });
-
-  // 오늘은 OO!
   const tittleFood = Object.keys(foodCountry).filter(
     (country) => foodCountry[country][0] === resultFoods
-  )[0];
-
-  // // switch (true) {
-  //   case resultFoods.includes("korean"):
-  //     food = Object.keys(foodCountry)[0];
-  //     foodImageName = [
-  //       PUBLIC_FOOD_IMAGE.koreanFood1,
-  //       PUBLIC_FOOD_IMAGE.koreanFood2,
-  //       PUBLIC_FOOD_IMAGE.koreanFood3,
-  //     ];
-  //     break;
-  //   case resultFoods.includes("chinese"):
-  //     food = Object.keys(foodCountry)[1];
-  //     foodImageName = [
-  //       PUBLIC_FOOD_IMAGE.chineseFood1,
-  //       PUBLIC_FOOD_IMAGE.chineseFood2,
-  //       PUBLIC_FOOD_IMAGE.chineseFood3,
-  //     ];
-  //     break;
-  //   case resultFoods.includes("western"):
-  //     food = "양식";
-  //     foodImageName = [
-  //       PUBLIC_FOOD_IMAGE.westernFood1,
-  //       PUBLIC_FOOD_IMAGE.westernFood2,
-  //       PUBLIC_FOOD_IMAGE.westernFood3,
-  //     ];
-  //     break;
-  //   case resultFoods.includes("japanese"):
-  //     food = "일식";
-  //     foodImageName = [
-  //       PUBLIC_FOOD_IMAGE.japaneseFood1,
-  //       PUBLIC_FOOD_IMAGE.japaneseFood2,
-  //       PUBLIC_FOOD_IMAGE.japaneseFood3,
-  //     ];
-  //     break;
-  //   case resultFoods.includes("school"):
-  //     food = "분식";
-  //     foodImageName = [
-  //       PUBLIC_FOOD_IMAGE.schoolFood1,
-  //       PUBLIC_FOOD_IMAGE.schoolFood2,
-  //       PUBLIC_FOOD_IMAGE.schoolFood3,
-  //     ];
-  //     break;
-  //   default:
-  //     food = null;
-  //     foodImageName = null;
-  //     break;
-  // }
+  );
+  const iconFood = foodCountry[tittleFood];
   const navigate = useNavigate();
   const viewResults = () => {
     navigate(
@@ -95,9 +34,9 @@ const ResultModal = ({
           )}
         </ResultTitle>
         <ResultIcon>
-          <img src={foodImageName[0]} alt="음식 아이콘" />
-          <img src={foodImageName[1]} alt="음식 아이콘" />
-          <img src={foodImageName[2]} alt="음식 아이콘" />
+          {iconFood.map((icon) => (
+            <img src={icon} alt={`${tittleFood} 아이콘`} />
+          ))}
         </ResultIcon>
         <ResultButton onClick={viewResults}>
           <p> 구경가기 </p>
@@ -132,6 +71,7 @@ const ResultTitle = styled.div`
 `;
 
 const ResultIcon = styled.div`
+  display: flex;
   & img {
     margin: 3rem;
   }
