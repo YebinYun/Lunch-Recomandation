@@ -321,8 +321,8 @@ const ResultPage = () => {
             display: 5,
           },
           headers: {
-            "X-Naver-Client-Id": "2epbJX2GaPPxglloNsL_",
-            "X-Naver-Client-Secret": "FBtejVg8km",
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         const randomItems = getRandomItems(response.data.items, 2);
@@ -357,8 +357,8 @@ const ResultPage = () => {
             display: 100,
           },
           headers: {
-            "X-Naver-Client-Id": "2epbJX2GaPPxglloNsL_",
-            "X-Naver-Client-Secret": "FBtejVg8km",
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         console.log(response);
@@ -380,8 +380,8 @@ const ResultPage = () => {
             display: 100,
           },
           headers: {
-            "X-Naver-Client-Id": "2epbJX2GaPPxglloNsL_",
-            "X-Naver-Client-Secret": "FBtejVg8km",
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         console.log(response);
@@ -409,8 +409,8 @@ const ResultPage = () => {
             display: 4,
           },
           headers: {
-            "X-Naver-Client-Id": "2epbJX2GaPPxglloNsL_",
-            "X-Naver-Client-Secret": "FBtejVg8km",
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         // title <br>,</br> 문자열 필터링 로직 추가
@@ -443,8 +443,8 @@ const ResultPage = () => {
             display: 4,
           },
           headers: {
-            "X-Naver-Client-Id": "2epbJX2GaPPxglloNsL_",
-            "X-Naver-Client-Secret": "FBtejVg8km",
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
 
