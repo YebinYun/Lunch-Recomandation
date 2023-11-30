@@ -23,7 +23,6 @@ const ModalBackground = styled.div`
   background: rgba(0, 0, 0, 0.8);
   z-index: 999;
 `;
-
 const ModalLayout = styled.div`
   position: absolute;
   left: 50%;

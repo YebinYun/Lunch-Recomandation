@@ -9,28 +9,19 @@ import ResultModal from "../../components/modal/ResultModal";
 import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { foods } from "../../utils/dummy/foods";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
-import Slots from "../../components/Slots";
 
 const MainPage = () => {
-  // const [food1, setFood1] = useState({
-  //   foodName: '',
-  //   foodImg: []
-  // });
-  // const [foodCheck, setFoodCheck] = useState(null);
+  const [resultFoods, setResultFood] = useState([
+    PUBLIC_FOOD_IMAGE.koreanFood1,
+    PUBLIC_FOOD_IMAGE.koreanFood2,
+    PUBLIC_FOOD_IMAGE.koreanFood3,
+  ]);
 
-  const [food1, setFood1] = useState(PUBLIC_FOOD_IMAGE.koreanFood1);
-  const [food2, setFood2] = useState(PUBLIC_FOOD_IMAGE.koreanFood2);
-  const [food3, setFood3] = useState(PUBLIC_FOOD_IMAGE.koreanFood3);
   const slotRefs = [useRef(null), useRef(null), useRef(null)];
-
-  // 슬롯이 다 돌아갔는지를 알려주는 useState
   const [result, setResult] = useState(false);
-
   const buttonClickHandler = () => {
     setResult(!result);
   };
-
-  // 자동완성 구현
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -40,7 +31,6 @@ const MainPage = () => {
         <h1> 오늘 뭐 먹지? </h1>
         <h3> 메뉴 추천 룰렛 </h3>
       </TitleWrap>
-
       <MainBody>
         <RandomGame slotRefs={slotRefs} foods={foods} />
         <RandomContainer>
@@ -52,9 +42,7 @@ const MainPage = () => {
             deselectedOptions={deselectedOptions}
           />
           <EnterClick
-            setFood1={setFood1}
-            setFood2={setFood2}
-            setFood3={setFood3}
+            setResultFood={setResultFood}
             slotRefs={slotRefs}
             buttonClickHandler={buttonClickHandler}
           />
@@ -67,22 +55,10 @@ const MainPage = () => {
           />
         </RandomContainer>
       </MainBody>
-
-      {/* <Slots
-        setFood1={setFood1}
-        setFood2={setFood2}
-        setFood3={setFood3}
-        buttonClickHandler={buttonClickHandler}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        options={options}
-        setOptions={setOptions}
-        deselectedOptions={deselectedOptions}
-      /> */}
       {result && (
         <ResultModal
           inputValue={inputValue}
-          food1={food1}
+          resultFoods={resultFoods}
           result={result}
           buttonClickHandler={buttonClickHandler}
         />
@@ -116,7 +92,6 @@ const TitleWrap = styled.div`
     font-weight: 100;
   }
 `;
-
 const MainBody = styled.div`
   width: 70vw;
   height: 55vh;
