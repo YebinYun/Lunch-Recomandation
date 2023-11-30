@@ -17,7 +17,7 @@ const EnterClick = ({ setResultFood, buttonClickHandler, slotRefs }) => {
         slotRef.current.style.top = slot1Top;
       });
     }
-  }, [rolling]);
+  }, [rolling, slotRefs]);
 
   // 룰렛 클릭했을때 실행되는 함수
   const roll = () => {
