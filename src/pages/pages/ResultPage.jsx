@@ -11,125 +11,6 @@ import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 
 import HomepageContainer from "../layout/HomepageContainer";
 
 const PUBLIC = process.env.PUBLIC_URL;
-
-const BackgroundImage = styled.div`
-  background-image: url("/images/secBackground.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
-const Container = styled.div`
-  border-radius: 5px;
-  border: 3px solid black;
-  border-bottom: 0px;
-  width: 1275px;
-  height: 825px;
-  text-align: center;
-  margin: 70px auto;
-  box-shadow: 5px 10px 10px 5px gray;
-`;
-
-// 상단바-1
-const TopBarWrap = styled.div`
-  border-bottom: 3px solid black;
-  height: 7%;
-  background: #ffb630;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 20px;
-`;
-
-// 상단바-2
-const SecondBarWrap = styled(TopBarWrap)`
-  background: #ffd178;
-  height: 5%;
-`;
-
-// 메인창
-const MainWrap = styled.div`
-  height: 80%;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-`;
-
-// 하단바
-const FooterBarWrap = styled(TopBarWrap)`
-  border-radius: 0px 0px 5px 5px;
-  border-top: 3px solid black;
-  justify-content: flex-start;
-  font-size: 1.3rem;
-  > div {
-    margin: 0 10px 0 0;
-    > img {
-      width: 40px;
-      height: 40px;
-    }
-  }
-`;
-
-const AcctionBtnWrap = styled.div`
-  display: flex;
-`;
-
-const AcctionBtn = styled.button`
-  background-color: transparent;
-  border: none;
-  margin: 10px;
-  padding: 0;
-  cursor: pointer;
-`;
-
-const LinkWrap = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -200px;
-`;
-
-const LinkBarWrap = styled.div`
-  width: 600px;
-  height: 40px;
-  border-radius: 20px;
-  border: 3px solid black;
-  background: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-`;
-
-const LinkBar = styled.p`
-  font-weight: bold;
-  font-size: 25px;
-`;
-
-// 지역구 보러가기 버튼
-const MapBtn = styled.button`
-  width: 160px;
-  height: 32px;
-  border-radius: 10px;
-  border: 2px solid #000;
-  background: white;
-  margin: 0 10px;
-  cursor: pointer;
-`;
-
-const MapText = styled.p`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 15px;
-  margin: 0;
-  font-weight: bold;
-`;
-
 // 추천식당 창
 const RecomandationWrap = styled.div`
   background-color: #ffe9da;
@@ -512,7 +393,7 @@ const ResultPage = () => {
           )}
 
           {/* 메인창 */}
-          <MainWrap>
+          <div style={{display:"flex"}}>
             {/* 추천 창 1 */}
             {data.map((recommendation, index) => (
               <RecomandationWrap key={index}>
@@ -622,11 +503,8 @@ const ResultPage = () => {
                 )}
               </RecomandationWrap>
             ))}
-          </MainWrap>
-
+          </div>
           {/* 메인창 끝 */}
-
-          {/* 하단바 */}
         </HomepageContainer>
       ) : (
         <div>데이터를 불러오는 중입니다..</div>

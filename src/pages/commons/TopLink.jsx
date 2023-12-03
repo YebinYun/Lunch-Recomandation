@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-const TopLink = ({ modalClickHandler }) => {
+const TopLink = ({ modalClickHandler, colorChange }) => {
   const navigate = useNavigate();
 
   return (
-    <TopLinkWrap>
+    <TopLinkWrap colorChange={colorChange}>
       <DirectionButtonWrap>
         <Icon
           icon="fluent-emoji-high-contrast:left-arrow"
@@ -63,7 +63,7 @@ const TopLink = ({ modalClickHandler }) => {
 };
 
 const TopLinkWrap = styled.div`
-  background: #ea8573;
+  background: ${(props) => props.colorChange};
   width: 100%;
   display: flex;
   justify-content: space-between;

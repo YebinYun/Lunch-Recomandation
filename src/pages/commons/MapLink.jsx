@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const MapLink = ({ modalClickHandler }) => {
+const MapLink = ({ modalClickHandler, colorMapChange }) => {
   return (
-    <MapLinkWrap>
+    <MapLinkWrap colorMapChange={colorMapChange}>
       <MapLinkButton onClick={modalClickHandler}>
         <p>지도 보기</p>
       </MapLinkButton>
@@ -14,7 +14,7 @@ const MapLink = ({ modalClickHandler }) => {
 const MapLinkWrap = styled.div`
   display: flex;
   border-bottom: 3px solid black;
-  background: #ea8573;
+  background: ${(props) => props.colorMapChange};
   width: 100%;
   padding: 5px 5px;
 `;
