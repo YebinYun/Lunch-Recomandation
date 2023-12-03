@@ -29,4 +29,5 @@ export const PUBLIC_MAP_IMAGE = {
 
 export const PUBLIC_LOADING_IMAGE = {
   loading: publicImage("/images/loading.gif"),
+  resultLoading: publicImage("/images/getReplaceResult.gif")
 };
