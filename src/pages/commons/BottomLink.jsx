@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-const BottomLink = () => {
+const BottomLink = ({ colorChange }) => {
   return (
-    <BottomLinkWrap>
+    <BottomLinkWrap colorChange={colorChange}>
       <Icon icon="fluent-emoji-flat:face-savoring-food" />
       <p>I LOVE FOOD</p>
       <Icon icon="fluent-emoji-flat:face-savoring-food" />
@@ -13,7 +13,7 @@ const BottomLink = () => {
 };
 
 const BottomLinkWrap = styled.div`
-  background: #ea8573;
+  background: ${(props) => props.colorChange};
   width: 100%;
   display: flex;
   justify-content: center;

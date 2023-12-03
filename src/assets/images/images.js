@@ -20,7 +20,7 @@ export const PUBLIC_FOOD_IMAGE = {
 
 export const PUBLIC_BACKGROUND_IMAGE = {
   mainBackground: publicImage("/images/mainBackground.png"),
-  resultBackground: publicImage("/images/chinese-food.png"),
+  resultBackground: publicImage("/images/secBackground.png"),
 };
 
 export const PUBLIC_MAP_IMAGE = {
@@ -29,4 +29,5 @@ export const PUBLIC_MAP_IMAGE = {
 
 export const PUBLIC_LOADING_IMAGE = {
   loading: publicImage("/images/loading.gif"),
+  resultLoading: publicImage("/images/getReplaceResult.gif")
 };

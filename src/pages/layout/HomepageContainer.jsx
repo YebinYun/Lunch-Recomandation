@@ -5,6 +5,7 @@ import TopLink from "../commons/TopLink";
 import MapLink from "../commons/MapLink";
 import BottomLink from "../commons/BottomLink";
 import MapModal from "../../components/modal/MapModal";
+import { useLocation } from "react-router-dom";
 
 const HomepageContainer = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
@@ -12,13 +13,27 @@ const HomepageContainer = ({ children }) => {
     setShowModal(!showModal);
   };
 
+  const location = useLocation();
+  const colorChange =
+    location.pathname === "/ResultPage" ? "#ffa807" : "#ea8573";
+  const colorMapChange =
+    location.pathname === "/ResultPage" ? "#ffdd9f" : "#f8b0a3";
+
   return (
     <HomepageLayout>
-      <TopLink />
-      <MapLink modalClickHandler={modalClickHandler} />
+      <TopLink colorChange={colorChange} />
+      <MapLink
+        modalClickHandler={modalClickHandler}
+        colorMapChange={colorMapChange}
+      />
       <MainWrap>{children}</MainWrap>
-      <BottomLink />
-      {showModal && <MapModal modalClickHandler={modalClickHandler} />}
+      <BottomLink colorChange={colorChange} />
+      {showModal && (
+        <MapModal
+          modalClickHandler={modalClickHandler}
+          colorChange={colorChange}
+        />
+      )}
     </HomepageLayout>
   );
 };

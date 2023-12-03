@@ -4,18 +4,22 @@ import styled from "styled-components";
 import ResultModal from "../../components/modal/ResultModal";
 import BlogModal from "../../components/modal/BlogModal";
 import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼리파라미터값(uri)을 사용하기 위한 훅
+import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
+import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
+import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
 import HomepageContainer from "../layout/HomepageContainer";
-import RenderSlider from "../../components/recomandation/RenderSlider";
 
+const PUBLIC = process.env.PUBLIC_URL;
 // 추천식당 창
 const RecomandationWrap = styled.div`
-  position: relative;
-  width: 37vw;
-  height: 75vh;
   background-color: #ffe9da;
+  border-radius: 25px;
+  border-end-end-radius: 0px;
+  border-end-start-radius: 0px;
   border: 3px solid #000;
-  border-radius: 25px 25px 0 0;
-  margin: 0 1rem;
+  width: 600px;
+  margin: 20px 0;
+  position: relative;
 `;
 
 // 추천 음식
@@ -29,6 +33,62 @@ const TopWrap = styled.div`
     font-size: 2rem;
   }
 `;
+
+// 슬라이터 Container
+const SliderContainer = styled.div`
+  margin: auto;
+  padding-bottom: 20px;
+  height: 260px;
+`;
+// 슬라이더 Wrap
+const StyledSlider = styled(Slider)`
+  height: 300px;
+  padding: 10px 5px;
+  margin-left: 20px;
+  .slick-slide div {
+    //슬라이더  컨텐츠
+    cursor: pointer;
+  }
+  .slick-slide div:focus-visible {
+    outline: none;
+  }
+  .slick-list {
+    border-radius: 10px;
+    padding: 0;
+    > div {
+      display: flex;
+      margin: 0;
+      > div {
+        margin-right: 20px;
+      }
+    }
+  }
+  // 슬라이더 이미지
+  .slick-slide img {
+    width: 260px;
+    height: 240px;
+    margin: 0px;
+    border-radius: 10px;
+    border: 3px solid black;
+  }
+  // 하단 순서 버튼
+  .slick-dots {
+    bottom: 15px;
+    margin: 0px;
+  }
+`;
+
+const settings = {
+  dots: true, // 하단 동그라미 버튼
+  arrows: false, // 양 옆 화살표 버튼
+  infinite: true, // 무한 반복
+  speed: 600, // 넘어갈 때 속도
+  slidesToShow: 2, // 한 번에 볼 수 있는 슬라이드 개수
+  slidesToScroll: 1, // 한 번에 넘어가는 슬라이드 수
+  autoplay: false, // 자동 슬라이드
+  centerMode: false, // 가운데 맞춤 모드
+  cssEase: "ease",
+};
 
 // 추천 정보
 const InformationWrap = styled.div`
@@ -104,15 +164,22 @@ const ViewDetails = styled.div`
   margin: 20px 47px 20px 47px;
   cursor: pointer;
   &:hover {
-    background: #ffc391;
+    background: #cd9f79;
   }
 `;
 
-const ResultPage = () => {
+const NoImgMsg = styled.img`
+  width: 200px;
+  height: 200px;
+`;
+
+const RecomandationPage = () => {
   // axios로 받은 검색 데이터를 저장해두는 상태
   const [data, setData] = useState([]);
-  const [images, setImages] = useState([[], []]);
-
+  // 검색결과 데이터중 1번째 추천음식점 이미지를 저장해두는 useState
+  const [image1, setImage1] = useState([]);
+  // 검색결과 데이터중 2번째 추천음식점 이미지를 저장해두는 useState
+  const [image2, setImage2] = useState([]);
   // useNavigate로 전달한 쿼리파라미터의 값(uri)의 값을 활용하기 위한 변수선언
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -161,12 +228,12 @@ const ResultPage = () => {
   // 이미지를 받아오는 API의 쿼리에 검색 API결과가 필요하기 때문에,
   // 검색 API가 실행된 후 실행하기 위해 data(검색api 결과)가 변동이 있을때 이미지 API실행
   useEffect(() => {
-    // Fetch images for each index
-    const fetchImageData = async (index) => {
+    // 첫번째(data[0] 검색결과 이미지를 받아오는 API
+    const imageData1 = async () => {
       try {
         const response = await axios.get("/v1/search/image", {
           params: {
-            query: `${data[index].title}${food}`,
+            query: `${data[0].title}${food}`,
             display: 100,
           },
           headers: {
@@ -176,12 +243,7 @@ const ResultPage = () => {
         });
         console.log(response);
 
-        // Update the state for the appropriate index
-        setImages((prevImages) => {
-          const newImages = [...prevImages];
-          newImages[index] = response.data.items;
-          return newImages;
-        });
+        setImage1(response.data.items);
       } catch (error) {
         let message = "Unknown Error";
         if (error instanceof Error) message = error.message;
@@ -189,19 +251,75 @@ const ResultPage = () => {
       }
     };
 
-    // Fetch images for both indices
-    fetchImageData(0);
-    fetchImageData(1);
+    // 두번째(data[1] 검색결과 이미지를 받아오는 API
+    const imageData2 = async () => {
+      try {
+        const response = await axios.get("/v1/search/image", {
+          params: {
+            query: `${data[1].title}${food}`,
+            display: 100,
+          },
+          headers: {
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+          },
+        });
+        console.log(response);
+
+        setImage2(response.data.items);
+      } catch (error) {
+        let message = "Unknown Error";
+        if (error instanceof Error) message = error.message;
+        console.log(message);
+      }
+    };
+
+    imageData1();
+    imageData2();
   }, [data]);
 
-  // 음식점 블로그 api받아오는 코드
-  const [blogData, setBlogData] = useState([]);
+  // 첫번째 음식점 블로그 api받아오는 코드
+  const [blogData1, setblogData1] = useState();
   useEffect(() => {
-    const fetchData = async (index) => {
+    const fetchblogData1 = async () => {
       try {
         const response = await axios.get("/v1/search/blog.json", {
           params: {
-            query: `${data[index].title} 내돈내산`,
+            query: `${data[0].title} 내돈내산`,
+            display: 4,
+          },
+          headers: {
+            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+          },
+        });
+        // title <br>,</br> 문자열 필터링 로직 추가
+        const responseData = response.data.items.map((item) => {
+          let str = item.title;
+          str = str.replace(/<\/?b>/g, "");
+          return { ...item, title: str };
+        });
+
+        setblogData1(responseData);
+        console.log(response);
+      } catch (error) {
+        let message = "Unknown Error";
+        if (error instanceof Error) message = error.message;
+        console.log(message);
+      }
+    };
+
+    fetchblogData1();
+  }, [image1]);
+
+  // 두번째 음식점 블로그 api받아오는 코드
+  const [blogData2, setblogData2] = useState();
+  useEffect(() => {
+    const fetchblogData2 = async () => {
+      try {
+        const response = await axios.get("/v1/search/blog.json", {
+          params: {
+            query: `${data[1].title} 내돈내산`,
             display: 4,
           },
           headers: {
@@ -217,12 +335,7 @@ const ResultPage = () => {
           return { ...item, title: str };
         });
 
-        setBlogData((prevData) => {
-          const newData = [...prevData];
-          newData[index] = responseData;
-          return newData;
-        });
-
+        setblogData2(responseData);
         console.log(response);
       } catch (error) {
         let message = "Unknown Error";
@@ -231,15 +344,18 @@ const ResultPage = () => {
       }
     };
 
-    fetchData(0);
-    fetchData(1);
-  }, [data]);
+    fetchblogData2();
+  }, [image2]);
 
   // 지역구 모달창
   const [showModal, setShowModal] = useState(false);
 
   const openModal = () => {
-    setShowModal(!showModal);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
   };
 
   // 상세보기 음식점1 모달창
@@ -266,22 +382,81 @@ const ResultPage = () => {
   return (
     <>
       {/* 데이터 불러오기전 분기*/}
-      {data.length > 0 && images.length > 0 ? (
+      {data.length > 0 && image1.length > 0 ? (
+        
         <HomepageContainer>
           {/* 모달창 띄우는 곳*/}
-          {showModal && <ResultModal openModal={openModal} />}
+          {showModal ? (
+            <ResultModal openModal={openModal} closeModal={closeModal} />
+          ) : (
+            ""
+          )}
 
           {/* 메인창 */}
           <div style={{ display: "flex" }}>
             {/* 추천 창 1 */}
             {data.map((recommendation, index) => (
+              
               <RecomandationWrap key={index}>
                 <TopWrap>
                   <h1>
                     (추천 {index + 1}) {recommendation.category}
                   </h1>
                 </TopWrap>
-                <RenderSlider index={index} images={images} />
+                <SliderContainer>
+                  <StyledSlider {...settings}>
+                    {index === 0 &&
+                      (image1
+                        .filter((item) => item.title.includes("맛집"))
+                        .filter((item) => !item.thumbnail.includes("output"))
+                        .filter((item) => !item.thumbnail.includes("cyworld"))
+                        .slice(0, 5).length > 1 ? (
+                        image1
+                          .filter((item) => item.title.includes("맛집"))
+                          .filter((item) => !item.thumbnail.includes("output"))
+                          .filter((item) => !item.thumbnail.includes("cyworld"))
+                          .slice(0, 5)
+                          .map((item, index) => (
+                            <div key={index}>
+                              <img src={item.thumbnail} alt="Thumbnail" />
+                            </div>
+                          ))
+                      ) : (
+                        <div>
+                          <NoImgMsg
+                            src={`${PUBLIC}/images/getReplaceResult.gif`}
+                            alt=""
+                          />
+                        </div>
+                      ))}
+
+                    {/* 2번째 음식점 사진 랜더링 */}
+                    {index === 1 &&
+                      (image2
+                        .filter((item) => item.title.includes("맛집"))
+                        .filter((item) => !item.thumbnail.includes("output"))
+                        .filter((item) => !item.thumbnail.includes("cyworld"))
+                        .slice(0, 5).length > 1 ? (
+                        image2
+                          .filter((item) => item.title.includes("맛집"))
+                          .filter((item) => !item.thumbnail.includes("output"))
+                          .filter((item) => !item.thumbnail.includes("cyworld"))
+                          .slice(0, 5)
+                          .map((item, index) => (
+                            <div key={index}>
+                              <img src={item.thumbnail} alt="Thumbnail" />
+                            </div>
+                          ))
+                      ) : (
+                        <div>
+                          <NoImgMsg
+                            src={`${PUBLIC}/images/getReplaceResult.gif`}
+                            alt=""
+                          />
+                        </div>
+                      ))}
+                  </StyledSlider>
+                </SliderContainer>
 
                 <InformationWrap>
                   <h1 className="InformationText"> {recommendation.title} </h1>
@@ -319,7 +494,8 @@ const ResultPage = () => {
                   <BlogModal
                     openReview={openReview}
                     closeReview={closeReview}
-                    blogData={blogData}
+                    blogData1={blogData1}
+                    blogData2={blogData2}
                     data={data}
                     selectedModalIndex={selectedModalIndex}
                   />
@@ -338,4 +514,4 @@ const ResultPage = () => {
   );
 };
 
-export default ResultPage;
+export default RecomandationPage;
