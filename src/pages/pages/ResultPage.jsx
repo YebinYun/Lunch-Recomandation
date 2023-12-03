@@ -1,112 +1,12 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import styled from "styled-components";
 import ResultModal from "../../components/modal/ResultModal";
 import BlogModal from "../../components/modal/BlogModal";
 import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼리파라미터값(uri)을 사용하기 위한 훅
 import HomepageContainer from "../layout/HomepageContainer";
-import RenderSlider from "../../components/recomandation/RenderSlider";
-
-// 추천식당 창
-const RecomandationWrap = styled.div`
-  position: relative;
-  width: 37vw;
-  height: 75vh;
-  background-color: #ffe9da;
-  border: 3px solid #000;
-  border-radius: 25px 25px 0 0;
-  margin: 0 1rem;
-`;
-
-// 추천 음식
-const TopWrap = styled.div`
-  border-bottom: 3px solid #000;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  > h1 {
-    font-size: 2rem;
-  }
-`;
-
-// 추천 정보
-const InformationWrap = styled.div`
-  margin: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  > h1 {
-    font-size: 1.8rem;
-    padding-bottom: 10px;
-  }
-  > p {
-    font-size: 1.2rem;
-  }
-  > div {
-    font-size: 1.2rem;
-  }
-  .InformationText {
-    height: 25px;
-    text-align: left;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: baseline;
-    margin: 10px;
-    > a {
-      width: 430px;
-      padding-left: 1rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      &:link {
-        color: black;
-      }
-      &:hover {
-        font-weight: bold;
-      }
-      &:visited {
-        color: black;
-      }
-    }
-    > span {
-      color: #777;
-      margin-left: 1rem;
-    }
-    > h4 {
-      white-space: nowrap;
-      font-weight: normal;
-    }
-  }
-  .address1 {
-    line-height: 1.8rem;
-  }
-  .address2 {
-    width: 430px;
-    height: 25px;
-    line-height: 1.8rem;
-    margin-left: 1rem;
-  }
-`;
-
-// 상세 보기
-const ViewDetails = styled.div`
-  border-radius: 10px;
-  border: 3px solid #000;
-  height: 60px;
-  width: 500px;
-  background: #f2c198;
-  position: absolute;
-  bottom: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 20px 47px 20px 47px;
-  cursor: pointer;
-  &:hover {
-    background: #ffc391;
-  }
-`;
+import ResultRenderSlider from "../../components/recomandation/ResultRenderSlider";
+import ResultInformation from "../../components/recomandation/ResultInformation";
 
 const ResultPage = () => {
   // axios로 받은 검색 데이터를 저장해두는 상태
@@ -238,7 +138,7 @@ const ResultPage = () => {
   // 지역구 모달창
   const [showModal, setShowModal] = useState(false);
 
-  const openModal = () => {
+  const openModalHandler = () => {
     setShowModal(!showModal);
   };
 
@@ -268,54 +168,22 @@ const ResultPage = () => {
       {/* 데이터 불러오기전 분기*/}
       {data.length > 0 && images.length > 0 ? (
         <HomepageContainer>
-          {/* 모달창 띄우는 곳*/}
-          {showModal && <ResultModal openModal={openModal} />}
-
           {/* 메인창 */}
           <div style={{ display: "flex" }}>
-            {/* 추천 창 1 */}
             {data.map((recommendation, index) => (
               <RecomandationWrap key={index}>
-                <TopWrap>
-                  <h1>
-                    (추천 {index + 1}) {recommendation.category}
-                  </h1>
-                </TopWrap>
-                <RenderSlider index={index} images={images} />
-
-                <InformationWrap>
-                  <h1 className="InformationText"> {recommendation.title} </h1>
-                  <p className="InformationText">
-                    <h4>사이트 :</h4>
-                    {recommendation.link ? (
-                      <a
-                        target="_blank"
-                        href={recommendation.link}
-                        rel="noreferrer">
-                        {recommendation.link}
-                      </a>
-                    ) : (
-                      <span>
-                        {recommendation.title}은 사이트를 제공하고 있지
-                        않습니다.
-                      </span>
-                    )}
-                  </p>
-                  <div className="InformationText">
-                    <div className="address1">주소 :</div>{" "}
-                    <div className="address2">{recommendation.roadAddress}</div>
-                  </div>
-                </InformationWrap>
-
-                <ViewDetails
-                  onClick={() => {
-                    openReview(index);
-                  }}>
-                  <h1> 상세보기 </h1>
-                </ViewDetails>
+                <TitleCategory>
+                  (추천 {index + 1}) {recommendation.category}
+                </TitleCategory>
+                <ResultRenderSlider index={index} images={images} />
+                <ResultInformation
+                  recommendation={recommendation}
+                  openReview={openReview}
+                  index={index}
+                />
 
                 {/* 상세보기 띄우는 곳*/}
-                {showReview || showReview2 ? (
+                {(showReview || showReview2) && (
                   <BlogModal
                     openReview={openReview}
                     closeReview={closeReview}
@@ -323,8 +191,6 @@ const ResultPage = () => {
                     data={data}
                     selectedModalIndex={selectedModalIndex}
                   />
-                ) : (
-                  ""
                 )}
               </RecomandationWrap>
             ))}
@@ -334,8 +200,25 @@ const ResultPage = () => {
       ) : (
         <div>데이터를 불러오는 중입니다..</div>
       )}
+      {showModal && <ResultModal openModal={openModalHandler} />}
     </>
   );
 };
 
 export default ResultPage;
+
+const RecomandationWrap = styled.div`
+  position: relative;
+  width: 37vw;
+  height: 75vh;
+  background-color: #ffe9da;
+  border: 3px solid black;
+  border-radius: 25px 25px 0 0;
+  margin: 0 1rem;
+`;
+
+const TitleCategory = styled.h1`
+  border-bottom: 3px solid black;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+`;
