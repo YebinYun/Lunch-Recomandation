@@ -8,9 +8,9 @@ import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼�
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
+import HomepageContainer from "../layout/HomepageContainer";
 
 const PUBLIC = process.env.PUBLIC_URL;
-const koreanFood1 = `${PUBLIC}/images/koreanFood1.png`;
 
 const BackgroundImage = styled.div`
   background-image: url("/images/secBackground.png");
@@ -503,200 +503,131 @@ const ResultPage = () => {
     <>
       {/* 데이터 불러오기전 분기*/}
       {data.length > 0 && image1.length > 0 ? (
-        <BackgroundImage>
-          <Container>
-            {/* 상단바-1 */}
-            <TopBarWrap>
-              {/* 동작 버튼 */}
-              <AcctionBtnWrap>
-                {/* 방향키 */}
-                <AcctionBtn>
-                  <Icon
-                    icon="fluent-emoji-high-contrast:right-arrow"
-                    rotate={2}
-                  />
-                </AcctionBtn>
-                <AcctionBtn>
-                  <Icon icon="fluent-emoji-high-contrast:right-arrow" />
-                </AcctionBtn>
-              </AcctionBtnWrap>
+        <HomepageContainer>
+          {/* 모달창 띄우는 곳*/}
+          {showModal ? (
+            <ResultModal openModal={openModal} closeModal={closeModal} />
+          ) : (
+            ""
+          )}
 
-              {/* 링크 느낌 구현 */}
-              <LinkWrap>
-                <LinkBarWrap>
-                  <LinkBar>
-                    https:// 프로젝트.참숯가마/{inputValue}_{food}_추천
-                  </LinkBar>
-                  <Icon icon="solar:star-broken" width="30" height="30" />
-                </LinkBarWrap>
-
-                <AcctionBtn>
-                  <Icon icon="ic:round-refresh" width="40" height="40" />
-                </AcctionBtn>
-              </LinkWrap>
-
-              {/* 동작 버튼 */}
-              <AcctionBtnWrap>
-                <AcctionBtn>
-                  <Icon icon="ic:round-minimize" />
-                </AcctionBtn>
-                <AcctionBtn>
-                  <Icon icon="ep:close-bold" />
-                </AcctionBtn>
-              </AcctionBtnWrap>
-            </TopBarWrap>
-
-            {/* 상단바-2 */}
-            <SecondBarWrap>
-              <MapBtn>
-                <MapText onClick={openModal}> 지역구 보러가기 </MapText>
-              </MapBtn>
-            </SecondBarWrap>
-
-            {/* 모달창 띄우는 곳*/}
-            {showModal ? (
-              <ResultModal openModal={openModal} closeModal={closeModal} />
-            ) : (
-              ""
-            )}
-
-            {/* 메인창 */}
-            <MainWrap>
-              {/* 추천 창 1 */}
-              {data.map((recommendation, index) => (
-                <RecomandationWrap key={index}>
-                  <TopWrap>
-                    <h1>
-                      (추천 {index + 1}) {recommendation.category}
-                    </h1>
-                  </TopWrap>
-                  <SliderContainer>
-                    <StyledSlider {...settings}>
-                      {index === 0 &&
-                        (image1
+          {/* 메인창 */}
+          <MainWrap>
+            {/* 추천 창 1 */}
+            {data.map((recommendation, index) => (
+              <RecomandationWrap key={index}>
+                <TopWrap>
+                  <h1>
+                    (추천 {index + 1}) {recommendation.category}
+                  </h1>
+                </TopWrap>
+                <SliderContainer>
+                  <StyledSlider {...settings}>
+                    {index === 0 &&
+                      (image1
+                        .filter((item) => item.title.includes("맛집"))
+                        .filter((item) => !item.thumbnail.includes("output"))
+                        .filter((item) => !item.thumbnail.includes("cyworld"))
+                        .slice(0, 5).length > 1 ? (
+                        image1
                           .filter((item) => item.title.includes("맛집"))
                           .filter((item) => !item.thumbnail.includes("output"))
                           .filter((item) => !item.thumbnail.includes("cyworld"))
-                          .slice(0, 5).length > 1 ? (
-                          image1
-                            .filter((item) => item.title.includes("맛집"))
-                            .filter(
-                              (item) => !item.thumbnail.includes("output")
-                            )
-                            .filter(
-                              (item) => !item.thumbnail.includes("cyworld")
-                            )
-                            .slice(0, 5)
-                            .map((item, index) => (
-                              <div key={index}>
-                                <img src={item.thumbnail} alt="Thumbnail" />
-                              </div>
-                            ))
-                        ) : (
-                          <div>
-                            <NoImgMsg
-                              src={`${PUBLIC}/images/getReplaceResult.gif`}
-                              alt=""
-                            />
-                          </div>
-                        ))}
-
-                      {/* 2번째 음식점 사진 랜더링 */}
-                      {index === 1 &&
-                        (image2
-                          .filter((item) => item.title.includes("맛집"))
-                          .filter((item) => !item.thumbnail.includes("output"))
-                          .filter((item) => !item.thumbnail.includes("cyworld"))
-                          .slice(0, 5).length > 1 ? (
-                          image2
-                            .filter((item) => item.title.includes("맛집"))
-                            .filter(
-                              (item) => !item.thumbnail.includes("output")
-                            )
-                            .filter(
-                              (item) => !item.thumbnail.includes("cyworld")
-                            )
-                            .slice(0, 5)
-                            .map((item, index) => (
-                              <div key={index}>
-                                <img src={item.thumbnail} alt="Thumbnail" />
-                              </div>
-                            ))
-                        ) : (
-                          <div>
-                            <NoImgMsg
-                              src={`${PUBLIC}/images/getReplaceResult.gif`}
-                              alt=""
-                            />
-                          </div>
-                        ))}
-                    </StyledSlider>
-                  </SliderContainer>
-
-                  <InformationWrap>
-                    <h1 className="InformationText">
-                      {" "}
-                      {recommendation.title}{" "}
-                    </h1>
-                    <p className="InformationText">
-                      <h4>사이트 :</h4>
-                      {recommendation.link ? (
-                        <a
-                          target="_blank"
-                          href={recommendation.link}
-                          rel="noreferrer"
-                        >
-                          {recommendation.link}
-                        </a>
+                          .slice(0, 5)
+                          .map((item, index) => (
+                            <div key={index}>
+                              <img src={item.thumbnail} alt="Thumbnail" />
+                            </div>
+                          ))
                       ) : (
-                        <span>
-                          {recommendation.title}은 사이트를 제공하고 있지
-                          않습니다.
-                        </span>
-                      )}
-                    </p>
-                    <div className="InformationText">
-                      <div className="address1">주소 :</div>{" "}
-                      <div className="address2">
-                        {recommendation.roadAddress}
-                      </div>
-                    </div>
-                  </InformationWrap>
+                        <div>
+                          <NoImgMsg
+                            src={`${PUBLIC}/images/getReplaceResult.gif`}
+                            alt=""
+                          />
+                        </div>
+                      ))}
 
-                  <ViewDetails
-                    onClick={() => {
-                      openReview(index);
-                    }}
-                  >
-                    <h1> 상세보기 </h1>
-                  </ViewDetails>
+                    {/* 2번째 음식점 사진 랜더링 */}
+                    {index === 1 &&
+                      (image2
+                        .filter((item) => item.title.includes("맛집"))
+                        .filter((item) => !item.thumbnail.includes("output"))
+                        .filter((item) => !item.thumbnail.includes("cyworld"))
+                        .slice(0, 5).length > 1 ? (
+                        image2
+                          .filter((item) => item.title.includes("맛집"))
+                          .filter((item) => !item.thumbnail.includes("output"))
+                          .filter((item) => !item.thumbnail.includes("cyworld"))
+                          .slice(0, 5)
+                          .map((item, index) => (
+                            <div key={index}>
+                              <img src={item.thumbnail} alt="Thumbnail" />
+                            </div>
+                          ))
+                      ) : (
+                        <div>
+                          <NoImgMsg
+                            src={`${PUBLIC}/images/getReplaceResult.gif`}
+                            alt=""
+                          />
+                        </div>
+                      ))}
+                  </StyledSlider>
+                </SliderContainer>
 
-                  {/* 상세보기 띄우는 곳*/}
-                  {showReview || showReview2 ? (
-                    <BlogModal
-                      openReview={openReview}
-                      closeReview={closeReview}
-                      blogData1={blogData1}
-                      blogData2={blogData2}
-                      data={data}
-                      selectedModalIndex={selectedModalIndex}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </RecomandationWrap>
-              ))}
-            </MainWrap>
+                <InformationWrap>
+                  <h1 className="InformationText"> {recommendation.title} </h1>
+                  <p className="InformationText">
+                    <h4>사이트 :</h4>
+                    {recommendation.link ? (
+                      <a
+                        target="_blank"
+                        href={recommendation.link}
+                        rel="noreferrer">
+                        {recommendation.link}
+                      </a>
+                    ) : (
+                      <span>
+                        {recommendation.title}은 사이트를 제공하고 있지
+                        않습니다.
+                      </span>
+                    )}
+                  </p>
+                  <div className="InformationText">
+                    <div className="address1">주소 :</div>{" "}
+                    <div className="address2">{recommendation.roadAddress}</div>
+                  </div>
+                </InformationWrap>
 
-            {/* 메인창 끝 */}
+                <ViewDetails
+                  onClick={() => {
+                    openReview(index);
+                  }}>
+                  <h1> 상세보기 </h1>
+                </ViewDetails>
 
-            {/* 하단바 */}
-            <FooterBarWrap>
-              <Icon icon="fluent-emoji-flat:face-savoring-food" />
-              <div>I LOVE SEOUL</div>
-            </FooterBarWrap>
-          </Container>
-        </BackgroundImage>
+                {/* 상세보기 띄우는 곳*/}
+                {showReview || showReview2 ? (
+                  <BlogModal
+                    openReview={openReview}
+                    closeReview={closeReview}
+                    blogData1={blogData1}
+                    blogData2={blogData2}
+                    data={data}
+                    selectedModalIndex={selectedModalIndex}
+                  />
+                ) : (
+                  ""
+                )}
+              </RecomandationWrap>
+            ))}
+          </MainWrap>
+
+          {/* 메인창 끝 */}
+
+          {/* 하단바 */}
+        </HomepageContainer>
       ) : (
         <div>데이터를 불러오는 중입니다..</div>
       )}

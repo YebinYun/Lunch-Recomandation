@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import { PUBLIC_BACKGROUND_IMAGE } from "../../assets/images/images";
 
 const HomepageLayout = ({ children }) => {
+  const location = useLocation();
+  const background =
+    location.pathname === "/ResultPage"
+      ? PUBLIC_BACKGROUND_IMAGE.resultBackground
+      : PUBLIC_BACKGROUND_IMAGE.mainBackground;
+
   return (
-    <Layout>
+    <Layout background={background}>
       <div>{children}</div>
     </Layout>
   );
@@ -16,7 +23,7 @@ const Layout = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: url(${PUBLIC_BACKGROUND_IMAGE.mainBackground});
+  background: url(${(props) => props.background});
   background-size: cover;
   > div {
     display: flex;
