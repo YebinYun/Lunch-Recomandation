@@ -19,8 +19,6 @@ const ResultPage = () => {
   const [showModal, setShowModal] = useState(false);
   // 상세보기 음식점1 모달창
   const [showReview, setShowReview] = useState(false);
-  // 상세보기 음식점2 모달창
-  const [showReview2, setShowReview2] = useState(false);
   const [selectedModalIndex, setSelectedModalIndex] = useState(null);
 
   // useNavigate로 전달한 쿼리파라미터의 값(uri)의 값을 활용하기 위한 변수선언
@@ -102,19 +100,11 @@ const ResultPage = () => {
     setShowModal(!showModal);
   };
 
-  const openReview = (index) => {
-    if (index === 0) {
-      setShowReview(true);
-    } else if (index === 1) {
-      setShowReview2(true);
-    }
+  const toggleReview = (index) => {
+    setShowReview((prevShowReview) => !prevShowReview);
     setSelectedModalIndex(index);
   };
 
-  const closeReview = () => {
-    setShowReview(false);
-    setShowReview2(false);
-  };
 
   return (
     <>
@@ -131,15 +121,13 @@ const ResultPage = () => {
                 <ResultRenderSlider index={index} images={images} />
                 <ResultInformation
                   recommendation={recommendation}
-                  openReview={openReview}
+                  toggleReview={toggleReview}
                   index={index}
                 />
-
                 {/* 상세보기 띄우는 곳*/}
-                {(showReview || showReview2) && (
+                {showReview && (
                   <BlogModal
-                    openReview={openReview}
-                    closeReview={closeReview}
+                    toggleReview={toggleReview}
                     blogData={blogData}
                     data={data}
                     selectedModalIndex={selectedModalIndex}

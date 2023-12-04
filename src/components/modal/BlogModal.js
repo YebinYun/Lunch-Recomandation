@@ -155,11 +155,10 @@ const ReviewPostWrap = styled.div`
 `;
 
 const BlogModal = ({
-  closeReview,
   blogData1,
   blogData2,
   data,
-  openReview,
+  toggleReview,
   selectedModalIndex,
 }) => {
   const blogData = [blogData1, blogData2];
@@ -189,7 +188,7 @@ const BlogModal = ({
               <Icon
                 icon="ep:close-bold"
                 className="closeButton"
-                onClick={closeReview}
+                onClick={toggleReview}
               />
             </AcctionBtn>
           </AcctionBtnWrap>
@@ -211,7 +210,7 @@ const BlogModal = ({
                     alt="대체 이미지"
                   />
                 </div>
-                <a target="_blank" href={data.link} className="reviewPostText">
+                <a target="_blank" href={data.link} className="reviewPostText" rel="noreferrer">
                   <h4>{data.title}</h4>
                   <p>
                     작성일 {data.postdate.substring(0, 4)}년{" "}

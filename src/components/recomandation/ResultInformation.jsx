@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 
-const ResultInformation = ({ recommendation, openReview, index }) => {
+const ResultInformation = ({ recommendation, toggleReview, index }) => {
   return (
     <>
       <InformationWrap>
@@ -26,7 +26,7 @@ const ResultInformation = ({ recommendation, openReview, index }) => {
 
         <BlogButton
           onClick={() => {
-            openReview(index);
+            toggleReview(index);
           }}>
           상세보기
         </BlogButton>

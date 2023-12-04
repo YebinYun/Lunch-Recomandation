@@ -1,8 +1,6 @@
 import instance from "./apiConfig";
 import Error from "./apiErrorHandling";
 
-
-
 const getSearch = {
     get: async (endpoints) => {
         try {
