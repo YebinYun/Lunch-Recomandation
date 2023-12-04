@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import styled from "styled-components";
 import ResultModal from "../../components/modal/ResultModal";
 import BlogModal from "../../components/modal/BlogModal";
@@ -7,11 +6,22 @@ import { useLocation } from "react-router-dom"; // useNavigate로 전달한 쿼�
 import HomepageContainer from "../layout/HomepageContainer";
 import ResultRenderSlider from "../../components/recomandation/ResultRenderSlider";
 import ResultInformation from "../../components/recomandation/ResultInformation";
+import getSearch from "../../api/getSearch";
+import Error from "../../api/apiErrorHandling";
 
 const ResultPage = () => {
   // axios로 받은 검색 데이터를 저장해두는 상태
   const [data, setData] = useState([]);
   const [images, setImages] = useState([[], []]);
+  const [blogData, setBlogData] = useState([]);
+
+  // 지역구 모달창
+  const [showModal, setShowModal] = useState(false);
+  // 상세보기 음식점1 모달창
+  const [showReview, setShowReview] = useState(false);
+  // 상세보기 음식점2 모달창
+  const [showReview2, setShowReview2] = useState(false);
+  const [selectedModalIndex, setSelectedModalIndex] = useState(null);
 
   // useNavigate로 전달한 쿼리파라미터의 값(uri)의 값을 활용하기 위한 변수선언
   const location = useLocation();
@@ -19,135 +29,78 @@ const ResultPage = () => {
   const food = searchParams.get("food");
   const inputValue = searchParams.get("inputValue");
 
+  const getEndpoints = () => [
+    {
+      url: "/search/local.json",
+      keyword: `서울 ${inputValue} ${food}`,
+      num: 5,
+    },
+    {
+      url: "/search/image",
+      keyword: `${data[0]?.title}${food}`,
+      num: 100,
+    },
+    {
+      url: "/search/blog.json",
+      keyword: `${data[0]?.title} 내돈내산`,
+      num: 4,
+    },
+  ];
+
+
+ const fetchData = async (endpoints) => {
+   try {
+     const responses = await getSearch.get(endpoints);
+
+     const [localSearchResponse, imageSearchResponse, blogSearchResponse] =
+       responses;
+
+     const randomItems = getRandomItems(localSearchResponse.items, 2);
+     const modifiedItems = randomItems.map((item) => {
+       let str = item.title;
+       str = str.replace(/<\/?b>/g, "");
+       return { ...item, title: str };
+     });
+
+     setData(modifiedItems);
+
+     const imageItems = imageSearchResponse.items;
+     setImages((prevImages) => {
+       const newImages = [...prevImages];
+       newImages[0] = imageItems;
+       return newImages;
+     });
+
+     const blogItems = blogSearchResponse.items.map((item) => {
+       let str = item.title;
+       str = str.replace(/<\/?b>/g, "");
+       return { ...item, title: str };
+     });
+     setBlogData(blogItems);
+   } catch (error) {
+     Error(error);
+   }
+ };
+
+ const loadData =  () => {
+    const endpoints = getEndpoints();
+     fetchData(endpoints);
+  };
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+
   // 검색결과 5개중 랜덤으로 2개를 뽑기 위한 함수
   const getRandomItems = (array, count) => {
     const shuffled = array.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("/v1/search/local.json", {
-          params: {
-            query: `서울 ${inputValue} ${food} `,
-            display: 5,
-          },
-          headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
-          },
-        });
-        const randomItems = getRandomItems(response.data.items, 2);
-
-        // 받아온 데이터의 일부 title가 <b>,</b>를 포함하기에, 해당 값을 제거하기 위한 코드
-        console.log(response);
-        const modifiedItems = randomItems.map((item) => {
-          let str = item.title;
-          str = str.replace(/<\/?b>/g, "");
-          return { ...item, title: str };
-        });
-        setData(modifiedItems);
-      } catch (error) {
-        let message = "Unknown Error";
-        if (error instanceof Error) message = error.message;
-        console.log(message);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // 이미지를 받아오는 API의 쿼리에 검색 API결과가 필요하기 때문에,
-  // 검색 API가 실행된 후 실행하기 위해 data(검색api 결과)가 변동이 있을때 이미지 API실행
-  useEffect(() => {
-    // Fetch images for each index
-    const fetchImageData = async (index) => {
-      try {
-        const response = await axios.get("/v1/search/image", {
-          params: {
-            query: `${data[index].title}${food}`,
-            display: 100,
-          },
-          headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
-          },
-        });
-        console.log(response);
-
-        // Update the state for the appropriate index
-        setImages((prevImages) => {
-          const newImages = [...prevImages];
-          newImages[index] = response.data.items;
-          return newImages;
-        });
-      } catch (error) {
-        let message = "Unknown Error";
-        if (error instanceof Error) message = error.message;
-        console.log(message);
-      }
-    };
-
-    // Fetch images for both indices
-    fetchImageData(0);
-    fetchImageData(1);
-  }, [data]);
-
-  // 음식점 블로그 api받아오는 코드
-  const [blogData, setBlogData] = useState([]);
-  useEffect(() => {
-    const fetchData = async (index) => {
-      try {
-        const response = await axios.get("/v1/search/blog.json", {
-          params: {
-            query: `${data[index].title} 내돈내산`,
-            display: 4,
-          },
-          headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
-          },
-        });
-
-        // title <br>,</br> 문자열 필터링 로직 추가
-        const responseData = response.data.items.map((item) => {
-          let str = item.title;
-          str = str.replace(/<\/?b>/g, "");
-          return { ...item, title: str };
-        });
-
-        setBlogData((prevData) => {
-          const newData = [...prevData];
-          newData[index] = responseData;
-          return newData;
-        });
-
-        console.log(response);
-      } catch (error) {
-        let message = "Unknown Error";
-        if (error instanceof Error) message = error.message;
-        console.log(message);
-      }
-    };
-
-    fetchData(0);
-    fetchData(1);
-  }, [data]);
-
-  // 지역구 모달창
-  const [showModal, setShowModal] = useState(false);
-
   const openModalHandler = () => {
     setShowModal(!showModal);
   };
-
-  // 상세보기 음식점1 모달창
-  const [showReview, setShowReview] = useState(false);
-  // 상세보기 음식점2 모달창
-  const [showReview2, setShowReview2] = useState(false);
-
-  const [selectedModalIndex, setSelectedModalIndex] = useState(null);
 
   const openReview = (index) => {
     if (index === 0) {
