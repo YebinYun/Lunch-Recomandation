@@ -12,6 +12,7 @@ const getSearch = {
                             display: endpoint.num,
                         },
                     });
+                    console.log("API Response:", response.data);
                     return response.data;
                 })
             );

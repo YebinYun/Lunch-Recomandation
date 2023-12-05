@@ -9,6 +9,7 @@ const ResultModal = ({
   resultFoods,
   result,
   openModalHandler,
+  colorChange,
 }) => {
   const tittleFood = Object.keys(foodCountry).filter(
     (country) => foodCountry[country][0] === resultFoods
@@ -24,7 +25,9 @@ const ResultModal = ({
   };
 
   return (
-    <ModalContainer modalClickHandler={openModalHandler}>
+    <ModalContainer
+      modalClickHandler={openModalHandler}
+      colorChange={colorChange}>
       <ResultContainer>
         <ResultTitle>
           {tittleFood && result ? (
