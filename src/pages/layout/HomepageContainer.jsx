@@ -26,7 +26,7 @@ const HomepageContainer = ({ children }) => {
         modalClickHandler={modalClickHandler}
         colorMapChange={colorMapChange}
       />
-      <MainWrap>{children}</MainWrap>
+      <MainWrap colorChange={colorChange}>{children}</MainWrap>
       <BottomLink colorChange={colorChange} />
       {showModal && (
         <MapModal

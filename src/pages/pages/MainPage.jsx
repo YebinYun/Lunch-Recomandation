@@ -10,7 +10,7 @@ import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
 import { foods } from "../../utils/dummy/foods";
 import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
 
-const MainPage = () => {
+const MainPage = ({ colorChange }) => {
   const [resultFoods, setResultFood] = useState([
     PUBLIC_FOOD_IMAGE.koreanFood1,
     PUBLIC_FOOD_IMAGE.koreanFood2,
@@ -61,6 +61,7 @@ const MainPage = () => {
           resultFoods={resultFoods}
           result={result}
           buttonClickHandler={buttonClickHandler}
+          colorChange={colorChange}
         />
       )}
     </HomepageContainer>

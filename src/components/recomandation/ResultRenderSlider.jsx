@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구�
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
 import { PUBLIC_LOADING_IMAGE } from "../../assets/images/images";
 
-const RenderSlider = ({ index, images }) => {
+const ResultRenderSlider = ({ index, images }) => {
   const SliderContainer = styled.div`
     height: 17rem;
   `;
@@ -79,4 +79,4 @@ const RenderSlider = ({ index, images }) => {
   );
 };
 
-export default RenderSlider;
+export default ResultRenderSlider;
