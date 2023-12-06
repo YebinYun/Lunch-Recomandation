@@ -201,8 +201,8 @@ const RecomandationPage = () => {
             display: 5,
           },
           headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+            X_Naver_Client_Id: process.env.REACT_APP_NAVER_CLIENT_ID,
+            X_Naver_Client_Secret: process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         const randomItems = getRandomItems(response.data.items, 2);
@@ -237,8 +237,8 @@ const RecomandationPage = () => {
             display: 100,
           },
           headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+            X_Naver_Client_Id: process.env.REACT_APP_NAVER_CLIENT_ID,
+            X_Naver_Client_Secret: process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         console.log(response);
@@ -260,8 +260,8 @@ const RecomandationPage = () => {
             display: 100,
           },
           headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+            X_Naver_Client_Id: process.env.REACT_APP_NAVER_CLIENT_ID,
+            X_Naver_Client_Secret: process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         console.log(response);
@@ -289,8 +289,8 @@ const RecomandationPage = () => {
             display: 4,
           },
           headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+            X_Naver_Client_Id: process.env.REACT_APP_NAVER_CLIENT_ID,
+            X_Naver_Client_Secret: process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
         // title <br>,</br> 문자열 필터링 로직 추가
@@ -323,8 +323,8 @@ const RecomandationPage = () => {
             display: 4,
           },
           headers: {
-            "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-            "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_CLIENT_SECRET,
+            X_Naver_Client_Id: process.env.REACT_APP_NAVER_CLIENT_ID,
+            X_Naver_Client_Secret: process.env.REACT_APP_NAVER_CLIENT_SECRET,
           },
         });
 
@@ -383,7 +383,6 @@ const RecomandationPage = () => {
     <>
       {/* 데이터 불러오기전 분기*/}
       {data.length > 0 && image1.length > 0 ? (
-        
         <HomepageContainer>
           {/* 모달창 띄우는 곳*/}
           {showModal ? (
@@ -396,7 +395,6 @@ const RecomandationPage = () => {
           <div style={{ display: "flex" }}>
             {/* 추천 창 1 */}
             {data.map((recommendation, index) => (
-              
               <RecomandationWrap key={index}>
                 <TopWrap>
                   <h1>
@@ -466,7 +464,8 @@ const RecomandationPage = () => {
                       <a
                         target="_blank"
                         href={recommendation.link}
-                        rel="noreferrer">
+                        rel="noreferrer"
+                      >
                         {recommendation.link}
                       </a>
                     ) : (
@@ -485,7 +484,8 @@ const RecomandationPage = () => {
                 <ViewDetails
                   onClick={() => {
                     openReview(index);
-                  }}>
+                  }}
+                >
                   <h1> 상세보기 </h1>
                 </ViewDetails>
 
