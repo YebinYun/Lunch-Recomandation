@@ -12,7 +12,7 @@
 
 | <center>이 원호</center>                                           | <center>윤 예빈</center>                                           |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| <img width="150px" height="150px" src = "public\images\Wonho.png"> | <img width="150px" height="150px" src = "public\images\Yebin.jpg"> |
+| <img width="150px" height="150px" src = "client\public\images\Wonho.png"> | <img width="150px" height="150px" src = "client\public\images\Yebin.jpg"> |
 | <center>[@WONHO22](https://github.com/W0N-H0)</center>             | <center>[@YebinYun](https://github.com/YebinYun)</center>          |
 
 <br>
@@ -41,9 +41,9 @@
 
 | <center>메인 페이지</center>                                               | <center>추천 모달</center>                                             | <center>지역 보기 ver 1.</center>                                          |
 | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| <img width="300px" height="150px" src = "public\images\Main.png">          | <img width="300px" height="150px" src = "public\images\MainModal.png"> | <img width="300px" height="150px" src = "public\images\MapModalFirst.png"> |
+| <img width="300px" height="150px" src = "client\public\images\Main.png">          | <img width="300px" height="150px" src = "client\public\images\MainModal.png"> | <img width="300px" height="150px" src = "client\public\images\MapModalFirst.png"> |
 | <center>추천 페이지</center>                                               | <center>상세보기 모달</center>                                         | <center>지역 보기 ver 2.</center>                                          |
-| <img width="300px" height="150px" src = "public\images\Recomandation.png"> | <img width="300px" height="150px" src = "public\images\BlogModal.png"> | <img width="300px" height="150px" src = "public\images\MapModalSec.png">   |
+| <img width="300px" height="150px" src = "client\public\images\Recomandation.png"> | <img width="300px" height="150px" src = "client\public\images\BlogModal.png"> | <img width="300px" height="150px" src = "client\public\images\MapModalSec.png">   |
 
 <br>
 
@@ -83,10 +83,6 @@
 <br>
 
 ## **Stack**
-
-### **Environment**
-
-<img src="https://img.shields.io/badge/visual studio code-007ACC?style=flat&logo=visualstudiocode&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=flat&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/git hub-181717?style=flat&logo=github&logoColor=white"/>
 
 ### **Config**
 
