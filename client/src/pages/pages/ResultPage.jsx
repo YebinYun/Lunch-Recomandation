@@ -9,24 +9,20 @@ import ResultInformation from "../../components/recomandation/ResultInformation"
 import getSearch from "../../api/getSearch";
 import Error from "../../api/apiErrorHandling";
 
-const ResultPage = () => {
-  // axios로 받은 검색 데이터를 저장해두는 상태
+
+  const ResultPage = () => {
   const [data, setData] = useState([]);
   const [images, setImages] = useState([[], []]);
   const [blogData, setBlogData] = useState([]);
-
-  // 지역구 모달창
   const [showModal, setShowModal] = useState(false);
-  // 상세보기 음식점1 모달창
   const [showReview, setShowReview] = useState(false);
   const [selectedModalIndex, setSelectedModalIndex] = useState(null);
 
-  // useNavigate로 전달한 쿼리파라미터의 값(uri)의 값을 활용하기 위한 변수선언
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const food = searchParams.get("food");
-  const inputValue = searchParams.get("inputValue");
-
+     const location = useLocation();
+     const searchParams = new URLSearchParams(location.search);
+     const food = searchParams.get("food");
+     const inputValue = searchParams.get("inputValue");
+     
   const getEndpoints = () => [
     {
       url: "/search/local.json",
@@ -45,50 +41,48 @@ const ResultPage = () => {
     },
   ];
 
+  const fetchData = async (endpoints) => {
+    try {
+      const responses = await getSearch.get(endpoints);
 
- const fetchData = async (endpoints) => {
-   try {
-     const responses = await getSearch.get(endpoints);
+      const [localSearchResponse, imageSearchResponse, blogSearchResponse] =
+        responses;
 
-     const [localSearchResponse, imageSearchResponse, blogSearchResponse] =
-       responses;
+      const randomItems = getRandomItems(localSearchResponse.items, 2);
+      const modifiedItems = randomItems.map((item) => {
+        let str = item.title;
+        str = str.replace(/<\/?b>/g, "");
+        return { ...item, title: str };
+      });
 
-     const randomItems = getRandomItems(localSearchResponse.items, 2);
-     const modifiedItems = randomItems.map((item) => {
-       let str = item.title;
-       str = str.replace(/<\/?b>/g, "");
-       return { ...item, title: str };
-     });
+      setData(modifiedItems);
 
-     setData(modifiedItems);
+      const imageItems = imageSearchResponse.items;
+      setImages((prevImages) => {
+        const newImages = [...prevImages];
+        newImages[0] = imageItems;
+        return newImages;
+      });
 
-     const imageItems = imageSearchResponse.items;
-     setImages((prevImages) => {
-       const newImages = [...prevImages];
-       newImages[0] = imageItems;
-       return newImages;
-     });
-
-     const blogItems = blogSearchResponse.items.map((item) => {
-       let str = item.title;
-       str = str.replace(/<\/?b>/g, "");
-       return { ...item, title: str };
-     });
-     setBlogData(blogItems);
-   } catch (error) {
-     Error(error);
-   }
- };
-
- const loadData =  () => {
-    const endpoints = getEndpoints();
-     fetchData(endpoints);
+      const blogItems = blogSearchResponse.items.map((item) => {
+        let str = item.title;
+        str = str.replace(/<\/?b>/g, "");
+        return { ...item, title: str };
+      });
+      setBlogData(blogItems);
+    } catch (error) {
+      Error(error);
+    }
   };
 
   useEffect(() => {
+    const loadData = async () => {
+      const endpoints = getEndpoints();
+      await fetchData(endpoints);
+    };
+
     loadData();
   }, []);
-
 
   // 검색결과 5개중 랜덤으로 2개를 뽑기 위한 함수
   const getRandomItems = (array, count) => {
@@ -104,6 +98,7 @@ const ResultPage = () => {
     setShowReview((prevShowReview) => !prevShowReview);
     setSelectedModalIndex(index);
   };
+
 
 
   return (
