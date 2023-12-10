@@ -5,18 +5,13 @@ const naverApi = require('./api/naverApi');
 
 const app = express();
 
+// 미들웨어를 통한 CORS 설정
 app.use(cors());
 
-// 서버 응답에 CORS 헤더 추가
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
 app.get('/', (req, res) => {
     res.send('Hello, this is the root route!');
 });
+
 app.use('/api', routes);
 app.use('/naver', naverApi);
 
