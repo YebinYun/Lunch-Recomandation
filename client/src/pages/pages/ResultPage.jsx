@@ -9,8 +9,7 @@ import ResultInformation from "../../components/recomandation/ResultInformation"
 import getSearch from "../../api/getSearch";
 import Error from "../../api/apiErrorHandling";
 
-
-  const ResultPage = () => {
+const ResultPage = () => {
   const [data, setData] = useState([]);
   const [images, setImages] = useState([[], []]);
   const [blogData, setBlogData] = useState([]);
@@ -18,14 +17,14 @@ import Error from "../../api/apiErrorHandling";
   const [showReview, setShowReview] = useState(false);
   const [selectedModalIndex, setSelectedModalIndex] = useState(null);
 
-     const location = useLocation();
-     const searchParams = new URLSearchParams(location.search);
-     const food = searchParams.get("food");
-     const inputValue = searchParams.get("inputValue");
-     
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const food = searchParams.get("food");
+  const inputValue = searchParams.get("inputValue");
+
   const getEndpoints = () => [
     {
-      url: "/search/local.json",
+      url: "/search/local.json", // /search/local
       keyword: `서울 ${inputValue} ${food}`,
       num: 5,
     },
@@ -35,11 +34,13 @@ import Error from "../../api/apiErrorHandling";
       num: 100,
     },
     {
-      url: "/search/blog.json",
+      url: "/search/blog.json", // /search/blog
       keyword: `${data[0]?.title} 내돈내산`,
       num: 4,
     },
   ];
+
+  // 함수와 변수 이름 정확히..!! 함수는 앞에 동사(get, fetch 등등 , 그리고 반환값(return)값이 있어야 함. 따라서 data와 같은 값을 넣어서 실행될수 있게 작성..
 
   const fetchData = async (endpoints) => {
     try {
@@ -98,8 +99,6 @@ import Error from "../../api/apiErrorHandling";
     setShowReview((prevShowReview) => !prevShowReview);
     setSelectedModalIndex(index);
   };
-
-
 
   return (
     <>
