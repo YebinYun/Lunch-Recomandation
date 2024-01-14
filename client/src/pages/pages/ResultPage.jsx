@@ -40,7 +40,7 @@ const Recomandation = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/naver/search",
+          "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/search",
           {
             params: {
               query: `${inputValue} ${food} `,
@@ -75,12 +75,12 @@ const Recomandation = () => {
     const imageData = async () => {
       try {
         const [response1, response2] = await Promise.all([
-          axios.get("http://localhost:8000/naver/search", {
+          axios.get("https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/search", {
             params: {
               query: `${data[0].title}${food}`,
             },
           }),
-          axios.get("http://localhost:8000/naver/image", {
+          axios.get("https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image", {
             params: {
               query: `${data[1].title}${food}`,
             },
@@ -101,7 +101,7 @@ const Recomandation = () => {
   useEffect(() => {
     const fetchBlogData = async (index) => {
       try {
-        const response = await axios.get("http://localhost:8000/naver/blog", {
+        const response = await axios.get("https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/blog", {
           params: {
             query: `${data[index].title} 내돈내산`,
           },
