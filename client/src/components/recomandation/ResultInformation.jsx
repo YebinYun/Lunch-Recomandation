@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const ResultInformation = ({ recommendation, toggleReview, index }) => {
   return (
-    <>
-      <InformationWrap>
-        <h1> {recommendation.title} </h1>
+    <InformationWrap>
+      <h1> {recommendation.title} </h1>
+      <InformationLayout>
         <InformationText>
           <span>사이트 :</span>
           {recommendation.link ? (
@@ -23,15 +23,14 @@ const ResultInformation = ({ recommendation, toggleReview, index }) => {
           <span className="address1">주소 :</span>
           <span className="address2">{recommendation.roadAddress}</span>
         </InformationText>
-
-        <BlogButton
-          onClick={() => {
-            toggleReview(index);
-          }}>
-          상세보기
-        </BlogButton>
-      </InformationWrap>
-    </>
+      </InformationLayout>
+      <BlogButton
+        onClick={() => {
+          toggleReview(index);
+        }}>
+        상세보기
+      </BlogButton>
+    </InformationWrap>
   );
 };
 
@@ -39,12 +38,20 @@ export default ResultInformation
 
 
 const InformationWrap = styled.div`
-  text-align: left;
-  margin: 2rem;
+  overflow:hidden;
+  width:100%;
+  display:flex;
+  align-items: center;
+  flex-direction:column;
+  margin-top:5rem;
   & h1 {
     font-size: 2rem;
-    margin: 4rem 0 2rem 0;
   }
+`;
+
+const InformationLayout = styled.div`
+  text-align: left;
+  margin: 1rem 0;
 `;
 
 const InformationText = styled.div`
@@ -59,17 +66,14 @@ const InformationText = styled.div`
 `;
 
 const BlogButton = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 25%;
+  overflow:hidden;
   text-align: center;
   background: #ffc391;
   width: 50%;
-  padding: 1rem 0;
-  margin: 2rem 0;
+  padding: 0.5rem 0;
   border: 3px solid #000;
   border-radius: 15px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
   &:hover {
     background: #f7984b;

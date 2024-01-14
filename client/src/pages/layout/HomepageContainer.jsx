@@ -40,6 +40,7 @@ const HomepageContainer = ({ children }) => {
 
 const MainWrap = styled.div`
   height: 80vh;
+  min-height:600px;
   background: white;
   display: flex;
   flex-direction: column;
