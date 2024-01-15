@@ -63,7 +63,7 @@ const TopLink = ({ modalClickHandler, colorChange }) => {
 };
 
 const TopLinkWrap = styled.div`
-  background: ${(props) => props.colorChange};
+  background: ${(props) => props.colorChange ||  '#ea8573'};
   width: 100%;
   display: flex;
   justify-content: space-between;
