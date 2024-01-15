@@ -15,9 +15,9 @@ const HomepageContainer = ({ children }) => {
 
   const location = useLocation();
   const colorChange =
-    location.pathname === "/ResultPage" ? "#ffa807" : "#ea8573";
+    location.pathname === "/Recomandation" ? "#ffa807" : "#ea8573";
   const colorMapChange =
-    location.pathname === "/ResultPage" ? "#ffdd9f" : "#f8b0a3";
+    location.pathname === "/Recomandation" ? "#ffdd9f" : "#f8b0a3";
 
   return (
     <HomepageLayout>

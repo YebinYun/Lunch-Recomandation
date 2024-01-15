@@ -6,7 +6,7 @@ import { PUBLIC_BACKGROUND_IMAGE } from "../../assets/images/images";
 const HomepageLayout = ({ children }) => {
   const location = useLocation();
   const background =
-    location.pathname === "/ResultPage"
+    location.pathname === "/Recomandation"
       ? PUBLIC_BACKGROUND_IMAGE.resultBackground
       : PUBLIC_BACKGROUND_IMAGE.mainBackground;
 
