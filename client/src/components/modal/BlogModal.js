@@ -84,14 +84,6 @@ const AcctionBtn = styled.button`
   padding: 0;
 `;
 
-// 버튼 이미지
-const AcctionImg = styled.img`
-  width: 40px;
-  height: 40px;
-  display: flex;
-  cursor: pointer;
-`;
-
 //제목 문구
 const TitleWrap = styled.div`
   > h1 {
@@ -155,13 +147,11 @@ const ReviewPostWrap = styled.div`
 `;
 
 const BlogModal = ({
-  blogData1,
-  blogData2,
+  blogData,
   data,
   toggleReview,
   selectedModalIndex,
 }) => {
-  const blogData = [blogData1, blogData2];
 
   return (
     <ModalBackground>
