@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { PUBLIC_BACKGROUND_IMAGE } from "../../assets/images/images";
+import { PUBLIC_BACKGROUND_IMAGE } from "../../utils/images/images.tsx";
 
 const HomepageLayout = ({ children }) => {
   const location = useLocation();

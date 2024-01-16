@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
-import { PUBLIC_LOADING_IMAGE } from "../../assets/images/images";
+import { PUBLIC_LOADING_IMAGE } from "../../utils/images/images.tsx";
 
 const ResultRenderSlider = ({ index, images }) => {
   return (

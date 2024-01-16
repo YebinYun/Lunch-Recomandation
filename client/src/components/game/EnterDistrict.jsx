@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { deselectedOptions } from "../../utils/dummy/deselectedOptions";
+import deselectedOptions from "../../utils/district/deselectedOptions.json";
 
 const EnterDistrict = ({ inputValue, setInputValue }) => {
   const [inputOptions, setInputOptions] = useState(deselectedOptions);

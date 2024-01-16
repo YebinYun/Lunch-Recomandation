@@ -1,6 +1,8 @@
-import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images";
+import { PUBLIC_FOOD_IMAGE } from "../images/images.tsx";
 
-export const foods = [
+type FoodImage = string;
+
+export const foods: FoodImage[][] = [
   [
     PUBLIC_FOOD_IMAGE.koreanFood1,
     PUBLIC_FOOD_IMAGE.chineseFood1,
@@ -24,7 +26,9 @@ export const foods = [
   ],
 ];
 
-export const foodCountry = {
+type FoodCountry = Record<FoodImage, FoodImage[]>;
+
+export const foodCountry: FoodCountry = {
   한식: [
     PUBLIC_FOOD_IMAGE.koreanFood1,
     PUBLIC_FOOD_IMAGE.koreanFood2,

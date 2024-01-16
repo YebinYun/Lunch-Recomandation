@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import RollContainer from "./RandomButton";
 import RotateSlot from "../../hook/RotateSlot";
-import { foods } from "../../utils/dummy/foods";
+import { foods } from "../../utils/foods/foods.tsx";
 
 const EnterClick = ({ setResultFood, buttonClickHandler, slotRefs }) => {
   const [rolling, setRolling] = useState(false);

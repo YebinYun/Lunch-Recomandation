@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import MainComponent from "../../components/main/MainComponent.tsx"
-import { PUBLIC_FOOD_IMAGE } from "../../assets/images/images.js";
+import { PUBLIC_FOOD_IMAGE } from "../../utils/images/images.tsx";
 
 const MainContainer = ({ colorChange }) => {
   const [result, setResult] = useState<boolean>(false);

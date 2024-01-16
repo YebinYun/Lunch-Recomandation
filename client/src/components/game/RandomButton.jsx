@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { PUBLIC_LOADING_IMAGE } from "../../assets/images/images";
+import { PUBLIC_LOADING_IMAGE } from "../../utils/images/images.tsx";
 
 const VideoContainer = styled.div`
   display: flex;

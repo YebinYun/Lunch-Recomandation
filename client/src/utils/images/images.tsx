@@ -1,6 +1,9 @@
-const publicImage = (Image) => `${process.env.PUBLIC_URL}${Image}`;
+type PublicImageType = Record<string, string>;
 
-export const PUBLIC_FOOD_IMAGE = {
+const publicImage = (Image: string): string =>
+  `${process.env.PUBLIC_URL}${Image}`;
+
+export const PUBLIC_FOOD_IMAGE: PublicImageType = {
   chineseFood1: publicImage("/images/chineseFood1.png"),
   chineseFood2: publicImage("/images/chineseFood2.png"),
   chineseFood3: publicImage("/images/chineseFood3.png"),
@@ -18,16 +21,16 @@ export const PUBLIC_FOOD_IMAGE = {
   westernFood3: publicImage("/images/westernFood3.png"),
 };
 
-export const PUBLIC_BACKGROUND_IMAGE = {
+export const PUBLIC_BACKGROUND_IMAGE: PublicImageType = {
   mainBackground: publicImage("/images/mainBackground.png"),
   resultBackground: publicImage("/images/secBackground.png"),
 };
 
-export const PUBLIC_MAP_IMAGE = {
+export const PUBLIC_MAP_IMAGE: PublicImageType = {
   seoulMap: publicImage("/images/seoulMap.png"),
 };
 
-export const PUBLIC_LOADING_IMAGE = {
+export const PUBLIC_LOADING_IMAGE: PublicImageType = {
   loading: publicImage("/images/loading.gif"),
-  resultLoading: publicImage("/images/getReplaceResult.gif")
+  resultLoading: publicImage("/images/getReplaceResult.gif"),
 };

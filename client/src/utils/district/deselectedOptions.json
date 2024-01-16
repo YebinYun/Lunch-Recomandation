@@ -1,4 +1,4 @@
-export const deselectedOptions = [
+[
   "강남구",
   "강동구",
   "강북구",
@@ -23,5 +23,5 @@ export const deselectedOptions = [
   "은평구",
   "종로구",
   "중구",
-  "중랑구",
-];
+  "중랑구"
+]
