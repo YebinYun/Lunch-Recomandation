@@ -1,9 +1,15 @@
 import React from 'react'
 import styled from "styled-components";
 
-const ResultInformation = ({ recommendation, toggleReview, index }) => {
+type Props = {
+  recommendation: any;
+  toggleReview: (index: number) => void;
+  index:number;
+};
+
+const ResultInformation = ({ recommendation, toggleReview, index }: Props) => {
   return (
-    <InformationWrap>
+    <InformationContainer>
       <h1> {recommendation.title} </h1>
       <InformationLayout>
         <InformationText>
@@ -30,14 +36,14 @@ const ResultInformation = ({ recommendation, toggleReview, index }) => {
         }}>
         상세보기
       </BlogButton>
-    </InformationWrap>
+    </InformationContainer>
   );
 };
 
 export default ResultInformation
 
 
-const InformationWrap = styled.div`
+const InformationContainer = styled.div`
   overflow:hidden;
   width:100%;
   display:flex;

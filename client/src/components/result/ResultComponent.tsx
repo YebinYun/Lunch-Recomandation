@@ -4,7 +4,7 @@ import ResultModal from "../modal/MapModal";
 import BlogModal from "../modal/BlogModal";
 import HomepageContainer from "../../pages/layout/HomepageContainer";
 import ResultRenderSlider from "./ResultRenderSlider.tsx";
-import ResultInformation from "../recomandation/ResultInformation";
+import ResultInformation from "./ResultInformation.tsx";
 
 type Props = {
   data: any[]; 
