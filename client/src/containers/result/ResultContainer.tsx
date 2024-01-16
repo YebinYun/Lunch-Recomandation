@@ -43,12 +43,9 @@ const ResultContainer = ({ colorChange }:any) => {
             },
           }
         );
-        console.log(response);
         const randomItems = getRandomItems(response.data.items, 2);
 
         // 받아온 데이터의 일부 title가 <b>,</b>를 포함하기에, 해당 값을 제거하기 위한 코드
-
-        console.log("성공");
         const modifiedItems = randomItems.map((item) => {
           let str = item.title;
           str = str.replace(/<\/?b>/g, "");
@@ -92,9 +89,7 @@ const ResultContainer = ({ colorChange }:any) => {
 
         setImage([response1.data.items, response2.data.items]);
       } catch (error) {
-        let message = "Unknown Error";
-        if (error instanceof Error) message = error.message;
-        console.log(message);
+          throw error;
       }
     };
 
@@ -126,7 +121,6 @@ const ResultContainer = ({ colorChange }:any) => {
           [index]: responseData,
         }));
 
-        console.log(response);
       } catch (error) {
         let message = "Unknown Error";
         if (error instanceof Error) message = error.message;

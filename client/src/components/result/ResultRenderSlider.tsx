@@ -5,28 +5,33 @@ import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구�
 import Slider from "react-slick"; // 가로스크롤 캐러셀 구현을 위한 컴포넌트
 import { PUBLIC_LOADING_IMAGE } from "../../utils/images/images.tsx";
 
-const ResultRenderSlider = ({ index, images }) => {
+type Props = {
+  index: number;
+  images: any[]; 
+}
+
+const ResultRenderSlider = ({ index, images }:Props) => {
   return (
-      <>
-        <StyledSlider {...settings}>
-          {images && images[index] && images[index].length > 1 ? (
-            images[index]
-              .filter((item) => item.title.includes("맛집"))
-              .filter((item) => !item.thumbnail.includes("output"))
-              .filter((item) => !item.thumbnail.includes("cyworld"))
-              .slice(0, 5)
-              .map((item, idx) => (
-                <div key={idx}>
-                  <img src={item.thumbnail} alt="Thumbnail" />
-                </div>
-              ))
-          ) : (
-            <div>
-              <NoImg src={PUBLIC_LOADING_IMAGE.resultLoading} alt="" />
-            </div>
-          )}
-        </StyledSlider>
-      </>
+    <>
+      <StyledSlider {...settings}>
+        {images && images[index] && images[index].length > 1 ? (
+          images[index]
+            .filter((item: any) => item.title.includes("맛집"))
+            .filter((item: any) => !item.thumbnail.includes("output"))
+            .filter((item: any) => !item.thumbnail.includes("cyworld"))
+            .slice(0, 5)
+            .map((item: any, idx: number) => (
+              <div key={idx}>
+                <img src={item.thumbnail} alt="Thumbnail" />
+              </div>
+            ))
+        ) : (
+          <div>
+            <NoImg src={PUBLIC_LOADING_IMAGE.resultLoading} alt="" />
+          </div>
+        )}
+      </StyledSlider>
+    </>
   );
 };
 
