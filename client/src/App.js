@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Main from "./containers/main/MainContainer.tsx";
 import ResultPage from "./pages/pages/ResultPage";
 
