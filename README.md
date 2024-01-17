@@ -82,15 +82,15 @@
 
 <br>
 
-## **Stack**
+## **주요 기술**
 
-### **Config**
+### 📥Client
 
-<img src="https://img.shields.io/badge/npm-CB3837?style=flat&logo=npm&logoColor=white"/> <img src="https://img.shields.io/badge/naver-03C75A?style=flat&logo=npm&logoColor=white"/>
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"/><img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"/><img src="https://img.shields.io/badge/axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white"/><img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white"/><img src="https://img.shields.io/badge/reactrouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=white"/><img src="https://img.shields.io/badge/json-5A29E4?style=for-the-badge&logo=json&logoColor=white"/>
 
-### **Development**
 
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/> <img src="https://img.shields.io/badge/react-61DAFB?style=flat&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat&logo=styledcomponents&logoColor=white"/> <img src="https://img.shields.io/badge/react router-CA4245?style=flat&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/axios-5A29E4?style=flat&logo=axios&logoColor=white"/>
+### 📤Server
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/><img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white"/><img src="https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white"/><img src="https://img.shields.io/badge/.env-ECD53F?style=for-the-badge&logo=.env&logoColor=white"/><img src="https://img.shields.io/badge/naver_api-03C75A?style=for-the-badge&logo=naver&logoColor=white"/>
 
 <br>
 
@@ -98,7 +98,7 @@
 
 ### 디렉토리 구조
 ```
-📤Client
+📥Client
 .
 ├── public
 │   └── images
@@ -118,7 +118,7 @@
     └── utils
         └── dummy
 
-📥Server
+📤Server
 .
 ├── .env
 ├── app.js
