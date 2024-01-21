@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ResultModalComponent from "../main/ResultModalComponent.tsx";
-import BlogModal from "../layout/modal/BlogModal.js";
+import BlogModal from "../result/BlogModal.js";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import ResultRenderSlider from "./ResultRenderSlider.tsx";
 import ResultInformation from "./ResultInformation.tsx";
@@ -61,12 +60,6 @@ const Recomandation = ({
       ) : (
         <div>데이터를 불러오는 중입니다..</div>
       )}
-      {/* {showModal && (
-        <ResultModalComponent
-          openModalHandler={openModalHandler}
-          colorChange={colorChange}
-        />
-      )} */}
     </>
   );
 };
