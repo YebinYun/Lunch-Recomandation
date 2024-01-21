@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import "slick-carousel/slick/slick.css"; // 가로스크롤 캐러셀 구현을 위한 css
 import "slick-carousel/slick/slick-theme.css"; // 가로스크롤 캐러셀 구현을 위한 css
@@ -11,6 +11,7 @@ type Props = {
 }
 
 const ResultRenderSlider = ({ index, images }:Props) => {
+    const [isImgError, setIsImgError] = useState<boolean>(false);
   return (
     <>
       <StyledSlider {...settings}>
@@ -22,7 +23,15 @@ const ResultRenderSlider = ({ index, images }:Props) => {
             .slice(0, 5)
             .map((item: any, idx: number) => (
               <div key={idx}>
-                <img src={item.thumbnail} alt="Thumbnail" />
+                <img
+                  src={
+                    isImgError
+                      ? PUBLIC_LOADING_IMAGE.resultLoading
+                      : item.thumbnail
+                  }
+                  alt="Thumbnail"
+                  onError={() => setIsImgError(true)}
+                />
               </div>
             ))
         ) : (
