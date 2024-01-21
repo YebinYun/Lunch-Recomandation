@@ -4,7 +4,7 @@
 
 > **[코드스테이츠 FE 45기] 스터디\_참숯가마**\
 > **개발기간 : 2023.6.23 ~ 2023.07.15**\
-> **리팩토링 : 2023.11.22 ~ ing**
+> **리팩토링 : 2023.11.22 ~ 2024.01.21**
 
 <br>
 
@@ -104,19 +104,52 @@
 │   └── images
 └── src
     ├── assets
-    │   ├── fonts
-    │   └── images
+    │   └── fonts
     ├── components
-    │   ├── game
-    │   ├── modal
-    │   └── recomandation
-    ├── hook
-    ├── pages
-    │   ├── commons
     │   ├── layout
-    │   └── pages
+    │   │   ├── commons
+    │   │   │   ├── BottomLink.tsx
+    │   │   │   ├── MapLink.tsx
+    │   │   │   └── TopLink.tsx
+    │   │   ├── HomepageComponent.tsx
+    │   │   ├── LayoutComponent.tsx
+    │   │   ├── MapModalComponent.tsx
+    │   │   └── ModalComponent.tsx
+    │   ├── main
+    │   │   ├── game
+    │   │   │   ├── EnterClickComponent.tsx
+    │   │   │   ├── EnterDistrictComponent.tsx
+    │   │   │   ├── EnterLocalComponent.tsx
+    │   │   │   ├── RandomButtonComponent.tsx
+    │   │   │   └── RandomGameComponent.tsx
+    │   │   ├── MainComponent.tsx
+    │   │   └── ResultModalComponent.tsx
+    │   └── result
+    │       ├── BlogModalComponent.tsx
+    │       ├── ResultComponent.tsx
+    │       ├── ResultInformation.tsx
+    │       └── ResultRenderSlider.tsx
+    ├── containers
+    │   ├── layout
+    │   │   ├── HomepageContainer.tsx
+    │   │   └── LayoutContainer.tsx
+    │   ├── main
+    │   │   ├── game
+    │   │   │   ├── EnterClickContainer.tsx
+    │   │   │   └── EnterDistrictContainer.tsx
+    │   │   ├── MainContainer.tsx
+    │   │   └── ResultModalContainer.tsx
+    │   └── result
+    │       └── ResultContainer.tsx
+    ├── hook
+    │   └── RotateSlot.js
     └── utils
-        └── dummy
+        ├── district
+        │   └── deselectedOptions.json
+        ├── foods
+        │   └── foods.tsx
+        └── images
+            └── images.tsx
 
 📤Server
 .
