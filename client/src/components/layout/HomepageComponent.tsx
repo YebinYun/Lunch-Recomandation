@@ -1,9 +1,9 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 import LayoutContainer from "../../containers/layout/LayoutContainer.tsx";
-import TopLink from "../../pages/commons/TopLink";
-import MapLink from "../../pages/commons/MapLink";
-import BottomLink from "../../pages/commons/BottomLink";
+import TopLink from "./commons/TopLink.tsx";
+import MapLink from "./commons/MapLink.tsx";
+import BottomLink from "./commons/BottomLink.tsx";
 import MapModal from "../modal/MapModal";
 
 type props = {

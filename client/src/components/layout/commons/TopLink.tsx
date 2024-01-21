@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 
-const TopLink = ({ modalClickHandler, colorChange }) => {
+type props = {
+  modalClickHandler: () => void;
+  colorChange: string;
+};
+
+const TopLink = ({ modalClickHandler, colorChange }: props) => {
   const navigate = useNavigate();
 
   return (
@@ -62,8 +67,8 @@ const TopLink = ({ modalClickHandler, colorChange }) => {
   );
 };
 
-const TopLinkWrap = styled.div`
-  background: ${(props) => props.colorChange ||  '#ea8573'};
+const TopLinkWrap = styled.div<{ colorChange: string }>`
+  background: ${(props) => props.colorChange || "#ea8573"};
   width: 100%;
   display: flex;
   justify-content: space-between;

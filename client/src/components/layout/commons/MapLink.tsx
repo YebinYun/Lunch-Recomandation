@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const MapLink = ({ modalClickHandler, colorMapChange }) => {
+type props = {
+  modalClickHandler: () => void;
+  colorMapChange: string;
+};
+
+const MapLink = ({ modalClickHandler, colorMapChange }: props) => {
   return (
     <MapLinkWrap colorMapChange={colorMapChange}>
       <MapLinkButton onClick={modalClickHandler}>
@@ -11,7 +16,7 @@ const MapLink = ({ modalClickHandler, colorMapChange }) => {
   );
 };
 
-const MapLinkWrap = styled.div`
+const MapLinkWrap = styled.div<{ colorMapChange: string }>`
   display: flex;
   border-bottom: 3px solid black;
   background: ${(props) => props.colorMapChange};
