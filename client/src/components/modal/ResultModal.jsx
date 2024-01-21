@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import ModalContainer from "../layout/ModalContainer.jsx";
+import ModalComponent from "../layout/ModalComponent.jsx";
 import { foodCountry } from "../../utils/foods/foods.tsx";
 
 const ResultModal = ({
@@ -25,7 +25,7 @@ const ResultModal = ({
   };
 
   return (
-    <ModalContainer
+    <ModalComponent
       modalClickHandler={openModalHandler}
       colorChange={colorChange}>
       <ResultContainer>
@@ -45,7 +45,7 @@ const ResultModal = ({
           <p> 구경가기 </p>
         </ResultButton>
       </ResultContainer>
-    </ModalContainer>
+    </ModalComponent>
   );
 };
 

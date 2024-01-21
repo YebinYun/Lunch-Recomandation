@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import HomepageLayout from "./HompageLayout";
+import LayoutComponent from "./LayoutComponent";
 import TopLink from "../../pages/commons/TopLink";
 import MapLink from "../../pages/commons/MapLink";
 import BottomLink from "../../pages/commons/BottomLink";
 import MapModal from "../modal/MapModal";
 import { useLocation } from "react-router-dom";
 
-const HomepageContainer = ({ children }) => {
+const HomepageComponent = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const modalClickHandler = () => {
     setShowModal(!showModal);
@@ -20,7 +20,7 @@ const HomepageContainer = ({ children }) => {
     location.pathname === "/Recomandation" ? "#ffdd9f" : "#f8b0a3";
 
   return (
-    <HomepageLayout>
+    <LayoutComponent>
       <TopLink colorChange={colorChange} />
       <MapLink
         modalClickHandler={modalClickHandler}
@@ -34,7 +34,7 @@ const HomepageContainer = ({ children }) => {
           colorChange={colorChange}
         />
       )}
-    </HomepageLayout>
+    </LayoutComponent>
   );
 };
 
@@ -48,4 +48,4 @@ const MainWrap = styled.div`
   justify-content: space-evenly;
 `;
 
-export default HomepageContainer;
+export default HomepageComponent;

@@ -1,6 +1,6 @@
 import React, { MutableRefObject, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
-import HomepageContainer from "../layout/HomepageContainer";
+import HomepageComponent from "../layout/HomepageComponent";
 import RandomGame from "../game/RandomGame";
 import EnterClick from "../game/EnterClick";
 import EnterLocal from "../game/EnterLocal";
@@ -29,7 +29,7 @@ const MainPage = ({
   colorChange,
 }: props) => {
   return (
-    <HomepageContainer>
+    <HomepageComponent>
       <TitleContainer>
         <h1> 오늘 뭐 먹지? </h1>
         <h3> 메뉴 추천 룰렛 </h3>
@@ -58,7 +58,7 @@ const MainPage = ({
           colorChange={colorChange}
         />
       )}
-    </HomepageContainer>
+    </HomepageComponent>
   );
 };
 

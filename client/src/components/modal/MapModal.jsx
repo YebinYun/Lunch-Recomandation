@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import ModalContainer from "../layout/ModalContainer.jsx";
+import ModalComponent from "../layout/ModalComponent.jsx";
 import { PUBLIC_MAP_IMAGE } from "../../utils/images/images.tsx";
 
 const MapModal = ({ modalClickHandler, colorChange }) => {
   return (
-    <ModalContainer
+    <ModalComponent
       modalClickHandler={modalClickHandler}
       colorChange={colorChange}>
       <GuideMapWrapper>
         <h1> [ 서울시 지도 ] </h1>
         <img src={PUBLIC_MAP_IMAGE.seoulMap} alt="서울 지도" />
       </GuideMapWrapper>
-    </ModalContainer>
+    </ModalComponent>
   );
 };
 

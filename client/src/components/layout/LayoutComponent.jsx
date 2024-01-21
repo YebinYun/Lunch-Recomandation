@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { PUBLIC_BACKGROUND_IMAGE } from "../../utils/images/images.tsx";
 
-const HomepageLayout = ({ children }) => {
+const LayoutComponent = ({ children }) => {
   const location = useLocation();
   const background =
     location.pathname === "/Recomandation"
@@ -36,4 +36,4 @@ const Layout = styled.div`
   }
 `;
 
-export default HomepageLayout;
+export default LayoutComponent;

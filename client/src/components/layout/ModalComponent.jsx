@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TopLink from "../../pages/commons/TopLink";
 import BottomLink from "../../pages/commons/BottomLink";
 
-const ModalContainer = ({
+const ModalComponent = ({
   children,
   modalClickHandler,
   colorChange,
@@ -52,4 +52,4 @@ const MainWrap = styled.div`
   align-items: center;
 `;
 
-export default ModalContainer;
+export default ModalComponent;
