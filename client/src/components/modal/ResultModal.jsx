@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import ModalComponent from "../layout/ModalComponent.jsx";
+import ModalComponent from "../layout/ModalComponent.tsx";
 import { foodCountry } from "../../utils/foods/foods.tsx";
 
 const ResultModal = ({

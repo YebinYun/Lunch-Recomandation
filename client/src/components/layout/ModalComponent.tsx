@@ -1,13 +1,19 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import TopLink from "../../pages/commons/TopLink";
 import BottomLink from "../../pages/commons/BottomLink";
+
+type props = {
+  children: ReactNode;
+  modalClickHandler: () => void;
+  colorChange: () => void;
+};
 
 const ModalComponent = ({
   children,
   modalClickHandler,
   colorChange,
-}) => {
+}: props) => {
   return (
     <ModalBackground>
       <ModalLayout>
