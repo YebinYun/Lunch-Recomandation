@@ -17,7 +17,7 @@ type Props = {
   colorChange: any;
 }
 
-const Recomandation = ({
+const ResultComponent = ({
   data,
   image,
   blogData,
@@ -64,7 +64,7 @@ const Recomandation = ({
   );
 };
 
-export default Recomandation;
+export default ResultComponent;
 
 const TitleContainer = styled.div`
   position: relative;
@@ -73,7 +73,7 @@ const TitleContainer = styled.div`
   min-height: 600px;
   background-color: #ffe9da;
   border: 3px solid black;
-  border-radius: 25px 25px 0 0;
+  border-radius: 25px;
   margin: 0 1rem;
 `;
 

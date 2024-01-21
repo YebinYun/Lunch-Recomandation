@@ -70,7 +70,7 @@ const ResultContainer = ({ colorChange }:any) => {
       try {
         const [response1, response2] = await Promise.all([
           axios.get(
-            "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/search",
+            "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image",
             {
               params: {
                 query: `${data[0].title}${food}`,
@@ -98,7 +98,7 @@ const ResultContainer = ({ colorChange }:any) => {
   }, [data]);
 
   useEffect(() => {
-    const fetchBlogData = async (index) => {
+    const fetchBlogData = async (index:number) => {
       try {
         const response = await axios.get(
           "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/blog",
