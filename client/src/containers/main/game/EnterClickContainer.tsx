@@ -1,6 +1,6 @@
 import React, { Dispatch, MutableRefObject, SetStateAction, useEffect, useState } from 'react'
 import EnterClickComponent from "../../../components/main/game/EnterClickComponent.tsx";
-import RotateSlot from '../../../hook/RotateSlot.ts';
+import RotateSlot from '../../../hook/RotateSlot.js';
 import { foods } from "../../../utils/foods/foods.tsx";
 
 type props = {
