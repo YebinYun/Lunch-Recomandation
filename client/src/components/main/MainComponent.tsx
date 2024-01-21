@@ -2,7 +2,7 @@ import React, { MutableRefObject, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import RandomGame from "./game/RandomGame.jsx";
-import EnterClick from "./game/EnterClick.jsx";
+import EnterClickContainer from "../../containers/main/game/EnterClickContainer.tsx";
 import EnterLocal from "./game/EnterLocal.jsx";
 import EnterDistrict from "./game/EnterDistrict.jsx";
 import ResultModal from "../layout/modal/ResultModal.jsx";
@@ -13,7 +13,7 @@ type props = {
   result: boolean;
   inputValue: string;
   setInputValue: Dispatch<SetStateAction<string>>;
-  slotRefs: MutableRefObject<null>[];
+  slotRefs: MutableRefObject<HTMLDivElement>[];
   buttonClickHandler: () => void;
   colorChange: any;
 };
@@ -38,7 +38,7 @@ const MainPage = ({
         <RandomGame slotRefs={slotRefs} />
         <RandomContainer>
           <EnterLocal/>
-          <EnterClick
+          <EnterClickContainer
             setResultFood={setResultFood}
             slotRefs={slotRefs}
             buttonClickHandler={buttonClickHandler}
