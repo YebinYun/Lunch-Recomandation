@@ -3,7 +3,7 @@ import styled from "styled-components";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import RandomGame from "./game/RandomGame.jsx";
 import EnterClickContainer from "../../containers/main/game/EnterClickContainer.tsx";
-import EnterLocal from "./game/EnterLocal.jsx";
+import EnterLocalComponent from "./game/EnterLocalComponent.tsx";
 import EnterDistrictContainer from "../../containers/main/game/EnterDistrictContainer.tsx";
 import ResultModal from "../layout/modal/ResultModal.jsx";
 
@@ -37,7 +37,7 @@ const MainPage = ({
       <MainContainer>
         <RandomGame slotRefs={slotRefs} />
         <RandomContainer>
-          <EnterLocal/>
+          <EnterLocalComponent/>
           <EnterClickContainer
             setResultFood={setResultFood}
             slotRefs={slotRefs}
