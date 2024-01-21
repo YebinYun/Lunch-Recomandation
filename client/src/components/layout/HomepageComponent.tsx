@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import LayoutComponent from "./LayoutComponent";
+import LayoutContainer from "../../containers/layout/LayoutContainer.tsx";
 import TopLink from "../../pages/commons/TopLink";
 import MapLink from "../../pages/commons/MapLink";
 import BottomLink from "../../pages/commons/BottomLink";
@@ -22,7 +22,7 @@ const HomepageComponent = ({
   colorMapChange,
 }: props) => {
   return (
-    <LayoutComponent>
+    <LayoutContainer>
       <TopLink
         colorChange={colorChange}
         modalClickHandler={modalClickHandler}
@@ -39,7 +39,7 @@ const HomepageComponent = ({
           colorChange={colorChange}
         />
       )}
-    </LayoutComponent>
+    </LayoutContainer>
   );
 };
 

@@ -1,15 +1,12 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
-import { PUBLIC_BACKGROUND_IMAGE } from "../../utils/images/images.tsx";
 
-const LayoutComponent = ({ children }) => {
-  const location = useLocation();
-  const background =
-    location.pathname === "/Recomandation"
-      ? PUBLIC_BACKGROUND_IMAGE.resultBackground
-      : PUBLIC_BACKGROUND_IMAGE.mainBackground;
+type props = {
+  children: ReactNode;
+  background: string;
+};
 
+const LayoutComponent = ({ children, background }: props) => {
   return (
     <Layout background={background}>
       <div>{children}</div>
@@ -17,7 +14,7 @@ const LayoutComponent = ({ children }) => {
   );
 };
 
-const Layout = styled.div`
+const Layout = styled.div<{ background: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
