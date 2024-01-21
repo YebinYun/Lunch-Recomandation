@@ -5,10 +5,11 @@ import RandomGameComponent from "./game/RandomGameComponent.tsx";
 import EnterClickContainer from "../../containers/main/game/EnterClickContainer.tsx";
 import EnterLocalComponent from "./game/EnterLocalComponent.tsx";
 import EnterDistrictContainer from "../../containers/main/game/EnterDistrictContainer.tsx";
-import ResultModal from "../layout/modal/ResultModal.jsx";
+import ResultModalContainer from "../../containers/main/ResultModalContainer.tsx";
+
 
 type props = {
-  resultFoods: string[];
+  resultFoods: string;
   setResultFood: Dispatch<SetStateAction<string[]>>;
   result: boolean;
   inputValue: string;
@@ -50,7 +51,7 @@ const MainPage = ({
         </RandomContainer>
       </MainContainer>
       {result && (
-        <ResultModal
+        <ResultModalContainer
           inputValue={inputValue}
           resultFoods={resultFoods}
           result={result}

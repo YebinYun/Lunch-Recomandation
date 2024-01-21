@@ -1,29 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import ModalComponent from "../ModalComponent.tsx";
-import { foodCountry } from "../../../utils/foods/foods.tsx";
+import ModalComponent from "../layout/ModalComponent.tsx";
 
-const ResultModal = ({
-  inputValue,
-  resultFoods,
+type props = {
+  result: boolean;
+  openModalHandler: () => void;
+  colorChange: string;
+  tittleFood: string[];
+  iconFood: string[];
+  viewResults: () => void;
+};
+
+const ResultModalComponent = ({
   result,
   openModalHandler,
   colorChange,
-}) => {
-  const tittleFood = Object.keys(foodCountry).filter(
-    (country) => foodCountry[country][0] === resultFoods
-  );
-  const iconFood = foodCountry[tittleFood];
-  const navigate = useNavigate();
-  const viewResults = () => {
-    navigate(
-      `/Recomandation?inputValue=${encodeURIComponent(
-        inputValue
-      )}&food=${encodeURIComponent(tittleFood)}`
-    );
-  };
-
+  tittleFood,
+  iconFood,
+  viewResults,
+}: props) => {
   return (
     <ModalComponent
       modalClickHandler={openModalHandler}
@@ -37,7 +32,7 @@ const ResultModal = ({
           )}
         </ResultTitle>
         <ResultIcon>
-          {iconFood.map((icon) => (
+          {iconFood.map((icon: string) => (
             <img src={icon} alt={`${tittleFood} 아이콘`} />
           ))}
         </ResultIcon>
@@ -96,4 +91,4 @@ const ResultButton = styled.button`
   }
 `;
 
-export default ResultModal;
+export default ResultModalComponent;
