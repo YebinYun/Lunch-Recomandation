@@ -5,7 +5,7 @@ import RandomGame from "./game/RandomGame.jsx";
 import EnterClick from "./game/EnterClick.jsx";
 import EnterLocal from "./game/EnterLocal.jsx";
 import EnterDistrict from "./game/EnterDistrict.jsx";
-import ResultModal from "../modal/ResultModal";
+import ResultModal from "../layout/modal/ResultModal.jsx";
 
 type props = {
   resultFoods: string[];

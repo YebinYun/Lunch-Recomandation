@@ -4,7 +4,7 @@ import LayoutContainer from "../../containers/layout/LayoutContainer.tsx";
 import TopLink from "./commons/TopLink.tsx";
 import MapLink from "./commons/MapLink.tsx";
 import BottomLink from "./commons/BottomLink.tsx";
-import MapModal from "../modal/MapModal";
+import MapModal from "./modal/MapModal.jsx";
 
 type props = {
   children: ReactNode;

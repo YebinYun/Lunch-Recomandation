@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import ModalComponent from "../layout/ModalComponent.tsx";
-import { PUBLIC_MAP_IMAGE } from "../../utils/images/images.tsx";
+import ModalComponent from "../ModalComponent.tsx";
+import { PUBLIC_MAP_IMAGE } from "../../../utils/images/images.tsx";
 
 const MapModal = ({ modalClickHandler, colorChange }) => {
   return (
