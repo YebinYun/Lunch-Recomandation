@@ -1,8 +1,12 @@
-import React, { useRef, useState } from 'react'
+import React, { MutableRefObject, useRef, useState } from 'react'
 import MainComponent from "../../components/main/MainComponent.tsx"
 import { PUBLIC_FOOD_IMAGE } from "../../utils/images/images.tsx";
 
-const MainContainer = ({ colorChange }) => {
+type props = {
+  colorChange:string;
+};
+
+const MainContainer = ({ colorChange }: props) => {
   const [result, setResult] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [resultFoods, setResultFood] = useState<string[]>([
@@ -10,7 +14,12 @@ const MainContainer = ({ colorChange }) => {
     PUBLIC_FOOD_IMAGE.koreanFood2,
     PUBLIC_FOOD_IMAGE.koreanFood3,
   ]);
-  const slotRefs = [useRef(null), useRef(null), useRef(null)];
+  const slotRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
+
   const buttonClickHandler = () => {
     setResult(!result);
   };
@@ -23,7 +32,7 @@ const MainContainer = ({ colorChange }) => {
         result={result}
         inputValue={inputValue}
         setInputValue={setInputValue}
-        slotRefs={slotRefs}
+        slotRefs={slotRefs as MutableRefObject<HTMLDivElement>[]}
         buttonClickHandler={buttonClickHandler}
         colorChange={colorChange}
       />

@@ -4,7 +4,7 @@ import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import RandomGame from "./game/RandomGame.jsx";
 import EnterClickContainer from "../../containers/main/game/EnterClickContainer.tsx";
 import EnterLocal from "./game/EnterLocal.jsx";
-import EnterDistrict from "./game/EnterDistrict.jsx";
+import EnterDistrictContainer from "../../containers/main/game/EnterDistrictContainer.tsx";
 import ResultModal from "../layout/modal/ResultModal.jsx";
 
 type props = {
@@ -43,7 +43,7 @@ const MainPage = ({
             slotRefs={slotRefs}
             buttonClickHandler={buttonClickHandler}
           />
-          <EnterDistrict
+          <EnterDistrictContainer
             inputValue={inputValue}
             setInputValue={setInputValue}
           />
