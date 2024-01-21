@@ -6,13 +6,13 @@ type props = {
 };
 
 const RotateSlot = ({ slotRef, slotIndex, foods }: props) => {
-  function setTop(top: number) {
+  function setTop(top:number) {
     slotRef.current.style.top = `${top}px`;
   }
   const options = slotRef.current.children;
   const filteredFoods = foods[slotIndex];
   const randomOption = Math.floor(Math.random() * filteredFoods.length);
-  const chosenOption = options[randomOption] as HTMLElement;;
+  const chosenOption = options[randomOption] as HTMLElement;
   setTop(-chosenOption.offsetTop + 1);
   return filteredFoods[randomOption];
 };

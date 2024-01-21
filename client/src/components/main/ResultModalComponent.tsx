@@ -32,9 +32,10 @@ const ResultModalComponent = ({
           )}
         </ResultTitle>
         <ResultIcon>
-          {iconFood.map((icon: string) => (
-            <img src={icon} alt={`${tittleFood} 아이콘`} />
-          ))}
+          {iconFood &&
+            iconFood.map((icon: string) => (
+              <img src={icon} alt={`${tittleFood} 아이콘`} />
+            ))}
         </ResultIcon>
         <ResultButton onClick={viewResults}>
           <p> 구경가기 </p>
