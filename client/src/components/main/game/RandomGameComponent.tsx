@@ -1,21 +1,18 @@
-import React from "react";
+import React, { MutableRefObject } from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
 import { foods } from "../../../utils/foods/foods.tsx";
 
-const Slot = ({ foods, slotRef }) => (
-  <div className="slot">
-    <div className="container" ref={slotRef}>
-      {foods.map((food, i) => (
-        <div key={i}>
-          <img src={food} alt={`food ${i + 1}`} />
-        </div>
-      ))}
-    </div>
-  </div>
-);
+type RandomGameProps = {
+  slotRefs: MutableRefObject<HTMLDivElement>[];
+};
 
-const RandomGame = ({ slotRefs }) => {
+type SlotProps = {
+  foods: string[];
+  slotRef: MutableRefObject<HTMLDivElement>;
+};
+
+const RandomGameComponent = ({ slotRefs }: RandomGameProps) => {
   return (
     <Layout>
       <SlotContainer>
@@ -34,6 +31,18 @@ const RandomGame = ({ slotRefs }) => {
     </Layout>
   );
 };
+
+const Slot = ({ foods, slotRef }: SlotProps) => (
+  <div className="slot">
+    <div className="container" ref={slotRef}>
+      {foods.map((food: string, i: number) => (
+        <div key={i}>
+          <img src={food} alt={`food ${i + 1}`} />
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 const Layout = styled.div`
   position: relative;
@@ -113,4 +122,4 @@ const SlotContainer = styled.div`
   }
 `;
 
-export default RandomGame;
+export default RandomGameComponent;

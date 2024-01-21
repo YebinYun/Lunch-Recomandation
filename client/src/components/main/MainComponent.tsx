@@ -1,7 +1,7 @@
 import React, { MutableRefObject, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
-import RandomGame from "./game/RandomGame.jsx";
+import RandomGameComponent from "./game/RandomGameComponent.tsx";
 import EnterClickContainer from "../../containers/main/game/EnterClickContainer.tsx";
 import EnterLocalComponent from "./game/EnterLocalComponent.tsx";
 import EnterDistrictContainer from "../../containers/main/game/EnterDistrictContainer.tsx";
@@ -35,9 +35,9 @@ const MainPage = ({
         <h3> 메뉴 추천 룰렛 </h3>
       </TitleContainer>
       <MainContainer>
-        <RandomGame slotRefs={slotRefs} />
+        <RandomGameComponent slotRefs={slotRefs} />
         <RandomContainer>
-          <EnterLocalComponent/>
+          <EnterLocalComponent />
           <EnterClickContainer
             setResultFood={setResultFood}
             slotRefs={slotRefs}
