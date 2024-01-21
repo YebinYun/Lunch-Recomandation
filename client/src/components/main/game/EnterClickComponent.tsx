@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import RollContainer from "./RandomButton.jsx";
+import RollContainer from "./RandomButtonComponent.tsx";
 
 type props = {
   rolling: boolean;
