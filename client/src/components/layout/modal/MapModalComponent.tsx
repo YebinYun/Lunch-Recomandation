@@ -3,7 +3,12 @@ import styled from "styled-components";
 import ModalComponent from "../ModalComponent.tsx";
 import { PUBLIC_MAP_IMAGE } from "../../../utils/images/images.tsx";
 
-const MapModal = ({ modalClickHandler, colorChange }) => {
+type props = {
+  modalClickHandler: () => void;
+  colorChange:string;
+};
+
+const MapModalComponent = ({ modalClickHandler, colorChange }:props) => {
   return (
     <ModalComponent
       modalClickHandler={modalClickHandler}
@@ -29,4 +34,4 @@ const GuideMapWrapper = styled.div`
   }
 `;
 
-export default MapModal;
+export default MapModalComponent;

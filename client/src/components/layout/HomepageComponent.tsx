@@ -4,7 +4,7 @@ import LayoutContainer from "../../containers/layout/LayoutContainer.tsx";
 import TopLink from "./commons/TopLink.tsx";
 import MapLink from "./commons/MapLink.tsx";
 import BottomLink from "./commons/BottomLink.tsx";
-import MapModal from "./modal/MapModal.jsx";
+import MapModalComponent from "./modal/MapModalComponent.tsx";
 
 type props = {
   children: ReactNode;
@@ -34,7 +34,7 @@ const HomepageComponent = ({
       <MainWrap>{children}</MainWrap>
       <BottomLink colorChange={colorChange} />
       {showModal && (
-        <MapModal
+        <MapModalComponent
           modalClickHandler={modalClickHandler}
           colorChange={colorChange}
         />
