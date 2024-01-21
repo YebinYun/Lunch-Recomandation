@@ -77,7 +77,7 @@ const ResultIcon = styled.div`
 `;
 
 const ResultButton = styled.button`
-  background-color: #f9b2a6;
+  background-color: #fcbda0;
   border: 3px solid black;
   border-radius: 15px;
   & p {
@@ -86,8 +86,8 @@ const ResultButton = styled.button`
     letter-spacing: 0.8rem;
   }
   &:hover {
-    background-color: #ea8573;
-    transition: 0.7s;
+    background-color: #fd8c58;
+    transition: 0.5s;
     cursor: pointer;
   }
 `;

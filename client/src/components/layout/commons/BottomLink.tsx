@@ -17,7 +17,7 @@ const BottomLink = ({ colorChange }: props) => {
 };
 
 const BottomLinkWrap = styled.div<{ colorChange: string }>`
-  background: ${(props) => props.colorChange || "#ea8573"};
+  background: ${(props) => props.colorChange || "#fd8c58"};
   width: 100%;
   display: flex;
   justify-content: center;

@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import BlogModal from "../result/BlogModal.js";
+import BlogModalComponent from "./BlogModalComponent.tsx";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import ResultRenderSlider from "./ResultRenderSlider.tsx";
 import ResultInformation from "./ResultInformation.tsx";
 
 type Props = {
-  data: any[]; 
-  image: [any[], any[]]; 
-  blogData: Record<number, any[]>; 
+  data: any[];
+  image: [any[], any[]];
+  blogData: Record<number, any[]>;
   showModal: boolean;
   showReview: boolean;
-  selectedModalIndex: number | null;
+  selectedModalIndex: number;
   openModalHandler: () => void;
-  toggleReview: (index: number) => void;
-  colorChange: any;
-}
+  toggleReview: () => void;
+  colorChange: string;
+};
 
 const ResultComponent = ({
   data,
@@ -46,11 +46,12 @@ const ResultComponent = ({
                 />
                 {/* 상세보기 띄우는 곳*/}
                 {showReview && (
-                  <BlogModal
+                  <BlogModalComponent
                     toggleReview={toggleReview}
                     blogData={blogData}
                     data={data}
                     selectedModalIndex={selectedModalIndex}
+                    colorChange={colorChange}
                   />
                 )}
               </TitleContainer>
