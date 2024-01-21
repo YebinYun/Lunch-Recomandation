@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ResultModal from "../modal/MapModal";
 import BlogModal from "../modal/BlogModal";
-import HomepageComponent from "../layout/HomepageComponent.jsx";
+import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
 import ResultRenderSlider from "./ResultRenderSlider.tsx";
 import ResultInformation from "./ResultInformation.tsx";
 
@@ -32,7 +32,7 @@ const Recomandation = ({
   return (
     <>
       {data.length > 0 && image.length > 0 ? (
-        <HomepageComponent>
+        <HomepageContainer>
           <div style={{ display: "flex" }}>
             {data.map((recommendation, index) => (
               <TitleContainer key={index}>
@@ -57,7 +57,7 @@ const Recomandation = ({
               </TitleContainer>
             ))}
           </div>
-        </HomepageComponent>
+        </HomepageContainer>
       ) : (
         <div>데이터를 불러오는 중입니다..</div>
       )}

@@ -1,32 +1,37 @@
-import React, { useState } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
 import LayoutComponent from "./LayoutComponent";
 import TopLink from "../../pages/commons/TopLink";
 import MapLink from "../../pages/commons/MapLink";
 import BottomLink from "../../pages/commons/BottomLink";
 import MapModal from "../modal/MapModal";
-import { useLocation } from "react-router-dom";
 
-const HomepageComponent = ({ children }) => {
-  const [showModal, setShowModal] = useState(false);
-  const modalClickHandler = () => {
-    setShowModal(!showModal);
-  };
+type props = {
+  children: ReactNode;
+  modalClickHandler: () => void;
+  showModal: boolean;
+  colorChange: string;
+  colorMapChange: string;
+};
 
-  const location = useLocation();
-  const colorChange =
-    location.pathname === "/Recomandation" ? "#ffa807" : "#ea8573";
-  const colorMapChange =
-    location.pathname === "/Recomandation" ? "#ffdd9f" : "#f8b0a3";
-
+const HomepageComponent = ({
+  children,
+  modalClickHandler,
+  showModal,
+  colorChange,
+  colorMapChange,
+}: props) => {
   return (
     <LayoutComponent>
-      <TopLink colorChange={colorChange} />
+      <TopLink
+        colorChange={colorChange}
+        modalClickHandler={modalClickHandler}
+      />
       <MapLink
         modalClickHandler={modalClickHandler}
         colorMapChange={colorMapChange}
       />
-      <MainWrap colorChange={colorChange}>{children}</MainWrap>
+      <MainWrap>{children}</MainWrap>
       <BottomLink colorChange={colorChange} />
       {showModal && (
         <MapModal
@@ -40,7 +45,7 @@ const HomepageComponent = ({ children }) => {
 
 const MainWrap = styled.div`
   height: 80vh;
-  min-height:600px;
+  min-height: 600px;
   background: white;
   display: flex;
   flex-direction: column;
