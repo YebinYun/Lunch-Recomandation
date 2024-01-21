@@ -5,7 +5,7 @@ import ModalComponent from "../layout/ModalComponent.tsx";
 type props = {
   blogData: Record<number, any[]>;
   data: any[];
-  selectedModalIndex: number;
+  selectedModalIndex: any;
   colorChange: string;
   toggleReview: () => void;
 };

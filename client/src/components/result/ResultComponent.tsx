@@ -11,9 +11,9 @@ type Props = {
   blogData: Record<number, any[]>;
   showModal: boolean;
   showReview: boolean;
-  selectedModalIndex: number;
+  selectedModalIndex: number | null;
   openModalHandler: () => void;
-  toggleReview: () => void;
+  toggleReview: any;
   colorChange: string;
 };
 

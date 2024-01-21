@@ -10,7 +10,7 @@ const ResultContainer = ({ colorChange }:any) => {
   const [blogData, setBlogData] = useState<Record<number, any[]>>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showReview, setShowReview] = useState<boolean>(false);
-  const [selectedModalIndex, setSelectedModalIndex] = useState<number | null>(
+  const [selectedModalIndex, setSelectedModalIndex] = useState<number|null>(
     null
   );
   const searchParams = new URLSearchParams(location.search);
@@ -68,26 +68,28 @@ const ResultContainer = ({ colorChange }:any) => {
   useEffect(() => {
     const imageData = async () => {
       try {
-        const [response1, response2] = await Promise.all([
-          axios.get(
-            "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image",
-            {
-              params: {
-                query: `${data[0].title}${food}`,
-              },
-            }
-          ),
-          axios.get(
-            "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image",
-            {
-              params: {
-                query: `${data[1].title}${food}`,
-              },
-            }
-          ),
-        ]);
+        if (data.length >= 2) {
+          const [response1, response2] = await Promise.all([
+            axios.get(
+              "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image",
+              {
+                params: {
+                  query: `${data[0].title}${food}`,
+                },
+              }
+            ),
+            axios.get(
+              "https://port-0-lunch-recommendation-3wh3o2blrdkem9w.sel5.cloudtype.app/naver/image",
+              {
+                params: {
+                  query: `${data[1].title}${food}`,
+                },
+              }
+            ),
+          ]);
 
-        setImage([response1.data.items, response2.data.items]);
+          setImage([response1.data.items, response2.data.items]);
+        }
       } catch (error) {
           throw error;
       }
