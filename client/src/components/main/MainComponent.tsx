@@ -1,6 +1,6 @@
 import React, { MutableRefObject, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
-import HomepageContainer from "../../pages/layout/HomepageContainer";
+import HomepageContainer from "../layout/HomepageContainer";
 import RandomGame from "../game/RandomGame";
 import EnterClick from "../game/EnterClick";
 import EnterLocal from "../game/EnterLocal";

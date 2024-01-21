@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ResultModal from "../modal/MapModal";
 import BlogModal from "../modal/BlogModal";
-import HomepageContainer from "../../pages/layout/HomepageContainer";
+import HomepageContainer from "../layout/HomepageContainer.jsx";
 import ResultRenderSlider from "./ResultRenderSlider.tsx";
 import ResultInformation from "./ResultInformation.tsx";
 

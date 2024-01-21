@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import HomepageLayout from "./HompageLayout";
-import TopLink from "../commons/TopLink";
-import MapLink from "../commons/MapLink";
-import BottomLink from "../commons/BottomLink";
-import MapModal from "../../components/modal/MapModal";
+import TopLink from "../../pages/commons/TopLink";
+import MapLink from "../../pages/commons/MapLink";
+import BottomLink from "../../pages/commons/BottomLink";
+import MapModal from "../modal/MapModal";
 import { useLocation } from "react-router-dom";
 
 const HomepageContainer = ({ children }) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import TopLink from "../commons/TopLink";
-import BottomLink from "../commons/BottomLink";
+import TopLink from "../../pages/commons/TopLink";
+import BottomLink from "../../pages/commons/BottomLink";
 
 const ModalContainer = ({
   children,
