@@ -1,10 +1,10 @@
 import React, { MutableRefObject, SetStateAction, Dispatch } from "react";
 import styled from "styled-components";
 import HomepageContainer from "../../containers/layout/HomepageContainer.tsx";
-import RandomGame from "../game/RandomGame";
-import EnterClick from "../game/EnterClick";
-import EnterLocal from "../game/EnterLocal";
-import EnterDistrict from "../game/EnterDistrict";
+import RandomGame from "./game/RandomGame.jsx";
+import EnterClick from "./game/EnterClick.jsx";
+import EnterLocal from "./game/EnterLocal.jsx";
+import EnterDistrict from "./game/EnterDistrict.jsx";
 import ResultModal from "../modal/ResultModal";
 
 type props = {

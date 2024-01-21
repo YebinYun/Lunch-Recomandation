@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Icon } from "@iconify/react";
-import { foods } from "../../utils/foods/foods.tsx";
+import { foods } from "../../../utils/foods/foods.tsx";
 
 const Slot = ({ foods, slotRef }) => (
   <div className="slot">
