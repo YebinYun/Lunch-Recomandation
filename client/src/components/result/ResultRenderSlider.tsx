@@ -11,7 +11,8 @@ type Props = {
 }
 
 const ResultRenderSlider = ({ index, images }:Props) => {
-    const [isImgError, setIsImgError] = useState<boolean>(false);
+  const [isImgError, setIsImgError] = useState<boolean>(false);
+  
   return (
     <>
       <StyledSlider {...settings}>
